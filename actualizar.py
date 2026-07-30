@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from collections import defaultdict
 import json
 
-print("🧠 Generando plataforma con apertura directa de la ventana de metodología...")
+print("🧠 Generando plataforma con sintaxis f-string limpia para GitHub Actions...")
 
 # Estructuras de datos
 stats_mx = defaultdict(lambda: {'partidos': 0, 'corners': 0, 'tarjetas': 0, 'faltas': 0, 'goles_favor': 0, 'goles_contra': 0})
@@ -153,13 +153,21 @@ for idx, evento in enumerate(res_mx_fut):
         'mercados': mercados_completos
     }
 
-    box_html = f"""<div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">{best['mercado']}</div></div>""" if valid else f"""<div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⚪ SIN PICK RECOMENDADO</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Ninguna línea supera el 85% de probabilidad</div></div>"""
+    badge_cls = 'badge-emerald' if valid else 'badge-slate'
+    badge_lbl = 'ALTA CONFIANZA' if valid else 'SOLO DATA'
+    
+    if valid:
+        box_html = f'<div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">{best["mercado"]}</div></div>'
+        btn_save = f'<button class="save-pick-btn" onclick="saveCustomPick(\'{local} vs {visita}\', \'{best["mercado"]}\', \'{best["casino"]}\')">⭐ GUARDAR</button>'
+    else:
+        box_html = '<div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⚪ SIN PICK RECOMENDADO</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Ninguna línea supera el 85% de probabilidad</div></div>'
+        btn_save = ''
 
     mx_cards_html += f"""
     <div class="pro-card">
         <div class="pro-card-header" onclick="openModal('{card_id}', 'mx')">
             <span class="pro-league">LIGA MX • {fecha_partido_txt}</span>
-            <span class="pro-badge {'badge-emerald' if valid else 'badge-slate'}">{'ALTA CONFIANZA' if valid else 'SOLO DATA'}</span>
+            <span class="pro-badge {badge_cls}">{badge_lbl}</span>
         </div>
         <div class="pro-matchup" onclick="openModal('{card_id}', 'mx')">
             <div class="pro-team"><img src="{logo_l}"><span>{local}</span></div>
@@ -169,7 +177,7 @@ for idx, evento in enumerate(res_mx_fut):
         {box_html}
         <div style="display:flex; gap:10px;">
             <button class="pro-btn" style="flex:1;" onclick="openModal('{card_id}', 'mx')">VER ANÁLISIS &rarr;</button>
-            {'<button class="save-pick-btn" onclick="saveCustomPick(\'' + local + ' vs ' + visita + '\', \'' + best['mercado'] + '\', \'' + best['casino'] + '\')">⭐ GUARDAR</button>' if valid else ''}
+            {btn_save}
         </div>
     </div>
     """
@@ -242,7 +250,7 @@ if not nba_cards_html:
     nba_cards_html = """<div class="pro-card" style="grid-column: 1/-1; text-align:center; padding:30px;"><span class="pro-league">NBA • TEMPORADA 2026</span><div style="margin: 15px 0; font-weight:800; font-size:1.1rem; color:#fff;">⏳ EN ESPERA DE INFORMACIÓN COMPLETA</div><p style="color:var(--text-muted); font-size:0.85rem; max-width:500px; margin:0 auto;">La NBA se encuentra en receso. Las cuotas y métricas avanzadas se cargarán al iniciar la temporada.</p></div>"""
 
 # ==========================================
-# 4. HTML DEFINITIVO APERTURA DIRECTA
+# 4. HTML DEFINITIVO
 # ==========================================
 html_document = f"""<!DOCTYPE html>
 <html lang="es">
@@ -380,7 +388,6 @@ html_document = f"""<!DOCTYPE html>
             <div class="sport-card" onclick="selectSport('americano')">
                 <span class="sport-name">AMERICANO</span>
             </div>
-            <!-- APERTURA DIRECTA DE METODOLOGÍA SIN PASAR POR DEPORTES -->
             <div class="sport-card method-card" onclick="openMethodologyDirect()">
                 <span class="sport-name" style="color:var(--accent-cyan);">¿CÓMO CALCULAMOS LAS PROBABILIDADES Y EL VALOR?</span>
             </div>
@@ -651,7 +658,7 @@ html_document = f"""<!DOCTYPE html>
                 listHTML += `
                     <div class="saved-item">
                         <div class="saved-item-partido">${{item.partido}}</div>
-                        <div class="saved-item-pick">${{item.pick}} <span style="color:var(--accent-cyan); font-size:0.8rem;">(${{item.momio}})</span></div>
+                        <div class="saved-item-pick">${{item.pick}} <span style="color:var(--accent-cyan); font-size:0.8rem;">($${{item.momio}})</span></div>
                         <div style="margin-bottom:8px;">${{statusBadge}}</div>
                         <div class="saved-item-actions">
                             <button class="btn-status btn-win" onclick="updatePickStatus(${{item.id}}, 'GANADA')">GANADA</button>
@@ -765,5 +772,4 @@ html_document = f"""<!DOCTYPE html>
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(html_document)
 
-print("\n🚀 ¡PLATAFORMA APERTURA DIRECTA Y SINTAXIS REPARADA AL 100%!")
-print("📁 Descarga 'index.html' desde Colab y pruébalo en tu navegador.")
+print("\n🚀 ¡CÓDIGO DE ACTUALIZAR.PY CORREGIDO Y LISTO PARA EJECUTAR EN GITHUB!")

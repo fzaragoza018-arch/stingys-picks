@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stingy's Picks Engine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-dark: #07090e; --card-dark: #121620; --border-dark: #1e2638;
+            --accent-cyan: #06b6d4; --accent-emerald: #10b981; --accent-purple: #8b5cf6;
+            --text-main: #f8fafc; --text-muted: #64748b;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-main); padding: 15px; overflow-x: hidden; }
+
+        .splash-screen { 
+            position: fixed; top:0; left:0; width:100%; height:100%; 
+            background: linear-gradient(-45deg, #07090e, #0f172a, #31106e, #0284c7, #07090e);
+            background-size: 350% 350%; animation: gradientBG 4.5s ease infinite;
+            z-index: 2000; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center; 
+        }
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+        .splash-logo { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; box-shadow: 0 0 50px rgba(6, 182, 212, 0.6); }
+        .splash-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -1px; color: #fff; }
+        .splash-sub { font-size: 1.15rem; color: #f1f5f9; font-weight: 800; margin-bottom: 35px; max-width: 450px; line-height: 1.4; }
+
+        .sports-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 18px; width: 100%; max-width: 650px; }
+        .sport-card { background: rgba(18, 22, 32, 0.85); backdrop-filter: blur(12px); border: 1px solid var(--border-dark); padding: 25px 18px; border-radius: 24px; cursor: pointer; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align:center; }
+        .sport-card:hover { border-color: var(--accent-cyan); transform: translateY(-6px); box-shadow: 0 15px 35px -5px rgba(6, 182, 212, 0.5); }
+        .sport-name { font-size: 0.88rem; font-weight: 800; letter-spacing: 0.5px; color: #fff; text-transform: uppercase; }
+        
+        .method-card { background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2)); border-color: var(--accent-purple); }
+
+        .app-content { display: none; }
+        header { max-width: 1100px; margin: 0 auto 20px; display: flex; justify-content: space-between; align-items: center; background: var(--card-dark); border: 1px solid var(--border-dark); padding: 16px 20px; border-radius: 20px; }
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .brand-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #fff; font-size: 0.9rem; }
+        .brand-name { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; }
+
+        .sport-select-btn { background:#1a2234; border:1px solid var(--border-dark); color:#fff; font-weight:800; padding:8px 16px; border-radius:12px; cursor:pointer; font-size:0.75rem; }
+
+        .bankroll-panel { max-width: 1100px; margin: 0 auto 20px; background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 20px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+        .bankroll-input { display: flex; align-items: center; gap: 10px; }
+        .bankroll-input input { background: #0a0d14; border: 1px solid var(--border-dark); color: var(--accent-cyan); padding: 8px 12px; border-radius: 8px; font-weight: 800; width: 140px; font-size: 1rem; text-align: center; }
+
+        .saved-section { max-width: 1100px; margin: 0 auto 25px; background: rgba(139, 92, 246, 0.08); border: 1px solid var(--accent-purple); border-radius: 24px; padding: 22px; }
+        .saved-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap:wrap; gap:10px; }
+        .saved-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+        .saved-item { background: #0a0d14; border: 1px solid var(--border-dark); border-radius: 16px; padding: 16px; }
+        .saved-item-partido { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px; }
+        .saved-item-pick { font-size: 0.95rem; font-weight: 800; color: #fff; margin-bottom: 10px; }
+
+        .btn-status { padding: 5px 10px; border-radius: 8px; font-size: 0.72rem; font-weight: 800; border: none; cursor: pointer; }
+        .btn-win { background: rgba(16, 185, 129, 0.2); color: var(--accent-emerald); border: 1px solid var(--accent-emerald); }
+        .btn-loss { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444; }
+        .btn-del { background: #1e2638; color: var(--text-muted); border: 1px solid var(--border-dark); margin-left: auto; }
+
+        .hero-section { max-width: 1100px; margin: 0 auto 25px; background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%); border: 1px solid var(--accent-cyan); border-radius: 24px; padding: 22px; }
+        .hero-title { font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        .parlay-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+        .parlay-card { background: #0a0d14; border: 1px solid var(--border-dark); border-radius: 16px; padding: 15px; position: relative; }
+        .parlay-tag { font-size: 0.65rem; font-weight: 800; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 6px; }
+        .parlay-match { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px; }
+        .parlay-pick { font-size: 0.95rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+
+        .container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .pro-card { background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 24px; padding: 20px; transition: all 0.25s ease; }
+        .pro-card:hover { border-color: var(--accent-cyan); box-shadow: 0 12px 30px -10px rgba(6, 182, 212, 0.25); }
+
+        .pro-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; cursor: pointer; }
+        .pro-league { font-size: 0.7rem; font-weight: 800; color: var(--text-muted); }
+        .pro-badge { padding: 5px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald); border: 1px solid var(--accent-emerald); }
+        .badge-slate { background: rgba(100, 116, 139, 0.15); color: var(--text-muted); border: 1px solid var(--border-dark); }
+
+        .pro-matchup { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; cursor: pointer; }
+        .pro-team { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+        .pro-team img { width: 50px; height: 50px; object-fit: contain; }
+        .pro-team span { font-weight: 700; font-size: 0.9rem; }
+        .pro-vs { font-weight: 800; font-size: 0.8rem; color: var(--text-muted); padding: 0 10px; }
+
+        .pro-pick-box { background: #0a0d14; border: 1px solid var(--border-dark); padding: 14px; border-radius: 16px; margin-bottom: 15px; cursor: pointer; }
+        .pro-pick-label { font-size: 0.65rem; font-weight: 800; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 4px; display: block; }
+        .pro-pick-val { font-size: 0.9rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+
+        .pro-btn { background: #1a2234; border: none; color: #fff; font-weight: 800; font-size: 0.75rem; padding: 12px; border-radius: 14px; cursor: pointer; }
+        .save-pick-btn { background: rgba(139, 92, 246, 0.2); border: 1px solid var(--accent-purple); color: var(--accent-purple); font-weight: 800; font-size: 0.75rem; padding: 12px 14px; border-radius: 14px; cursor: pointer; }
+
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(7, 9, 14, 0.94); backdrop-filter: blur(10px); justify-content: center; align-items: center; z-index: 3000; padding: 20px; }
+        .modal-content { background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 28px; width: 100%; max-width: 850px; max-height: 90vh; overflow-y: auto; padding: 25px; position: relative; }
+        .close-btn { position: absolute; top: 20px; right: 20px; font-size: 1.8rem; color: var(--text-muted); cursor: pointer; }
+
+        .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
+        .modal-section { background: #0a0d14; border-radius: 18px; padding: 18px; border: 1px solid var(--border-dark); margin-bottom: 15px; }
+        .modal-section h3 { font-size: 0.8rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-bottom: 12px; border-bottom: 1px solid var(--border-dark); padding-bottom: 6px; }
+
+        .pro-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: center; }
+        .pro-table th { color: var(--text-muted); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; padding-bottom: 10px; }
+        .pro-table td { padding: 10px; border-top: 1px solid var(--border-dark); font-weight: 700; }
+        .pill-odd { background: #1e2638; padding: 4px 10px; border-radius: 8px; color: var(--accent-cyan); font-weight: 800; display: inline-block; }
+
+        .reason-box { background: rgba(6, 182, 212, 0.08); border: 1px solid var(--accent-cyan); border-radius: 12px; padding: 12px 15px; margin-top: 12px; font-size: 0.82rem; color: #f8fafc; line-height: 1.5; }
+        .stake-box { background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-emerald); padding: 14px; border-radius: 12px; text-align: center; margin-top: 12px; color: var(--accent-emerald); font-weight: 800; font-size: 0.95rem; }
+
+        .toast-container { position: fixed; bottom: 25px; right: 25px; z-index: 4000; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
+        .toast-box { background: #0d121f; border: 1px solid var(--accent-cyan); border-left: 4px solid var(--accent-cyan); border-radius: 14px; padding: 14px 20px; color: #fff; font-size: 0.88rem; font-weight: 700; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); opacity: 0; transform: translateY(30px); transition: all 0.4s ease; pointer-events: auto; }
+        .toast-box.show { opacity: 1; transform: translateY(0); }
+
+        .method-text { font-size: 0.88rem; color: #e2e8f0; line-height: 1.6; margin-bottom: 14px; }
+        .method-highlight { color: var(--accent-cyan); font-weight: 800; }
+        .formula-box { background: #1a2234; border: 1px dashed var(--accent-cyan); padding: 12px; border-radius: 12px; text-align: center; font-family: monospace; color: var(--accent-emerald); font-weight: 800; margin: 10px 0; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- PANTALLA DE BIENVENIDA -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-logo">SP</div>
+        <h1 class="splash-title">STINGY'S PICKS</h1>
+        <p class="splash-sub">¿Qué deporte quieres analizar?</p>
+        
+        <div class="sports-grid">
+            <div class="sport-card" onclick="selectSport('futbol')">
+                <span class="sport-name">FÚTBOL</span>
+            </div>
+            <div class="sport-card" onclick="selectSport('basket')">
+                <span class="sport-name">BÁSKETBOL</span>
+            </div>
+            <div class="sport-card" onclick="selectSport('americano')">
+                <span class="sport-name">AMERICANO</span>
+            </div>
+            <div class="sport-card method-card" onclick="openMethodologyDirect()">
+                <span class="sport-name" style="color:var(--accent-cyan);">¿CÓMO CALCULAMOS LAS PROBABILIDADES Y EL VALOR?</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- VISTA PRINCIPAL DE LA APP -->
+    <div class="app-content" id="appContent">
+        <header>
+            <div class="brand">
+                <div class="brand-icon">SP</div>
+                <div class="brand-name">STINGY'S PICKS</div>
+            </div>
+            <button class="sport-select-btn" id="currentSportLabel" onclick="backToSplash()">FÚTBOL / LIGA MX &blackdowntriangle;</button>
+        </header>
+
+        <div class="bankroll-panel">
+            <div>
+                <h3 style="font-size:0.95rem; font-weight:800; color:#fff;">GESTOR DE BANKROLL GENERAL</h3>
+                <p style="font-size:0.75rem; color:var(--text-muted);">Ingresa tu saldo para calcular la gestión de riesgo y balance de tu portafolio</p>
+            </div>
+            <div class="bankroll-input">
+                <label style="font-size:0.8rem; font-weight:700;">Tu Bank ($):</label>
+                <input type="number" id="userBank" placeholder="Ej: 50" oninput="renderSavedPicks()">
+            </div>
+        </div>
+
+        <div class="saved-section" id="savedPicksContainer">
+            <div class="saved-header">
+                <div class="saved-title">⭐ MIS PICKS GUARDADOS (PORTAFOLIO PERSONAL)</div>
+                <div class="saved-stats">
+                    <span style="color:var(--accent-purple);" id="savedCount">0 Guardados</span>
+                    <span id="savedBalance">Balance: $0.00 MXN</span>
+                </div>
+            </div>
+            <div class="saved-grid" id="savedPicksList"></div>
+        </div>
+
+        <div class="hero-section">
+            <div class="hero-title">
+                <span>PICKS OFICIALES DE LA SEMANA (MÁXIMO 3 SELECCIONES ≥ 85%)</span>
+            </div>
+            <div class="parlay-grid" id="officialPicksContainer"></div>
+        </div>
+
+        <div class="container" id="matchesContainer"></div>
+    </div>
+
+    <!-- MODAL PRINCIPAL DE PARTIDOS -->
+    <div class="modal-overlay" id="matchModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-title" id="modalHeader">VS</div>
+            
+            <div class="grid-2col">
+                <div class="modal-section">
+                    <h3>PROBABILIDAD DE VICTORIA</h3>
+                    <div style="height: 160px;"><canvas id="donutChart"></canvas></div>
+                </div>
+                <div class="modal-section">
+                    <h3>HISTORIAL RECIENTE / H2H</h3>
+                    <div style="height: 160px;"><canvas id="appStyleChart"></canvas></div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>EVALUACIÓN COMPLETA DE OPCIONES</h3>
+                <table class="pro-table">
+                    <thead>
+                        <tr>
+                            <th style="text-align:left;">MERCADO</th>
+                            <th>MOMIO CASINO</th>
+                            <th>PROB. ALG</th>
+                            <th>DIAGNÓSTICO</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modalOddsBody"></tbody>
+                </table>
+                <div class="reason-box" id="modalReason"></div>
+                <div class="stake-box" id="modalStake"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VISTA METODOLÓGICA EXPLICATIVA DIRECTA -->
+    <div class="modal-overlay" id="methodModal">
+        <div class="modal-content" style="max-width: 780px;">
+            <span class="close-btn" onclick="closeMethodologyModal()">&times;</span>
+            <div class="modal-title" style="color:var(--accent-cyan); text-align:left; margin-bottom:15px;">🧠 Modelo Algorítmico, Fórmula Matemática y Valor Esperado (EV+)</div>
+            
+            <div class="modal-section" style="text-align:left;">
+                <h3 style="color:#fff;">1. La Fórmula Matemática de Probabilidad</h3>
+                <p class="method-text">
+                    No utilizamos opiniones ni apreciaciones subjetivas. Nuestro modelo calcula la probabilidad algorítmica integrando tres variables ponderadas sobre una muestra estricta de <span class="method-highlight">180 días de datos</span>:
+                </p>
+                <div class="formula-box">
+                    P_alg = (P_base × 0.50) + (Δ_rating × 0.35) + (W_h2h × 0.15)
+                </div>
+                <p class="method-text">
+                    • <b>P_base (50%):</b> Frecuencia histórica pura de ocurrencia de la línea en los últimos encuentros.<br>
+                    • <b>Δ_rating (35%):</b> Diferencial de potencial ofensivo/defensivo reciente entre ambos planteles.<br>
+                    • <b>W_h2h (15%):</b> Factor de peso específico sobre enfrentamientos directos cara a cara.
+                </p>
+            </div>
+
+            <div class="modal-section" style="text-align:left;">
+                <h3 style="color:#fff;">2. Métricas Personalizadas por Deporte</h3>
+                <p class="method-text">
+                    Cada disciplina se evalúa bajo su propio conjunto de datos clave:
+                </p>
+                <p class="method-text">
+                    • <b>⚽ Fútbol (Liga MX):</b> Goles esperados (xG), volumen de tiros de esquina por partido, tarjetas amarillas/rojas acumuladas y porcentaje de solidez en casa.<br>
+                    • <b>🏀 Básquetbol (NBA):</b> Eficiencia ofensiva/defensiva (Offensive/Defensive Rating), ritmo de juego (Pace) y margen promedio de puntos por posesión.<br>
+                    • <b>🏈 Fútbol Americano (NFL):</b> Puntos por serie ofensiva, efectividad en 3er down, margen de intercambios de balón (Turnovers) y hándicap de puntos (Spread).
+                </p>
+            </div>
+
+            <div class="modal-section" style="text-align:left;">
+                <h3 style="color:#fff;">3. El Filtro del 85% y el Concepto de Valor (EV+)</h3>
+                <p class="method-text">
+                    Para proteger la rentabilidad a largo plazo, la plataforma aplica una regla estricta: <span class="method-highlight">si ninguna línea alcanza o supera el 85% de probabilidad matemática, el sistema no recomienda nada (⚪ SIN PICK RECOMENDADO)</span>.
+                </p>
+                <p class="method-text">
+                    Decimos que un pick tiene <b>Valor Esperado Positivo (EV+)</b> cuando la probabilidad algorítmica real calculada por el sistema supera drásticamente la probabilidad implícita ofrecida por las casas de apuestas. Apostar con esta ventaja sistemática es lo único que garantiza superar el margen del casino con el tiempo.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const matchesMX = {"mx_match_0": {"local": "Puebla", "visita": "Guadalajara", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/231.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/219.png", "fecha_partido": "01/08 - 01:00 hrs", "has_data": true, "prob_l": 24.9, "prob_v": 40.1, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG de 2.77 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["22/07", "18/07", "25/04", "22/04", "19/04"], "hist_local": [1, 1, 1, 1, 0], "hist_visita": [0, 2, 2, 2, 0], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (Puebla / Empate)", "casino": "-220", "prob_alg": "59.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Guadalajara / Empate)", "casino": "-150", "prob_alg": "75.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "68.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "54.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Puebla (ML)", "casino": "+140", "prob_alg": "24.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Guadalajara (ML)", "casino": "+180", "prob_alg": "40.1%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_1": {"local": "Atl\u00e9tico de San Luis", "visita": "Tijuana", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/15720.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/10125.png", "fecha_partido": "01/08 - 03:00 hrs", "has_data": true, "prob_l": 29.2, "prob_v": 35.8, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG de 2.78 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["26/07", "18/07", "26/04", "23/04", "18/04"], "hist_local": [2, 2, 1, 2, 0], "hist_visita": [0, 1, 0, 1, 1], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (Atl\u00e9tico de San Luis / Empate)", "casino": "-220", "prob_alg": "64.2%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Tijuana / Empate)", "casino": "-150", "prob_alg": "70.8%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "47.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "56.6%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Atl\u00e9tico de San Luis (ML)", "casino": "+140", "prob_alg": "29.2%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Tijuana (ML)", "casino": "+180", "prob_alg": "35.8%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_2": {"local": "FC Juarez", "visita": "Pumas UNAM", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/17851.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/233.png", "fecha_partido": "01/08 - 03:00 hrs", "has_data": true, "prob_l": 27.7, "prob_v": 37.3, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG de 3.05 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["25/07", "18/07", "26/04", "22/04", "19/04"], "hist_local": [0, 0, 2, 2, 1], "hist_visita": [1, 3, 2, 0, 0], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (FC Juarez / Empate)", "casino": "-220", "prob_alg": "62.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Pumas UNAM / Empate)", "casino": "-150", "prob_alg": "72.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "51.4%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "49.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana FC Juarez (ML)", "casino": "+140", "prob_alg": "27.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Pumas UNAM (ML)", "casino": "+180", "prob_alg": "37.3%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_3": {"local": "Quer\u00e9taro", "visita": "Tigres UANL", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/222.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/232.png", "fecha_partido": "01/08 - 23:00 hrs", "has_data": true, "prob_l": 29.0, "prob_v": 36.0, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 87.3, "best_reason": "Promedio xG de 2.62 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["27/07", "19/07", "25/04", "22/04", "18/04"], "hist_local": [2, 0, 2, 1, 1], "hist_visita": [2, 3, 2, 1, 1], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "87.3%", "ev": "ALTA"}, {"mercado": "1X (Quer\u00e9taro / Empate)", "casino": "-220", "prob_alg": "64.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Tigres UANL / Empate)", "casino": "-150", "prob_alg": "71.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "64.8%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "63.6%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Quer\u00e9taro (ML)", "casino": "+140", "prob_alg": "29.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Tigres UANL (ML)", "casino": "+180", "prob_alg": "36.0%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_4": {"local": "Atlas", "visita": "Monterrey", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/216.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/220.png", "fecha_partido": "02/08 - 01:05 hrs", "has_data": true, "prob_l": 34.6, "prob_v": 30.4, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 85.7, "best_reason": "Promedio xG de 2.57 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["26/07", "18/07", "10/05", "03/05", "26/04"], "hist_local": [1, 3, 0, 2, 1], "hist_visita": [2, 2, 3, 1, 3], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "85.7%", "ev": "ALTA"}, {"mercado": "1X (Atlas / Empate)", "casino": "-220", "prob_alg": "69.6%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Monterrey / Empate)", "casino": "-150", "prob_alg": "65.4%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "54.4%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "46.2%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Atlas (ML)", "casino": "+140", "prob_alg": "34.6%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Monterrey (ML)", "casino": "+180", "prob_alg": "30.4%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_5": {"local": "Le\u00f3n", "visita": "Pachuca", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/228.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/234.png", "fecha_partido": "02/08 - 01:06 hrs", "has_data": true, "prob_l": 24.9, "prob_v": 40.1, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG de 2.87 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["25/07", "18/07", "26/04", "22/04", "19/04"], "hist_local": [0, 2, 1, 2, 3], "hist_visita": [2, 0, 1, 0, 0], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (Le\u00f3n / Empate)", "casino": "-220", "prob_alg": "59.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Pachuca / Empate)", "casino": "-150", "prob_alg": "75.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "64.2%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "54.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Le\u00f3n (ML)", "casino": "+140", "prob_alg": "24.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Pachuca (ML)", "casino": "+180", "prob_alg": "40.1%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_6": {"local": "Cruz Azul", "visita": "Atlante", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/218.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/226.png", "fecha_partido": "02/08 - 03:00 hrs", "has_data": true, "prob_l": 40.2, "prob_v": 24.8, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 89.0, "best_reason": "Promedio xG de 2.67 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["22/07", "18/07", "25/05", "22/05", "17/05"], "hist_local": [2, 3, 2, 0, 2], "hist_visita": [1, 2, 1.0, 1.0, 1.0], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "89.0%", "ev": "ALTA"}, {"mercado": "1X (Cruz Azul / Empate)", "casino": "-220", "prob_alg": "75.2%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Atlante / Empate)", "casino": "-150", "prob_alg": "59.8%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "53.8%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "41.6%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Cruz Azul (ML)", "casino": "+140", "prob_alg": "40.2%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Atlante (ML)", "casino": "+180", "prob_alg": "24.8%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_7": {"local": "Am\u00e9rica", "visita": "Santos", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/227.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/225.png", "fecha_partido": "02/08 - 23:00 hrs", "has_data": true, "prob_l": 38.7, "prob_v": 26.3, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG de 2.99 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["25/07", "19/07", "11/05", "03/05", "26/04"], "hist_local": [1, 1, 3, 3, 0], "hist_visita": [1, 3, 0, 2, 1], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (Am\u00e9rica / Empate)", "casino": "-220", "prob_alg": "73.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Santos / Empate)", "casino": "-150", "prob_alg": "61.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "63.6%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "52.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Am\u00e9rica (ML)", "casino": "+140", "prob_alg": "38.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Santos (ML)", "casino": "+180", "prob_alg": "26.3%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_8": {"local": "Toluca", "visita": "Necaxa", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/223.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/229.png", "fecha_partido": "03/08 - 01:05 hrs", "has_data": true, "prob_l": 36.1, "prob_v": 28.9, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 90.7, "best_reason": "Promedio xG de 2.72 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["22/07", "19/07", "10/05", "04/05", "26/04"], "hist_local": [1, 2, 0, 0, 4], "hist_visita": [1, 1, 4, 0, 1], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "90.7%", "ev": "ALTA"}, {"mercado": "1X (Toluca / Empate)", "casino": "-220", "prob_alg": "71.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Necaxa / Empate)", "casino": "-150", "prob_alg": "63.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "63.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "55.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Toluca (ML)", "casino": "+140", "prob_alg": "36.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Necaxa (ML)", "casino": "+180", "prob_alg": "28.9%", "ev": "OBSERVACI\u00d3N"}]}};
+        const matchesNFL = {"nfl_match_0": {"local": "Arizona Cardinals", "visita": "Carolina Panthers", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ari.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/car.png", "fecha_partido": "07/08 - 00:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_1": {"local": "Cincinnati Bengals", "visita": "Detroit Lions", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cin.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/det.png", "fecha_partido": "13/08 - 23:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_2": {"local": "Pittsburgh Steelers", "visita": "Green Bay Packers", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/pit.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/gb.png", "fecha_partido": "13/08 - 23:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_3": {"local": "New England Patriots", "visita": "Indianapolis Colts", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ne.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ind.png", "fecha_partido": "13/08 - 23:30 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_4": {"local": "Las Vegas Raiders", "visita": "Arizona Cardinals", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lv.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ari.png", "fecha_partido": "14/08 - 00:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_5": {"local": "Houston Texans", "visita": "Los Angeles Chargers", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/hou.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lac.png", "fecha_partido": "14/08 - 00:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_6": {"local": "San Francisco 49ers", "visita": "Tennessee Titans", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sf.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ten.png", "fecha_partido": "14/08 - 01:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}};
+        const matchesNBA = {};
+        const picksMX = [{"partido": "Puebla vs Guadalajara", "pick": "Over 1.5 Goles Totales", "prob": 92, "casino": "-180"}, {"partido": "Atl\u00e9tico de San Luis vs Tijuana", "pick": "Over 1.5 Goles Totales", "prob": 92, "casino": "-180"}, {"partido": "FC Juarez vs Pumas UNAM", "pick": "Over 1.5 Goles Totales", "prob": 92, "casino": "-180"}];
+        const picksNFL = [];
+        const picksNBA = [];
+        
+        let currentSport = 'futbol';
+        let appChartObj = null;
+        let donutChartObj = null;
+        let userSavedPicks = JSON.parse(localStorage.getItem('stingy_saved_picks') || '[]');
+
+        function openMethodologyDirect() {
+            document.getElementById('methodModal').style.display = 'flex';
+        }
+
+        function closeMethodologyModal() {
+            document.getElementById('methodModal').style.display = 'none';
+        }
+
+        function showToastNotification(message) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'toast-box';
+            toast.innerHTML = `<span style="color:var(--accent-cyan); font-size:1.1rem;">⚡</span><span>${message}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => toast.classList.add('show'), 10);
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 400);
+            }, 5000);
+        }
+
+        function selectSport(sport) {
+            currentSport = sport;
+            document.getElementById('splashScreen').style.display = 'none';
+            document.getElementById('appContent').style.display = 'block';
+            
+            if (sport === 'futbol') {
+                document.getElementById('currentSportLabel').innerHTML = '⚽ FÚTBOL / LIGA MX &blackdowntriangle;';
+                document.getElementById('matchesContainer').innerHTML = `
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('mx_match_0', 'mx')">
+            <span class="pro-league">LIGA MX • 01/08 - 01:00 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('mx_match_0', 'mx')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/231.png"><span>Puebla</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/219.png"><span>Guadalajara</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
+        <div style="display:flex; gap:10px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_0', 'mx')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Puebla vs Guadalajara', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
+        </div>
+    </div>
+    
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('mx_match_1', 'mx')">
+            <span class="pro-league">LIGA MX • 01/08 - 03:00 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('mx_match_1', 'mx')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/15720.png"><span>Atlético de San Luis</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/10125.png"><span>Tijuana</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
+        <div style="display:flex; gap:10px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_1', 'mx')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Atlético de San Luis vs Tijuana', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
+        </div>
+    </div>
+    
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('mx_match_2', 'mx')">
+            <span class="pro-league">LIGA MX • 01/08 - 03:00 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('mx_match_2', 'mx')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/17851.png"><span>FC Juarez</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/233.png"><span>Pumas UNAM</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
+        <div style="display:flex; gap:10px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_2', 'mx')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('FC Juarez vs Pumas UNAM', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
+        </div>
+    </div>
+    
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('mx_match_3', 'mx')">
+            <span class="pro-league">LIGA MX • 01/08 - 23:00 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('mx_match_3', 'mx')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/222.png"><span>Querétaro</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/232.png"><span>Tigres UANL</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
+        <div style="display:flex; gap:10px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_3', 'mx')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Querétaro vs Tigres UANL', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
+        </div>
+    </div>
+    
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('mx_match_4', 'mx')">
+            <span class="pro-league">LIGA MX • 02/08 - 01:05 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('mx_match_4', 'mx')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/216.png"><span>Atlas</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/220.png"><span>Monterrey</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
+        <div style="display:flex; gap:10px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_4', 'mx')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Atlas vs Monterrey', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
+        </div>
+    </div>
+    
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('mx_match_5', 'mx')">
+            <span class="pro-league">LIGA MX • 02/08 - 01:06 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('mx_match_5', 'mx')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/228.png"><span>León</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/234.png"><span>Pachuca</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
+        <div style="display:flex; gap:10px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_5', 'mx')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('León vs Pachuca', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
+        </div>
+    </div>
+    
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('mx_match_6', 'mx')">
+            <span class="pro-league">LIGA MX • 02/08 - 03:00 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('mx_match_6', 'mx')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/218.png"><span>Cruz Azul</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/226.png"><span>Atlante</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
+        <div style="display:flex; gap:10px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_6', 'mx')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Cruz Azul vs Atlante', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
+        </div>
+    </div>
+    
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('mx_match_7', 'mx')">
+            <span class="pro-league">LIGA MX • 02/08 - 23:00 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('mx_match_7', 'mx')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/227.png"><span>América</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/225.png"><span>Santos</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
+        <div style="display:flex; gap:10px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_7', 'mx')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('América vs Santos', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
+        </div>
+    </div>
+    
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('mx_match_8', 'mx')">
+            <span class="pro-league">LIGA MX • 03/08 - 01:05 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('mx_match_8', 'mx')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/223.png"><span>Toluca</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/229.png"><span>Necaxa</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
+        <div style="display:flex; gap:10px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_8', 'mx')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Toluca vs Necaxa', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
+        </div>
+    </div>
+    `;
+                renderOfficialPicks(picksMX);
+            } else if (sport === 'americano') {
+                document.getElementById('currentSportLabel').innerHTML = '🏈 AMERICANO / NFL &blackdowntriangle;';
+                document.getElementById('matchesContainer').innerHTML = `
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('nfl_match_0', 'nfl')"><span class="pro-league">NFL • 07/08 - 00:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_0', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ari.png"><span>Arizona Cardinals</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/car.png"><span>Carolina Panthers</span></div></div>
+        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
+        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_0', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+    </div>
+    
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('nfl_match_1', 'nfl')"><span class="pro-league">NFL • 13/08 - 23:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_1', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cin.png"><span>Cincinnati Bengals</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/det.png"><span>Detroit Lions</span></div></div>
+        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
+        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_1', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+    </div>
+    
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('nfl_match_2', 'nfl')"><span class="pro-league">NFL • 13/08 - 23:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_2', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/pit.png"><span>Pittsburgh Steelers</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/gb.png"><span>Green Bay Packers</span></div></div>
+        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
+        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_2', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+    </div>
+    
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('nfl_match_3', 'nfl')"><span class="pro-league">NFL • 13/08 - 23:30 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_3', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ne.png"><span>New England Patriots</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ind.png"><span>Indianapolis Colts</span></div></div>
+        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
+        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_3', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+    </div>
+    
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('nfl_match_4', 'nfl')"><span class="pro-league">NFL • 14/08 - 00:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_4', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lv.png"><span>Las Vegas Raiders</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ari.png"><span>Arizona Cardinals</span></div></div>
+        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
+        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_4', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+    </div>
+    
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('nfl_match_5', 'nfl')"><span class="pro-league">NFL • 14/08 - 00:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_5', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/hou.png"><span>Houston Texans</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lac.png"><span>Los Angeles Chargers</span></div></div>
+        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
+        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_5', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+    </div>
+    
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('nfl_match_6', 'nfl')"><span class="pro-league">NFL • 14/08 - 01:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_6', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sf.png"><span>San Francisco 49ers</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ten.png"><span>Tennessee Titans</span></div></div>
+        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
+        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_6', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+    </div>
+    `;
+                renderOfficialPicks(picksNFL);
+            } else if (sport === 'basket') {
+                document.getElementById('currentSportLabel').innerHTML = '🏀 BÁSKETBOL / NBA &blackdowntriangle;';
+                document.getElementById('matchesContainer').innerHTML = `<div class="pro-card" style="grid-column: 1/-1; text-align:center; padding:30px;"><span class="pro-league">NBA • TEMPORADA 2026</span><div style="margin: 15px 0; font-weight:800; font-size:1.1rem; color:#fff;">⏳ EN ESPERA DE INFORMACIÓN COMPLETA</div><p style="color:var(--text-muted); font-size:0.85rem; max-width:500px; margin:0 auto;">La NBA se encuentra en receso. Las cuotas y métricas avanzadas se cargarán al iniciar la temporada.</p></div>`;
+                renderOfficialPicks(picksNBA);
+            }
+            renderSavedPicks();
+        }
+
+        function renderOfficialPicks(picksList) {
+            const container = document.getElementById('officialPicksContainer');
+            if (!picksList || picksList.length === 0) {
+                container.innerHTML = `<div class="parlay-card" style="grid-column: 1/-1; text-align:center; padding:15px;"><span style="color:var(--text-muted); font-size:0.85rem;">Esta jornada ningún partido alcanzó el umbral del 85% de probabilidad. Por disciplina de bankroll, no hay Parlay Oficial esta semana.</span></div>`;
+                return;
+            }
+
+            let html = '';
+            picksList.forEach(p => {
+                html += `
+                    <div class="parlay-card">
+                        <div class="parlay-tag">SELECCIÓN OFICIAL (≥85%)</div>
+                        <div class="parlay-match">${p.partido}</div>
+                        <div class="parlay-pick">${p.pick}</div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+                            <span style="font-size:0.7rem; font-weight:800; color:var(--accent-emerald); background:rgba(16,185,129,0.2); padding:3px 8px; border-radius:20px;">${p.prob}% PROBABILIDAD</span>
+                            <button class="save-pick-btn" style="padding:4px 8px; font-size:0.65rem;" onclick="saveCustomPick('${p.partido}', '${p.pick}', '${p.casino}')">⭐ GUARDAR</button>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function backToSplash() {
+            document.getElementById('appContent').style.display = 'none';
+            document.getElementById('splashScreen').style.display = 'flex';
+        }
+
+        function saveCustomPick(partido, pick, momio) {
+            userSavedPicks.push({ id: Date.now(), partido, pick, momio, estado: 'PENDIENTE' });
+            localStorage.setItem('stingy_saved_picks', JSON.stringify(userSavedPicks));
+            renderSavedPicks();
+            showToastNotification(`Se ha guardado exitosamente tu apuesta: <b>${pick}</b>`);
+        }
+
+        function updatePickStatus(pickId, newStatus) {
+            userSavedPicks = userSavedPicks.map(item => {
+                if (item.id === pickId) item.estado = item.estado === newStatus ? 'PENDIENTE' : newStatus;
+                return item;
+            });
+            localStorage.setItem('stingy_saved_picks', JSON.stringify(userSavedPicks));
+            renderSavedPicks();
+        }
+
+        function deleteSavedPick(pickId) {
+            userSavedPicks = userSavedPicks.filter(item => item.id !== pickId);
+            localStorage.setItem('stingy_saved_picks', JSON.stringify(userSavedPicks));
+            renderSavedPicks();
+            showToastNotification(`Pick eliminado de tu portafolio`);
+        }
+
+        function renderSavedPicks() {
+            const container = document.getElementById('savedPicksList');
+            const bankVal = parseFloat(document.getElementById('userBank').value);
+            const userBank = isNaN(bankVal) ? 0 : bankVal;
+
+            document.getElementById('savedCount').innerHTML = `${userSavedPicks.length} Guardados`;
+
+            if (userSavedPicks.length === 0) {
+                container.innerHTML = `<div style="grid-column: 1/-1; color:var(--text-muted); font-size:0.85rem; text-align:center; padding:15px;">Aún no has guardado ningún pick. Haz clic en "⭐ GUARDAR" para agregar elecciones a tu portafolio.</div>`;
+                document.getElementById('savedBalance').innerHTML = `Balance: $0.00 MXN`;
+                return;
+            }
+
+            let totalProfit = 0;
+            let listHTML = '';
+
+            userSavedPicks.forEach(item => {
+                const stake = userBank > 0 ? (userBank * 0.05) : 0;
+                let profitItem = 0;
+                let statusBadge = '<span style="color:var(--text-muted); font-size:0.75rem; font-weight:800;">⏳ PENDIENTE</span>';
+
+                if (item.estado === 'GANADA') {
+                    profitItem = stake > 0 ? stake * 0.85 : 0;
+                    totalProfit += profitItem;
+                    statusBadge = '<span style="color:var(--accent-emerald); font-size:0.75rem; font-weight:800;">✅ GANADA (' + (stake > 0 ? '+$' + profitItem.toFixed(2) : 'Acierto') + ')</span>';
+                } else if (item.estado === 'PERDIDA') {
+                    profitItem = -stake;
+                    totalProfit += profitItem;
+                    statusBadge = '<span style="color:#ef4444; font-size:0.75rem; font-weight:800;">❌ PERDIDA (' + (stake > 0 ? '-$' + Math.abs(profitItem).toFixed(2) : 'Fallo') + ')</span>';
+                }
+
+                listHTML += `
+                    <div class="saved-item">
+                        <div class="saved-item-partido">${item.partido}</div>
+                        <div class="saved-item-pick">${item.pick} <span style="color:var(--accent-cyan); font-size:0.8rem;">($${item.momio})</span></div>
+                        <div style="margin-bottom:8px;">${statusBadge}</div>
+                        <div class="saved-item-actions">
+                            <button class="btn-status btn-win" onclick="updatePickStatus(${item.id}, 'GANADA')">GANADA</button>
+                            <button class="btn-status btn-loss" onclick="updatePickStatus(${item.id}, 'PERDIDA')">PERDIDA</button>
+                            <button class="btn-status btn-del" onclick="deleteSavedPick(${item.id})">🗑️</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = listHTML;
+            const profitSign = totalProfit >= 0 ? '+' : '';
+            const profitColor = totalProfit >= 0 ? 'var(--accent-emerald)' : '#ef4444';
+            document.getElementById('savedBalance').innerHTML = userBank > 0 ? 
+                `Balance de Ganancias: <span style="color:${profitColor};">${profitSign}$${totalProfit.toFixed(2)} MXN</span>` : 
+                `Ingresa tu Bank arriba para ver tus $ ganancias`;
+        }
+
+        function openModal(cardId, sportType) {
+            let dataSet = matchesMX;
+            if (sportType === 'nfl') dataSet = matchesNFL;
+            if (sportType === 'nba') dataSet = matchesNBA;
+
+            const data = dataSet[cardId];
+            if (!data) return;
+
+            const bankVal = parseFloat(document.getElementById('userBank').value);
+            const userBank = isNaN(bankVal) ? 0 : bankVal;
+
+            document.getElementById('modalHeader').innerHTML = `${data.local} vs ${data.visita} (${data.fecha_partido})`;
+
+            if (!data.has_data) {
+                document.getElementById('modalOddsBody').innerHTML = `<tr><td colspan="4" style="color:var(--text-muted); padding:15px;">⏳ EN ESPERA DE INFORMACIÓN COMPLETA (RECESO DE TEMPORADA)</td></tr>`;
+                document.getElementById('modalReason').innerHTML = `<b>Nota Técnica:</b> El deporte seleccionado se encuentra en receso/pretemporada. Las cuotas oficiales de casino y métricas completas se actualizarán al iniciar la temporada regular.`;
+                document.getElementById('modalStake').innerHTML = `⏳ Esperando inicio de temporada`;
+            } else {
+                let oddsRows = '';
+                data.mercados.forEach(m => {
+                    oddsRows += `
+                        <tr>
+                            <td style="text-align:left; color:#fff;">${m.mercado}</td>
+                            <td><span class="pill-odd">${m.casino}</span></td>
+                            <td><b>${m.prob_alg}</b></td>
+                            <td>${m.ev.includes("ALTA") ? '<span style="color:var(--accent-emerald)">RECOMENDADO</span>' : '<span style="color:var(--text-muted)">OBSERVACIÓN</span>'}</td>
+                        </tr>
+                    `;
+                });
+                document.getElementById('modalOddsBody').innerHTML = oddsRows;
+                document.getElementById('modalReason').innerHTML = data.has_valid ? 
+                    `<b>¿Por qué esta proyección?</b> ${data.best_reason}` : 
+                    `<b>Nota Técnica:</b> Métrica en rango de observación estándar. No se recomienda riesgo alto.`;
+
+                if (userBank > 0) {
+                    const recStake = (userBank * 0.05).toFixed(2);
+                    document.getElementById('modalStake').innerHTML = data.has_valid ? 
+                        `STAKE RECOMENDADO: Invertir $${recStake} MXN (5% de tu Bank de $${userBank} MXN)` :
+                        `ALERTA DE RIESGO: Se recomienda abstenerse o arriesgar máximo $${(userBank * 0.01).toFixed(2)} MXN (1% del Bank)`;
+                } else {
+                    document.getElementById('modalStake').innerHTML = `💡 Ingresa tu saldo ($ MXN) arriba para calcular el Stake sugerido`;
+                }
+            }
+
+            renderAppCharts(data);
+            document.getElementById('matchModal').style.display = 'flex';
+        }
+
+        function renderAppCharts(data) {
+            if (appChartObj) appChartObj.destroy();
+            if (donutChartObj) donutChartObj.destroy();
+
+            const ctxDonut = document.getElementById('donutChart').getContext('2d');
+            donutChartObj = new Chart(ctxDonut, {
+                type: 'doughnut',
+                data: {
+                    labels: [data.local, 'Empate/Emparejado', data.visita],
+                    datasets: [{ data: [data.prob_l, data.prob_e, data.prob_v], backgroundColor: ['#06b6d4', '#64748b', '#10b981'], borderWidth: 0 }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#f8fafc', font: { size: 9 } } } } }
+            });
+
+            const ctxApp = document.getElementById('appStyleChart').getContext('2d');
+            appChartObj = new Chart(ctxApp, {
+                type: 'bar',
+                data: {
+                    labels: data.fechas_labels,
+                    datasets: [
+                        { label: data.local, data: data.hist_local, backgroundColor: '#06b6d4', borderRadius: 5, barThickness: 10 },
+                        { label: data.visita, data: data.hist_visita, backgroundColor: '#10b981', borderRadius: 5, barThickness: 10 }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: { x: { grid: { display: false }, ticks: { color: '#64748b' } }, y: { grid: { color: '#1e2638' }, ticks: { color: '#64748b' } } },
+                    plugins: { legend: { position: 'bottom', labels: { color: '#f8fafc', font: { size: 9 } } } }
+                }
+            });
+        }
+
+        function closeModal() { document.getElementById('matchModal').style.display = 'none'; }
+        function closeMethodologyModal() { document.getElementById('methodModal').style.display = 'none'; }
+
+        window.onclick = function(event) { 
+            if (event.target == document.getElementById('matchModal')) closeModal();
+            if (event.target == document.getElementById('methodModal')) closeMethodologyModal();
+        }
+    </script>
+</body>
+</html>

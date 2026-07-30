@@ -13,118 +13,124 @@
             --text-main: #f8fafc; --text-muted: #64748b;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
-        body { background-color: var(--bg-dark); color: var(--text-main); padding: 12px; overflow-x: hidden; }
+        body { background-color: var(--bg-dark); color: var(--text-main); padding: 10px; overflow-x: hidden; }
 
+        /* SPLASH SCREEN RESPONSIVA */
         .splash-screen { 
             position: fixed; top:0; left:0; width:100%; height:100%; 
             background: linear-gradient(-45deg, #07090e, #0f172a, #31106e, #0284c7, #07090e);
             background-size: 350% 350%; animation: gradientBG 4.5s ease infinite;
-            z-index: 2000; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 16px; text-align: center; overflow-y: auto;
+            z-index: 2000; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 15px; text-align: center; overflow-y: auto;
         }
         @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-        .splash-logo { width: 60px; height: 60px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; margin-bottom: 15px; box-shadow: 0 0 40px rgba(6, 182, 212, 0.6); }
-        .splash-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 6px; letter-spacing: -1px; color: #fff; }
-        .splash-sub { font-size: 1rem; color: #f1f5f9; font-weight: 800; margin-bottom: 25px; max-width: 450px; line-height: 1.3; }
+        .splash-logo { width: 55px; height: 55px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 800; margin-bottom: 12px; box-shadow: 0 0 35px rgba(6, 182, 212, 0.6); }
+        .splash-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 4px; letter-spacing: -1px; color: #fff; }
+        .splash-sub { font-size: 0.95rem; color: #f1f5f9; font-weight: 800; margin-bottom: 20px; max-width: 450px; line-height: 1.3; }
 
-        .sports-grid { display: grid; grid-template-columns: 1fr; gap: 12px; width: 100%; max-width: 500px; }
-        @media(min-width: 600px) { .sports-grid { grid-template-columns: repeat(2, 1fr); } }
+        .sports-grid { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 500px; }
+        @media(min-width: 650px) { .sports-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; } }
 
-        .sport-card { background: rgba(18, 22, 32, 0.85); backdrop-filter: blur(12px); border: 1px solid var(--border-dark); padding: 18px 14px; border-radius: 20px; cursor: pointer; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align:center; }
+        .sport-card { background: rgba(18, 22, 32, 0.85); backdrop-filter: blur(12px); border: 1px solid var(--border-dark); padding: 16px 12px; border-radius: 18px; cursor: pointer; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align:center; }
         .sport-card:active { transform: scale(0.98); }
-        .sport-name { font-size: 0.85rem; font-weight: 800; letter-spacing: 0.5px; color: #fff; text-transform: uppercase; }
+        .sport-name { font-size: 0.82rem; font-weight: 800; letter-spacing: 0.5px; color: #fff; text-transform: uppercase; }
         
-        .method-card { background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(6, 182, 212, 0.25)); border-color: var(--accent-purple); grid-column: 1 / -1; }
+        .method-card { background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(6, 182, 212, 0.25)); border-color: var(--accent-purple); }
 
+        /* APP CONTENT */
         .app-content { display: none; }
-        header { max-width: 1100px; margin: 0 auto 15px; display: flex; justify-content: space-between; align-items: center; background: var(--card-dark); border: 1px solid var(--border-dark); padding: 12px 16px; border-radius: 18px; flex-wrap: wrap; gap: 10px; }
+        header { max-width: 1100px; margin: 0 auto 12px; display: flex; justify-content: space-between; align-items: center; background: var(--card-dark); border: 1px solid var(--border-dark); padding: 12px; border-radius: 16px; flex-wrap: wrap; gap: 10px; }
         .brand { display: flex; align-items: center; gap: 10px; }
         .brand-icon { width: 32px; height: 32px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #fff; font-size: 0.85rem; }
-        .brand-name { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.5px; }
+        .brand-name { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.5px; }
 
-        .sport-select-btn { background:#1a2234; border:1px solid var(--border-dark); color:#fff; font-weight:800; padding:6px 12px; border-radius:10px; cursor:pointer; font-size:0.72rem; width: 100%; text-align: center; }
-        @media(min-width: 480px) { .sport-select-btn { width: auto; } }
+        .sport-select-btn { background:#1a2234; border:1px solid var(--border-dark); color:#fff; font-weight:800; padding:8px 12px; border-radius:10px; cursor:pointer; font-size:0.7rem; width: 100%; text-align: center; }
+        @media(min-width: 500px) { .sport-select-btn { width: auto; } }
 
-        .bankroll-panel { max-width: 1100px; margin: 0 auto 15px; background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 18px; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-direction: column; text-align: center; }
-        @media(min-width: 600px) { .bankroll-panel { flex-direction: row; text-align: left; } }
+        .bankroll-panel { max-width: 1100px; margin: 0 auto 12px; background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 16px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-direction: column; text-align: center; }
+        @media(min-width: 650px) { .bankroll-panel { flex-direction: row; text-align: left; } }
         .bankroll-input { display: flex; align-items: center; gap: 8px; width: 100%; justify-content: center; }
-        @media(min-width: 600px) { .bankroll-input { width: auto; } }
-        .bankroll-input input { background: #0a0d14; border: 1px solid var(--border-dark); color: var(--accent-cyan); padding: 8px 12px; border-radius: 8px; font-weight: 800; width: 100%; max-width: 140px; font-size: 0.95rem; text-align: center; }
+        @media(min-width: 650px) { .bankroll-input { width: auto; } }
+        .bankroll-input input { background: #0a0d14; border: 1px solid var(--border-dark); color: var(--accent-cyan); padding: 8px 10px; border-radius: 8px; font-weight: 800; width: 100%; max-width: 130px; font-size: 0.9rem; text-align: center; }
 
-        .saved-section { max-width: 1100px; margin: 0 auto 20px; background: rgba(139, 92, 246, 0.08); border: 1px solid var(--accent-purple); border-radius: 20px; padding: 16px; }
-        .saved-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-direction: column; gap: 8px; text-align: center; }
-        @media(min-width: 600px) { .saved-header { flex-direction: row; text-align: left; } }
-        .saved-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
-        @media(min-width: 600px) { .saved-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } }
-        .saved-item { background: #0a0d14; border: 1px solid var(--border-dark); border-radius: 14px; padding: 14px; }
-        .saved-item-partido { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px; }
-        .saved-item-pick { font-size: 0.9rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .saved-section { max-width: 1100px; margin: 0 auto 16px; background: rgba(139, 92, 246, 0.08); border: 1px solid var(--accent-purple); border-radius: 18px; padding: 14px; }
+        .saved-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-direction: column; gap: 6px; text-align: center; }
+        @media(min-width: 650px) { .saved-header { flex-direction: row; text-align: left; } }
+        .saved-grid { display: flex; flex-direction: column; gap: 10px; }
+        @media(min-width: 650px) { .saved-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } }
+        .saved-item { background: #0a0d14; border: 1px solid var(--border-dark); border-radius: 12px; padding: 12px; }
+        .saved-item-partido { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px; }
+        .saved-item-pick { font-size: 0.88rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
 
-        .saved-item-actions { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
-        .btn-status { padding: 6px 10px; border-radius: 8px; font-size: 0.7rem; font-weight: 800; border: none; cursor: pointer; flex: 1; text-align: center; }
+        .saved-item-actions { display: flex; gap: 6px; align-items: center; }
+        .btn-status { padding: 6px 8px; border-radius: 6px; font-size: 0.68rem; font-weight: 800; border: none; cursor: pointer; flex: 1; text-align: center; }
         .btn-win { background: rgba(16, 185, 129, 0.2); color: var(--accent-emerald); border: 1px solid var(--accent-emerald); }
         .btn-loss { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444; }
         .btn-del { background: #1e2638; color: var(--text-muted); border: 1px solid var(--border-dark); flex: 0 0 auto; padding: 6px 10px; }
 
-        .hero-section { max-width: 1100px; margin: 0 auto 20px; background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%); border: 1px solid var(--accent-cyan); border-radius: 20px; padding: 16px; }
-        .hero-title { font-size: 0.95rem; font-weight: 800; color: #fff; margin-bottom: 12px; text-align: center; }
-        @media(min-width: 600px) { .hero-title { text-align: left; } }
-        .parlay-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
-        @media(min-width: 600px) { .parlay-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } }
-        .parlay-card { background: #0a0d14; border: 1px solid var(--border-dark); border-radius: 14px; padding: 14px; position: relative; }
-        .parlay-tag { font-size: 0.62rem; font-weight: 800; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 4px; }
-        .parlay-match { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px; }
-        .parlay-pick { font-size: 0.9rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .hero-section { max-width: 1100px; margin: 0 auto 16px; background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%); border: 1px solid var(--accent-cyan); border-radius: 18px; padding: 14px; }
+        .hero-title { font-size: 0.9rem; font-weight: 800; color: #fff; margin-bottom: 10px; text-align: center; }
+        @media(min-width: 650px) { .hero-title { text-align: left; } }
+        .parlay-grid { display: flex; flex-direction: column; gap: 10px; }
+        @media(min-width: 650px) { .parlay-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } }
+        .parlay-card { background: #0a0d14; border: 1px solid var(--border-dark); border-radius: 12px; padding: 12px; position: relative; }
+        .parlay-tag { font-size: 0.6rem; font-weight: 800; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 4px; }
+        .parlay-match { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px; }
+        .parlay-pick { font-size: 0.88rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
 
-        .container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 16px; }
-        @media(min-width: 600px) { .container { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); } }
-        .pro-card { background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 20px; padding: 16px; transition: all 0.25s ease; }
+        .container { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+        @media(min-width: 650px) { .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; } }
+        .pro-card { background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 18px; padding: 14px; transition: all 0.25s ease; }
 
-        .pro-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; cursor: pointer; }
-        .pro-league { font-size: 0.68rem; font-weight: 800; color: var(--text-muted); }
-        .pro-badge { padding: 4px 10px; border-radius: 20px; font-size: 0.65rem; font-weight: 800; }
+        .pro-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; cursor: pointer; }
+        .pro-league { font-size: 0.65rem; font-weight: 800; color: var(--text-muted); }
+        .pro-badge { padding: 4px 8px; border-radius: 20px; font-size: 0.62rem; font-weight: 800; }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald); border: 1px solid var(--accent-emerald); }
         .badge-slate { background: rgba(100, 116, 139, 0.15); color: var(--text-muted); border: 1px solid var(--border-dark); }
 
-        .pro-matchup { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; cursor: pointer; gap: 6px; }
-        .pro-team { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
-        .pro-team img { width: 42px; height: 42px; object-fit: contain; }
-        .pro-team span { font-weight: 700; font-size: 0.82rem; line-height: 1.2; }
-        .pro-vs { font-weight: 800; font-size: 0.75rem; color: var(--text-muted); padding: 0 4px; }
+        .pro-matchup { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; cursor: pointer; gap: 6px; }
+        .pro-team { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+        .pro-team img { width: 38px; height: 38px; object-fit: contain; }
+        .pro-team span { font-weight: 700; font-size: 0.8rem; line-height: 1.1; }
+        .pro-vs { font-weight: 800; font-size: 0.7rem; color: var(--text-muted); padding: 0 2px; }
 
-        .pro-pick-box { background: #0a0d14; border: 1px solid var(--border-dark); padding: 12px; border-radius: 14px; margin-bottom: 12px; cursor: pointer; }
-        .pro-pick-label { font-size: 0.62rem; font-weight: 800; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 4px; display: block; }
-        .pro-pick-val { font-size: 0.85rem; font-weight: 800; color: #fff; margin-bottom: 4px; }
+        .pro-pick-box { background: #0a0d14; border: 1px solid var(--border-dark); padding: 10px; border-radius: 12px; margin-bottom: 10px; cursor: pointer; }
+        .pro-pick-label { font-size: 0.60rem; font-weight: 800; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 2px; display: block; }
+        .pro-pick-val { font-size: 0.82rem; font-weight: 800; color: #fff; }
 
-        .pro-btn { background: #1a2234; border: none; color: #fff; font-weight: 800; font-size: 0.72rem; padding: 10px; border-radius: 12px; cursor: pointer; }
-        .save-pick-btn { background: rgba(139, 92, 246, 0.2); border: 1px solid var(--accent-purple); color: var(--accent-purple); font-weight: 800; font-size: 0.72rem; padding: 10px 12px; border-radius: 12px; cursor: pointer; }
+        .pro-btn { background: #1a2234; border: none; color: #fff; font-weight: 800; font-size: 0.7rem; padding: 10px; border-radius: 10px; cursor: pointer; }
+        .save-pick-btn { background: rgba(139, 92, 246, 0.2); border: 1px solid var(--accent-purple); color: var(--accent-purple); font-weight: 800; font-size: 0.7rem; padding: 10px; border-radius: 10px; cursor: pointer; }
 
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(7, 9, 14, 0.95); backdrop-filter: blur(10px); justify-content: center; align-items: center; z-index: 3000; padding: 12px; }
-        .modal-content { background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 22px; width: 100%; max-width: 850px; max-height: 90vh; overflow-y: auto; padding: 18px; position: relative; }
-        .close-btn { position: absolute; top: 14px; right: 16px; font-size: 1.6rem; color: var(--text-muted); cursor: pointer; z-index: 10; }
+        /* MODAL OVERLAY CORREGIDO PARA MÓVIL */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(7, 9, 14, 0.95); backdrop-filter: blur(10px); justify-content: center; align-items: center; z-index: 3000; padding: 8px; }
+        .modal-content { background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 20px; width: 100%; max-width: 850px; max-height: 92vh; overflow-y: auto; padding: 14px; position: relative; }
+        .close-btn { position: absolute; top: 10px; right: 12px; font-size: 1.6rem; color: var(--text-muted); cursor: pointer; z-index: 10; }
 
-        .grid-2col { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 12px; }
-        @media(min-width: 600px) { .grid-2col { grid-template-columns: 1fr 1fr; } }
-        .modal-section { background: #0a0d14; border-radius: 16px; padding: 14px; border: 1px solid var(--border-dark); margin-bottom: 12px; }
-        .modal-section h3 { font-size: 0.75rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px; border-bottom: 1px solid var(--border-dark); padding-bottom: 4px; }
+        /* REGRILLA CLAVE: 1 COLUMNA EN MÓVIL Y 2 EN COMPU */
+        .grid-2col { display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }
+        @media(min-width: 650px) { .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; } }
+        
+        .modal-section { background: #0a0d14; border-radius: 14px; padding: 12px; border: 1px solid var(--border-dark); margin-bottom: 10px; width: 100%; box-sizing: border-box; }
+        .modal-section h3 { font-size: 0.72rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; border-bottom: 1px solid var(--border-dark); padding-bottom: 4px; }
 
-        .table-wrapper { overflow-x: auto; width: 100%; -webkit-overflow-scrolling: touch; }
-        .pro-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; text-align: center; min-width: 320px; }
-        .pro-table th { color: var(--text-muted); font-size: 0.65rem; font-weight: 800; text-transform: uppercase; padding-bottom: 8px; }
-        .pro-table td { padding: 8px 4px; border-top: 1px solid var(--border-dark); font-weight: 700; }
-        .pill-odd { background: #1e2638; padding: 3px 8px; border-radius: 6px; color: var(--accent-cyan); font-weight: 800; display: inline-block; font-size: 0.75rem; }
+        /* CONTENEDOR DE TABLA CON SCROLL HORIZONTAL PERFECTO */
+        .table-wrapper { overflow-x: auto; width: 100%; -webkit-overflow-scrolling: touch; display: block; }
+        .pro-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; text-align: center; min-width: 300px; }
+        .pro-table th { color: var(--text-muted); font-size: 0.62rem; font-weight: 800; text-transform: uppercase; padding-bottom: 6px; white-space: nowrap; }
+        .pro-table td { padding: 8px 4px; border-top: 1px solid var(--border-dark); font-weight: 700; white-space: nowrap; }
+        .pill-odd { background: #1e2638; padding: 3px 6px; border-radius: 6px; color: var(--accent-cyan); font-weight: 800; display: inline-block; font-size: 0.72rem; }
 
-        .reason-box { background: rgba(6, 182, 212, 0.08); border: 1px solid var(--accent-cyan); border-radius: 10px; padding: 10px 12px; margin-top: 10px; font-size: 0.78rem; color: #f8fafc; line-height: 1.4; }
-        .stake-box { background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-emerald); padding: 12px; border-radius: 10px; text-align: center; margin-top: 10px; color: var(--accent-emerald); font-weight: 800; font-size: 0.85rem; }
+        .reason-box { background: rgba(6, 182, 212, 0.08); border: 1px solid var(--accent-cyan); border-radius: 10px; padding: 10px; margin-top: 8px; font-size: 0.75rem; color: #f8fafc; line-height: 1.4; word-wrap: break-word; }
+        .stake-box { background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-emerald); padding: 10px; border-radius: 10px; text-align: center; margin-top: 8px; color: var(--accent-emerald); font-weight: 800; font-size: 0.8rem; word-wrap: break-word; }
 
-        .toast-container { position: fixed; bottom: 15px; right: 15px; left: 15px; z-index: 4000; display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
-        @media(min-width: 600px) { .toast-container { left: auto; max-width: 380px; } }
-        .toast-box { background: #0d121f; border: 1px solid var(--accent-cyan); border-left: 4px solid var(--accent-cyan); border-radius: 12px; padding: 12px 16px; color: #fff; font-size: 0.82rem; font-weight: 700; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.8); opacity: 0; transform: translateY(20px); transition: all 0.35s ease; pointer-events: auto; }
+        .toast-container { position: fixed; bottom: 12px; right: 12px; left: 12px; z-index: 4000; display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
+        @media(min-width: 650px) { .toast-container { left: auto; max-width: 380px; } }
+        .toast-box { background: #0d121f; border: 1px solid var(--accent-cyan); border-left: 4px solid var(--accent-cyan); border-radius: 10px; padding: 10px 14px; color: #fff; font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; gap: 8px; box-shadow: 0 8px 20px rgba(0,0,0,0.8); opacity: 0; transform: translateY(20px); transition: all 0.35s ease; pointer-events: auto; }
         .toast-box.show { opacity: 1; transform: translateY(0); }
 
-        .method-text { font-size: 0.82rem; color: #e2e8f0; line-height: 1.5; margin-bottom: 10px; }
+        .method-text { font-size: 0.78rem; color: #e2e8f0; line-height: 1.5; margin-bottom: 8px; }
         .method-highlight { color: var(--accent-cyan); font-weight: 800; }
-        .formula-box { background: #1a2234; border: 1px dashed var(--accent-cyan); padding: 10px; border-radius: 10px; text-align: center; font-family: monospace; color: var(--accent-emerald); font-weight: 800; margin: 8px 0; font-size: 0.78rem; word-break: break-all; }
+        .formula-box { background: #1a2234; border: 1px dashed var(--accent-cyan); padding: 8px; border-radius: 8px; text-align: center; font-family: monospace; color: var(--accent-emerald); font-weight: 800; margin: 8px 0; font-size: 0.72rem; word-break: break-all; }
     </style>
 </head>
 <body>
@@ -165,19 +171,19 @@
 
         <div class="bankroll-panel">
             <div>
-                <h3 style="font-size:0.88rem; font-weight:800; color:#fff;">GESTOR DE BANKROLL GENERAL</h3>
-                <p style="font-size:0.7rem; color:var(--text-muted);">Ingresa tu saldo para calcular la gestión de riesgo y balance de tu portafolio</p>
+                <h3 style="font-size:0.85rem; font-weight:800; color:#fff;">GESTOR DE BANKROLL GENERAL</h3>
+                <p style="font-size:0.68rem; color:var(--text-muted);">Ingresa tu saldo para calcular la gestión de riesgo y balance de tu portafolio</p>
             </div>
             <div class="bankroll-input">
-                <label style="font-size:0.78rem; font-weight:700;">Tu Bank ($):</label>
+                <label style="font-size:0.75rem; font-weight:700;">Tu Bank ($):</label>
                 <input type="number" id="userBank" placeholder="Ej: 50" oninput="renderSavedPicks()">
             </div>
         </div>
 
         <div class="saved-section" id="savedPicksContainer">
             <div class="saved-header">
-                <div class="saved-title" style="font-size:0.88rem; font-weight:800;">⭐ MIS PICKS GUARDADOS (PORTAFOLIO)</div>
-                <div class="saved-stats" style="font-size:0.78rem; font-weight:700;">
+                <div class="saved-title" style="font-size:0.85rem; font-weight:800;">⭐ MIS PICKS GUARDADOS (PORTAFOLIO)</div>
+                <div class="saved-stats" style="font-size:0.75rem; font-weight:700;">
                     <span style="color:var(--accent-purple);" id="savedCount">0 Guardados</span> | 
                     <span id="savedBalance">Balance: $0.00 MXN</span>
                 </div>
@@ -199,16 +205,16 @@
     <div class="modal-overlay" id="matchModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div class="modal-title" id="modalHeader" style="font-size:0.95rem; font-weight:800; text-align:center; margin-bottom:12px; padding-right:20px;">VS</div>
+            <div class="modal-title" id="modalHeader" style="font-size:0.88rem; font-weight:800; text-align:center; margin-bottom:10px; padding-right:15px;">VS</div>
             
             <div class="grid-2col">
                 <div class="modal-section">
                     <h3>PROBABILIDAD DE VICTORIA</h3>
-                    <div style="height: 150px;"><canvas id="donutChart"></canvas></div>
+                    <div style="height: 140px; position:relative;"><canvas id="donutChart"></canvas></div>
                 </div>
                 <div class="modal-section">
                     <h3>HISTORIAL RECIENTE / H2H</h3>
-                    <div style="height: 150px;"><canvas id="appStyleChart"></canvas></div>
+                    <div style="height: 140px; position:relative;"><canvas id="appStyleChart"></canvas></div>
                 </div>
             </div>
 
@@ -237,7 +243,7 @@
     <div class="modal-overlay" id="methodModal">
         <div class="modal-content" style="max-width: 780px;">
             <span class="close-btn" onclick="closeMethodologyModal()">&times;</span>
-            <div class="modal-title" style="color:var(--accent-cyan); text-align:left; font-size:1rem; font-weight:800; margin-bottom:12px; padding-right:20px;">🧠 Modelo Algorítmico, Fórmula Matemática y Valor Esperado (EV+)</div>
+            <div class="modal-title" style="color:var(--accent-cyan); text-align:left; font-size:0.92rem; font-weight:800; margin-bottom:10px; padding-right:15px;">🧠 Modelo Algorítmico, Fórmula Matemática y Valor Esperado (EV+)</div>
             
             <div class="modal-section" style="text-align:left;">
                 <h3 style="color:#fff;">1. La Fórmula Matemática de Probabilidad</h3>
@@ -538,7 +544,7 @@
         function renderOfficialPicks(picksList) {
             const container = document.getElementById('officialPicksContainer');
             if (!picksList || picksList.length === 0) {
-                container.innerHTML = `<div class="parlay-card" style="grid-column: 1/-1; text-align:center; padding:15px;"><span style="color:var(--text-muted); font-size:0.82rem;">Esta jornada ningún partido alcanzó el umbral del 85% de probabilidad. Por disciplina de bankroll, no hay Parlay Oficial esta semana.</span></div>`;
+                container.innerHTML = `<div class="parlay-card" style="grid-column: 1/-1; text-align:center; padding:12px;"><span style="color:var(--text-muted); font-size:0.78rem;">Esta jornada ningún partido alcanzó el umbral del 85% de probabilidad. Por disciplina de bankroll, no hay Parlay Oficial esta semana.</span></div>`;
                 return;
             }
 
@@ -550,8 +556,8 @@
                         <div class="parlay-match">${p.partido}</div>
                         <div class="parlay-pick">${p.pick}</div>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
-                            <span style="font-size:0.68rem; font-weight:800; color:var(--accent-emerald); background:rgba(16,185,129,0.2); padding:3px 8px; border-radius:20px;">${p.prob}% PROBABILIDAD</span>
-                            <button class="save-pick-btn" style="padding:4px 8px; font-size:0.65rem;" onclick="saveCustomPick('${p.partido}', '${p.pick}', '${p.casino}')">⭐ GUARDAR</button>
+                            <span style="font-size:0.65rem; font-weight:800; color:var(--accent-emerald); background:rgba(16,185,129,0.2); padding:3px 8px; border-radius:20px;">${p.prob}% PROBABILIDAD</span>
+                            <button class="save-pick-btn" style="padding:4px 8px; font-size:0.62rem;" onclick="saveCustomPick('${p.partido}', '${p.pick}', '${p.casino}')">⭐ GUARDAR</button>
                         </div>
                     </div>
                 `;
@@ -595,7 +601,7 @@
             document.getElementById('savedCount').innerHTML = `${userSavedPicks.length} Guardados`;
 
             if (userSavedPicks.length === 0) {
-                container.innerHTML = `<div style="grid-column: 1/-1; color:var(--text-muted); font-size:0.82rem; text-align:center; padding:12px;">Aún no has guardado ningún pick. Haz clic en "⭐ GUARDAR" para agregar elecciones a tu portafolio.</div>`;
+                container.innerHTML = `<div style="grid-column: 1/-1; color:var(--text-muted); font-size:0.78rem; text-align:center; padding:10px;">Aún no has guardado ningún pick. Haz clic en "⭐ GUARDAR" para agregar elecciones a tu portafolio.</div>`;
                 document.getElementById('savedBalance').innerHTML = `Balance: $0.00 MXN`;
                 return;
             }
@@ -606,23 +612,23 @@
             userSavedPicks.forEach(item => {
                 const stake = userBank > 0 ? (userBank * 0.05) : 0;
                 let profitItem = 0;
-                let statusBadge = '<span style="color:var(--text-muted); font-size:0.72rem; font-weight:800;">⏳ PENDIENTE</span>';
+                let statusBadge = '<span style="color:var(--text-muted); font-size:0.7rem; font-weight:800;">⏳ PENDIENTE</span>';
 
                 if (item.estado === 'GANADA') {
                     profitItem = stake > 0 ? stake * 0.85 : 0;
                     totalProfit += profitItem;
-                    statusBadge = '<span style="color:var(--accent-emerald); font-size:0.72rem; font-weight:800;">✅ GANADA (' + (stake > 0 ? '+$' + profitItem.toFixed(2) : 'Acierto') + ')</span>';
+                    statusBadge = '<span style="color:var(--accent-emerald); font-size:0.7rem; font-weight:800;">✅ GANADA (' + (stake > 0 ? '+$' + profitItem.toFixed(2) : 'Acierto') + ')</span>';
                 } else if (item.estado === 'PERDIDA') {
                     profitItem = -stake;
                     totalProfit += profitItem;
-                    statusBadge = '<span style="color:#ef4444; font-size:0.72rem; font-weight:800;">❌ PERDIDA (' + (stake > 0 ? '-$' + Math.abs(profitItem).toFixed(2) : 'Fallo') + ')</span>';
+                    statusBadge = '<span style="color:#ef4444; font-size:0.7rem; font-weight:800;">❌ PERDIDA (' + (stake > 0 ? '-$' + Math.abs(profitItem).toFixed(2) : 'Fallo') + ')</span>';
                 }
 
                 listHTML += `
                     <div class="saved-item">
                         <div class="saved-item-partido">${item.partido}</div>
-                        <div class="saved-item-pick">${item.pick} <span style="color:var(--accent-cyan); font-size:0.78rem;">($${item.momio})</span></div>
-                        <div style="margin-bottom:8px;">${statusBadge}</div>
+                        <div class="saved-item-pick">${item.pick} <span style="color:var(--accent-cyan); font-size:0.75rem;">($${item.momio})</span></div>
+                        <div style="margin-bottom:6px;">${statusBadge}</div>
                         <div class="saved-item-actions">
                             <button class="btn-status btn-win" onclick="updatePickStatus(${item.id}, 'GANADA')">GANADA</button>
                             <button class="btn-status btn-loss" onclick="updatePickStatus(${item.id}, 'PERDIDA')">PERDIDA</button>
@@ -654,7 +660,7 @@
             document.getElementById('modalHeader').innerHTML = `${data.local} vs ${data.visita} (${data.fecha_partido})`;
 
             if (!data.has_data) {
-                document.getElementById('modalOddsBody').innerHTML = `<tr><td colspan="4" style="color:var(--text-muted); padding:12px;">⏳ EN ESPERA DE INFORMACIÓN COMPLETA (RECESO DE TEMPORADA)</td></tr>`;
+                document.getElementById('modalOddsBody').innerHTML = `<tr><td colspan="4" style="color:var(--text-muted); padding:10px;">⏳ EN ESPERA DE INFORMACIÓN COMPLETA (RECESO DE TEMPORADA)</td></tr>`;
                 document.getElementById('modalReason').innerHTML = `<b>Nota Técnica:</b> El deporte seleccionado se encuentra en receso/pretemporada. Las cuotas oficiales de casino y métricas completas se actualizarán al iniciar la temporada regular.`;
                 document.getElementById('modalStake').innerHTML = `⏳ Esperando inicio de temporada`;
             } else {

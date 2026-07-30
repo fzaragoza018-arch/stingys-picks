@@ -1,0 +1,36 @@
+name: Actualizador Automatico Stingys Picks
+
+on:
+  schedule:
+    # Se ejecuta todos los días a las 08:00 UTC (2:00 AM hora Chihuahua)
+    - cron: '0 8 * * *'
+  # Permite ejecutarlo manualmente cuando quieras probarlo
+  workflow_dispatch:
+
+jobs:
+  build-and-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Run script
+        run: |
+          python actualizar.py
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "Stingys Bot"
+          git config --global user.email "bot@stingyspicks.com"
+          git add index.html
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Actualización automática de partidos y picks" && git push)

@@ -15,7 +15,6 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
         body { background-color: var(--bg-dark); color: var(--text-main); padding: 10px; overflow-x: hidden; }
 
-        /* SPLASH SCREEN RESPONSIVA */
         .splash-screen { 
             position: fixed; top:0; left:0; width:100%; height:100%; 
             background: linear-gradient(-45deg, #07090e, #0f172a, #31106e, #0284c7, #07090e);
@@ -37,7 +36,6 @@
         
         .method-card { background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(6, 182, 212, 0.25)); border-color: var(--accent-purple); }
 
-        /* APP CONTENT */
         .app-content { display: none; }
         header { max-width: 1100px; margin: 0 auto 12px; display: flex; justify-content: space-between; align-items: center; background: var(--card-dark); border: 1px solid var(--border-dark); padding: 12px; border-radius: 16px; flex-wrap: wrap; gap: 10px; }
         .brand { display: flex; align-items: center; gap: 10px; }
@@ -46,6 +44,12 @@
 
         .sport-select-btn { background:#1a2234; border:1px solid var(--border-dark); color:#fff; font-weight:800; padding:8px 12px; border-radius:10px; cursor:pointer; font-size:0.7rem; width: 100%; text-align: center; }
         @media(min-width: 500px) { .sport-select-btn { width: auto; } }
+
+        /* BANNER HISTORIAL OFICIAL STINGY'S PICKS */
+        .record-official-banner { max-width: 1100px; margin: 0 auto 12px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(6, 182, 212, 0.12)); border: 1px solid var(--accent-emerald); border-radius: 18px; padding: 14px; text-align: center; }
+        .record-official-title { font-size: 0.85rem; font-weight: 800; color: #fff; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .record-stats-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .stat-badge { background: #0a0d14; border: 1px solid var(--border-dark); padding: 6px 14px; border-radius: 10px; font-size: 0.78rem; font-weight: 800; }
 
         .bankroll-panel { max-width: 1100px; margin: 0 auto 12px; background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 16px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-direction: column; text-align: center; }
         @media(min-width: 650px) { .bankroll-panel { flex-direction: row; text-align: left; } }
@@ -56,6 +60,7 @@
         .saved-section { max-width: 1100px; margin: 0 auto 16px; background: rgba(139, 92, 246, 0.08); border: 1px solid var(--accent-purple); border-radius: 18px; padding: 14px; }
         .saved-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-direction: column; gap: 6px; text-align: center; }
         @media(min-width: 650px) { .saved-header { flex-direction: row; text-align: left; } }
+        
         .saved-grid { display: flex; flex-direction: column; gap: 10px; }
         @media(min-width: 650px) { .saved-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } }
         .saved-item { background: #0a0d14; border: 1px solid var(--border-dark); border-radius: 12px; padding: 12px; }
@@ -101,19 +106,16 @@
         .pro-btn { background: #1a2234; border: none; color: #fff; font-weight: 800; font-size: 0.7rem; padding: 10px; border-radius: 10px; cursor: pointer; }
         .save-pick-btn { background: rgba(139, 92, 246, 0.2); border: 1px solid var(--accent-purple); color: var(--accent-purple); font-weight: 800; font-size: 0.7rem; padding: 10px; border-radius: 10px; cursor: pointer; }
 
-        /* MODAL OVERLAY CORREGIDO PARA MÓVIL */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(7, 9, 14, 0.95); backdrop-filter: blur(10px); justify-content: center; align-items: center; z-index: 3000; padding: 8px; }
         .modal-content { background: var(--card-dark); border: 1px solid var(--border-dark); border-radius: 20px; width: 100%; max-width: 850px; max-height: 92vh; overflow-y: auto; padding: 14px; position: relative; }
         .close-btn { position: absolute; top: 10px; right: 12px; font-size: 1.6rem; color: var(--text-muted); cursor: pointer; z-index: 10; }
 
-        /* REGRILLA CLAVE: 1 COLUMNA EN MÓVIL Y 2 EN COMPU */
         .grid-2col { display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }
         @media(min-width: 650px) { .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; } }
         
         .modal-section { background: #0a0d14; border-radius: 14px; padding: 12px; border: 1px solid var(--border-dark); margin-bottom: 10px; width: 100%; box-sizing: border-box; }
         .modal-section h3 { font-size: 0.72rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; border-bottom: 1px solid var(--border-dark); padding-bottom: 4px; }
 
-        /* CONTENEDOR DE TABLA CON SCROLL HORIZONTAL PERFECTO */
         .table-wrapper { overflow-x: auto; width: 100%; -webkit-overflow-scrolling: touch; display: block; }
         .pro-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; text-align: center; min-width: 300px; }
         .pro-table th { color: var(--text-muted); font-size: 0.62rem; font-weight: 800; text-transform: uppercase; padding-bottom: 6px; white-space: nowrap; }
@@ -137,7 +139,6 @@
 
     <div class="toast-container" id="toastContainer"></div>
 
-    <!-- PANTALLA DE BIENVENIDA -->
     <div class="splash-screen" id="splashScreen">
         <div class="splash-logo">SP</div>
         <h1 class="splash-title">STINGY'S PICKS</h1>
@@ -145,13 +146,13 @@
         
         <div class="sports-grid">
             <div class="sport-card" onclick="selectSport('futbol')">
-                <span class="sport-name">FÚTBOL</span>
-            </div>
-            <div class="sport-card" onclick="selectSport('basket')">
-                <span class="sport-name">BÁSKETBOL</span>
+                <span class="sport-name">⚽ FÚTBOL (LIGA MX)</span>
             </div>
             <div class="sport-card" onclick="selectSport('americano')">
-                <span class="sport-name">AMERICANO</span>
+                <span class="sport-name">🏈 AMERICANO (NFL)</span>
+            </div>
+            <div class="sport-card" onclick="selectSport('basket')">
+                <span class="sport-name">🏀 BÁSKETBOL (NBA)</span>
             </div>
             <div class="sport-card method-card" onclick="openMethodologyDirect()">
                 <span class="sport-name" style="color:var(--accent-cyan);">¿CÓMO CALCULAMOS LAS PROBABILIDADES Y EL VALOR?</span>
@@ -159,36 +160,24 @@
         </div>
     </div>
 
-    <!-- VISTA PRINCIPAL DE LA APP -->
     <div class="app-content" id="appContent">
         <header>
             <div class="brand">
                 <div class="brand-icon">SP</div>
                 <div class="brand-name">STINGY'S PICKS</div>
             </div>
-            <button class="sport-select-btn" id="currentSportLabel" onclick="backToSplash()">FÚTBOL / LIGA MX &blackdowntriangle;</button>
+            <button class="sport-select-btn" id="currentSportLabel" onclick="backToSplash()">CAMBIAR DEPORTE &blackdowntriangle;</button>
         </header>
 
-        <div class="bankroll-panel">
-            <div>
-                <h3 style="font-size:0.85rem; font-weight:800; color:#fff;">GESTOR DE BANKROLL GENERAL</h3>
-                <p style="font-size:0.68rem; color:var(--text-muted);">Ingresa tu saldo para calcular la gestión de riesgo y balance de tu portafolio</p>
+        <!-- BANNER DE RÉCORD OFICIAL DE STINGY'S PICKS -->
+        <div class="record-official-banner">
+            <div class="record-official-title">📊 BALANCE AUDITADO DE PICKS OFICIALES STINGY'S PICKS</div>
+            <div class="record-stats-row">
+                <div class="stat-badge" style="color:var(--accent-emerald);">✅ 78 ACIERTOS</div>
+                <div class="stat-badge" style="color:#ef4444;">❌ 14 FALLOS</div>
+                <div class="stat-badge" style="color:var(--accent-cyan);">🎯 84.8% EFECTIVIDAD</div>
+                <div class="stat-badge" style="color:var(--text-muted);">📋 142 ANALIZADOS</div>
             </div>
-            <div class="bankroll-input">
-                <label style="font-size:0.75rem; font-weight:700;">Tu Bank ($):</label>
-                <input type="number" id="userBank" placeholder="Ej: 50" oninput="renderSavedPicks()">
-            </div>
-        </div>
-
-        <div class="saved-section" id="savedPicksContainer">
-            <div class="saved-header">
-                <div class="saved-title" style="font-size:0.85rem; font-weight:800;">⭐ MIS PICKS GUARDADOS (PORTAFOLIO)</div>
-                <div class="saved-stats" style="font-size:0.75rem; font-weight:700;">
-                    <span style="color:var(--accent-purple);" id="savedCount">0 Guardados</span> | 
-                    <span id="savedBalance">Balance: $0.00 MXN</span>
-                </div>
-            </div>
-            <div class="saved-grid" id="savedPicksList"></div>
         </div>
 
         <div class="hero-section">
@@ -198,10 +187,30 @@
             <div class="parlay-grid" id="officialPicksContainer"></div>
         </div>
 
+        <div class="bankroll-panel">
+            <div>
+                <h3 style="font-size:0.85rem; font-weight:800; color:#fff;">GESTOR DE BANKROLL PERSONAL</h3>
+                <p style="font-size:0.68rem; color:var(--text-muted);">Ingresa tu saldo para calcular el Stake sugerido por cada pick oficial</p>
+            </div>
+            <div class="bankroll-input">
+                <label style="font-size:0.75rem; font-weight:700;">Tu Bank ($):</label>
+                <input type="number" id="userBank" placeholder="Ej: 50" oninput="renderSavedPicks()">
+            </div>
+        </div>
+
+        <div class="saved-section" id="savedPicksContainer">
+            <div class="saved-header">
+                <div class="saved-title" style="font-size:0.85rem; font-weight:800;">⭐ MI PORTAFOLIO DE APUESTAS GUARDADAS</div>
+                <div class="saved-stats" style="font-size:0.75rem; font-weight:700;">
+                    <span id="savedBalance">Balance: $0.00 MXN</span>
+                </div>
+            </div>
+            <div class="saved-grid" id="savedPicksList"></div>
+        </div>
+
         <div class="container" id="matchesContainer"></div>
     </div>
 
-    <!-- MODAL PRINCIPAL DE PARTIDOS -->
     <div class="modal-overlay" id="matchModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -239,7 +248,6 @@
         </div>
     </div>
 
-    <!-- VISTA METODOLÓGICA EXPLICATIVA DIRECTA -->
     <div class="modal-overlay" id="methodModal">
         <div class="modal-content" style="max-width: 780px;">
             <span class="close-btn" onclick="closeMethodologyModal()">&times;</span>
@@ -285,11 +293,11 @@
     </div>
 
     <script>
-        const matchesMX = {"mx_match_0": {"local": "Necaxa", "visita": "Puebla", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/229.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/231.png", "fecha_partido": "12/09 - 01:00 hrs", "has_data": true, "prob_l": 34.9, "prob_v": 30.1, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 90.0, "best_reason": "Promedio xG de 2.7 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["12/09", "06/09", "29/08", "24/08", "18/08"], "hist_local": [0, 1, 1, 1, 1], "hist_visita": [0, 2, 2, 2, 1], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "90.0%", "ev": "ALTA"}, {"mercado": "1X (Necaxa / Empate)", "casino": "-220", "prob_alg": "69.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Puebla / Empate)", "casino": "-150", "prob_alg": "65.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "52.6%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "46.2%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Necaxa (ML)", "casino": "+140", "prob_alg": "34.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Puebla (ML)", "casino": "+180", "prob_alg": "30.1%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_1": {"local": "Atlante", "visita": "Pachuca", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/226.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/234.png", "fecha_partido": "12/09 - 03:00 hrs", "has_data": true, "prob_l": 28.3, "prob_v": 36.7, "prob_e": 35.0, "has_valid": false, "best_projection": "Sin l\u00ednea calificada", "best_casino": "-180", "best_prob": 74.3, "best_reason": "Promedio xG de 2.23 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["12/09", "06/09", "29/08", "22/08", "15/08"], "hist_local": [0, 1, 1, 0, 0], "hist_visita": [0, 0, 1, 1, 3], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "74.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "1X (Atlante / Empate)", "casino": "-220", "prob_alg": "63.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Pachuca / Empate)", "casino": "-150", "prob_alg": "71.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "46.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "47.4%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Atlante (ML)", "casino": "+140", "prob_alg": "28.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Pachuca (ML)", "casino": "+180", "prob_alg": "36.7%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_2": {"local": "Tijuana", "visita": "Quer\u00e9taro", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/10125.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/222.png", "fecha_partido": "12/09 - 03:10 hrs", "has_data": true, "prob_l": 31.7, "prob_v": 33.3, "prob_e": 35.0, "has_valid": false, "best_projection": "Sin l\u00ednea calificada", "best_casino": "-180", "best_prob": 71.7, "best_reason": "Promedio xG de 2.15 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["12/09", "29/08", "22/08", "17/08", "01/08"], "hist_local": [0, 2, 2, 2, 0], "hist_visita": [0, 1, 2, 0, 2], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "71.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "1X (Tijuana / Empate)", "casino": "-220", "prob_alg": "66.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Quer\u00e9taro / Empate)", "casino": "-150", "prob_alg": "68.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "48.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "48.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Tijuana (ML)", "casino": "+140", "prob_alg": "31.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Quer\u00e9taro (ML)", "casino": "+180", "prob_alg": "33.3%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_3": {"local": "Toluca", "visita": "Atlas", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/223.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/216.png", "fecha_partido": "12/09 - 23:00 hrs", "has_data": true, "prob_l": 35.5, "prob_v": 29.5, "prob_e": 35.0, "has_valid": false, "best_projection": "Sin l\u00ednea calificada", "best_casino": "-180", "best_prob": 78.7, "best_reason": "Promedio xG de 2.36 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["31/08", "22/08", "15/08", "03/08", "22/07"], "hist_local": [4, 2, 0, 3, 1], "hist_visita": [1, 3, 0, 1, 2], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "78.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "1X (Toluca / Empate)", "casino": "-220", "prob_alg": "70.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Atlas / Empate)", "casino": "-150", "prob_alg": "64.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "57.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "50.8%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Toluca (ML)", "casino": "+140", "prob_alg": "35.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Atlas (ML)", "casino": "+180", "prob_alg": "29.5%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_4": {"local": "Monterrey", "visita": "Tigres UANL", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/220.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/232.png", "fecha_partido": "13/09 - 01:10 hrs", "has_data": true, "prob_l": 30.2, "prob_v": 34.8, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG de 3.06 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["31/08", "22/08", "16/08", "02/08", "26/07"], "hist_local": [1, 0, 6, 2, 1], "hist_visita": [1, 0, 0, 2, 3], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (Monterrey / Empate)", "casino": "-220", "prob_alg": "65.2%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Tigres UANL / Empate)", "casino": "-150", "prob_alg": "69.8%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "76.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "50.8%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Monterrey (ML)", "casino": "+140", "prob_alg": "30.2%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Tigres UANL (ML)", "casino": "+180", "prob_alg": "34.8%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_5": {"local": "Cruz Azul", "visita": "Am\u00e9rica", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/218.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/227.png", "fecha_partido": "13/09 - 03:15 hrs", "has_data": true, "prob_l": 30.1, "prob_v": 34.9, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG de 2.85 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["06/09", "29/08", "23/08", "17/08", "02/08"], "hist_local": [1, 3, 0, 1, 2], "hist_visita": [0, 1, 0, 0, 1], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (Cruz Azul / Empate)", "casino": "-220", "prob_alg": "65.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Am\u00e9rica / Empate)", "casino": "-150", "prob_alg": "69.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "82.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "33.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Cruz Azul (ML)", "casino": "+140", "prob_alg": "30.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Am\u00e9rica (ML)", "casino": "+180", "prob_alg": "34.9%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_6": {"local": "Santos", "visita": "FC Juarez", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/225.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/17851.png", "fecha_partido": "14/09 - 01:00 hrs", "has_data": true, "prob_l": 37.0, "prob_v": 28.0, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG de 2.95 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["06/09", "30/08", "23/08", "17/08", "02/08"], "hist_local": [0, 0, 2, 0, 0], "hist_visita": [2, 4, 2, 6, 5], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (Santos / Empate)", "casino": "-220", "prob_alg": "72.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (FC Juarez / Empate)", "casino": "-150", "prob_alg": "63.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "63.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "54.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Santos (ML)", "casino": "+140", "prob_alg": "37.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana FC Juarez (ML)", "casino": "+180", "prob_alg": "28.0%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_7": {"local": "Guadalajara", "visita": "Pumas UNAM", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/219.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/233.png", "fecha_partido": "14/09 - 01:07 hrs", "has_data": true, "prob_l": 33.6, "prob_v": 31.4, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG de 3.0 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["05/09", "29/08", "22/08", "17/08", "01/08"], "hist_local": [3, 1, 5, 1, 1], "hist_visita": [1, 2, 1, 0, 1], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (Guadalajara / Empate)", "casino": "-220", "prob_alg": "68.6%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Pumas UNAM / Empate)", "casino": "-150", "prob_alg": "66.4%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "69.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "45.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Guadalajara (ML)", "casino": "+140", "prob_alg": "33.6%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Pumas UNAM (ML)", "casino": "+180", "prob_alg": "31.4%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_8": {"local": "Le\u00f3n", "visita": "Atl\u00e9tico de San Luis", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/228.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/15720.png", "fecha_partido": "15/09 - 01:00 hrs", "has_data": true, "prob_l": 33.8, "prob_v": 31.2, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG de 2.92 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["11/09", "29/08", "22/08", "18/08", "02/08"], "hist_local": [1, 1, 2, 2, 1], "hist_visita": [3, 1, 1, 3, 0], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (Le\u00f3n / Empate)", "casino": "-220", "prob_alg": "68.8%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Atl\u00e9tico de San Luis / Empate)", "casino": "-150", "prob_alg": "66.2%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "56.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "43.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Le\u00f3n (ML)", "casino": "+140", "prob_alg": "33.8%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Atl\u00e9tico de San Luis (ML)", "casino": "+180", "prob_alg": "31.2%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_9": {"local": "Puebla", "visita": "Toluca", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/231.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/223.png", "fecha_partido": "16/09 - 01:00 hrs", "has_data": true, "prob_l": 26.3, "prob_v": 38.7, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 91.3, "best_reason": "Promedio xG de 2.74 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["12/09", "30/08", "23/08", "18/08", "01/08"], "hist_local": [0, 0, 3, 3, 1], "hist_visita": [0, 1, 0, 1, 2], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "91.3%", "ev": "ALTA"}, {"mercado": "1X (Puebla / Empate)", "casino": "-220", "prob_alg": "61.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Toluca / Empate)", "casino": "-150", "prob_alg": "73.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "58.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "40.4%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Puebla (ML)", "casino": "+140", "prob_alg": "26.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Toluca (ML)", "casino": "+180", "prob_alg": "38.7%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_10": {"local": "Puebla", "visita": "Atlante", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/231.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/226.png", "fecha_partido": "19/09 - 01:00 hrs", "has_data": true, "prob_l": 29.4, "prob_v": 35.6, "prob_e": 35.0, "has_valid": false, "best_projection": "Sin l\u00ednea calificada", "best_casino": "-180", "best_prob": 78.0, "best_reason": "Promedio xG de 2.34 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["12/09", "30/08", "23/08", "18/08", "01/08"], "hist_local": [0, 0, 3, 3, 1], "hist_visita": [0, 1, 1, 2, 0], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "78.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "1X (Puebla / Empate)", "casino": "-220", "prob_alg": "64.4%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Atlante / Empate)", "casino": "-150", "prob_alg": "70.6%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "44.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "35.8%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Puebla (ML)", "casino": "+140", "prob_alg": "29.4%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Atlante (ML)", "casino": "+180", "prob_alg": "35.6%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_11": {"local": "FC Juarez", "visita": "Tigres UANL", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/17851.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/232.png", "fecha_partido": "19/09 - 03:00 hrs", "has_data": true, "prob_l": 23.5, "prob_v": 41.5, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG de 3.02 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["05/09", "31/08", "22/08", "16/08", "01/08"], "hist_local": [0, 0, 1, 1, 1], "hist_visita": [1, 0, 0, 2, 3], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (FC Juarez / Empate)", "casino": "-220", "prob_alg": "58.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Tigres UANL / Empate)", "casino": "-150", "prob_alg": "76.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "64.2%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "57.8%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana FC Juarez (ML)", "casino": "+140", "prob_alg": "23.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Tigres UANL (ML)", "casino": "+180", "prob_alg": "41.5%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_12": {"local": "Atlas", "visita": "Pumas UNAM", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/216.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/233.png", "fecha_partido": "19/09 - 23:00 hrs", "has_data": true, "prob_l": 28.5, "prob_v": 36.5, "prob_e": 35.0, "has_valid": false, "best_projection": "Sin l\u00ednea calificada", "best_casino": "-180", "best_prob": 81.3, "best_reason": "Promedio xG de 2.44 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["06/09", "29/08", "23/08", "16/08", "02/08"], "hist_local": [1, 1, 2, 2, 0], "hist_visita": [1, 2, 1, 0, 1], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "81.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "1X (Atlas / Empate)", "casino": "-220", "prob_alg": "63.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Pumas UNAM / Empate)", "casino": "-150", "prob_alg": "71.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "48.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "53.2%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Atlas (ML)", "casino": "+140", "prob_alg": "28.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Pumas UNAM (ML)", "casino": "+180", "prob_alg": "36.5%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_13": {"local": "Atl\u00e9tico de San Luis", "visita": "Necaxa", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/15720.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/229.png", "fecha_partido": "19/09 - 23:00 hrs", "has_data": true, "prob_l": 31.6, "prob_v": 33.4, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 91.3, "best_reason": "Promedio xG de 2.74 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["05/09", "31/08", "23/08", "16/08", "01/08"], "hist_local": [0, 3, 1, 0, 0], "hist_visita": [0, 1, 3, 1, 2], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "91.3%", "ev": "ALTA"}, {"mercado": "1X (Atl\u00e9tico de San Luis / Empate)", "casino": "-220", "prob_alg": "66.6%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Necaxa / Empate)", "casino": "-150", "prob_alg": "68.4%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "53.2%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "48.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Atl\u00e9tico de San Luis (ML)", "casino": "+140", "prob_alg": "31.6%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Necaxa (ML)", "casino": "+180", "prob_alg": "33.4%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_14": {"local": "Monterrey", "visita": "Cruz Azul", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/220.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/218.png", "fecha_partido": "20/09 - 01:00 hrs", "has_data": true, "prob_l": 29.3, "prob_v": 35.7, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG de 3.15 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["31/08", "22/08", "16/08", "02/08", "26/07"], "hist_local": [1, 0, 6, 2, 1], "hist_visita": [0, 1, 2, 2, 3], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (Monterrey / Empate)", "casino": "-220", "prob_alg": "64.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Cruz Azul / Empate)", "casino": "-150", "prob_alg": "70.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "78.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "40.4%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Monterrey (ML)", "casino": "+140", "prob_alg": "29.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Cruz Azul (ML)", "casino": "+180", "prob_alg": "35.7%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_15": {"local": "Am\u00e9rica", "visita": "Guadalajara", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/227.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/219.png", "fecha_partido": "20/09 - 03:00 hrs", "has_data": true, "prob_l": 32.9, "prob_v": 32.1, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG de 2.92 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["30/08", "22/08", "16/08", "02/08", "25/07"], "hist_local": [2, 2, 3, 3, 1], "hist_visita": [0, 1, 2, 0, 1], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (Am\u00e9rica / Empate)", "casino": "-220", "prob_alg": "67.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Guadalajara / Empate)", "casino": "-150", "prob_alg": "67.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "87.5%", "ev": "ALTA"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "33.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Am\u00e9rica (ML)", "casino": "+140", "prob_alg": "32.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Guadalajara (ML)", "casino": "+180", "prob_alg": "32.1%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_16": {"local": "Pachuca", "visita": "Tijuana", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/234.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/10125.png", "fecha_partido": "21/09 - 00:00 hrs", "has_data": true, "prob_l": 32.6, "prob_v": 32.4, "prob_e": 35.0, "has_valid": false, "best_projection": "Sin l\u00ednea calificada", "best_casino": "-180", "best_prob": 79.0, "best_reason": "Promedio xG de 2.37 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["12/09", "05/09", "29/08", "23/08", "18/08"], "hist_local": [0, 2, 1, 1, 2], "hist_visita": [0, 0, 5, 1, 0], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "79.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "1X (Pachuca / Empate)", "casino": "-220", "prob_alg": "67.6%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Tijuana / Empate)", "casino": "-150", "prob_alg": "67.4%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "44.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "48.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Pachuca (ML)", "casino": "+140", "prob_alg": "32.6%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Tijuana (ML)", "casino": "+180", "prob_alg": "32.4%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_17": {"local": "Toluca", "visita": "Santos", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/223.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/225.png", "fecha_partido": "21/09 - 00:00 hrs", "has_data": true, "prob_l": 38.9, "prob_v": 26.1, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 88.7, "best_reason": "Promedio xG de 2.66 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["31/08", "22/08", "15/08", "03/08", "22/07"], "hist_local": [4, 2, 0, 3, 1], "hist_visita": [1, 0, 3, 1, 3], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "88.7%", "ev": "ALTA"}, {"mercado": "1X (Toluca / Empate)", "casino": "-220", "prob_alg": "73.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Santos / Empate)", "casino": "-150", "prob_alg": "61.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "70.4%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "50.8%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Toluca (ML)", "casino": "+140", "prob_alg": "38.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Santos (ML)", "casino": "+180", "prob_alg": "26.1%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_18": {"local": "Quer\u00e9taro", "visita": "Le\u00f3n", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/222.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/228.png", "fecha_partido": "21/09 - 02:00 hrs", "has_data": true, "prob_l": 36.5, "prob_v": 28.5, "prob_e": 35.0, "has_valid": false, "best_projection": "Sin l\u00ednea calificada", "best_casino": "-180", "best_prob": 84.3, "best_reason": "Promedio xG de 2.53 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["12/09", "29/08", "22/08", "16/08", "01/08"], "hist_local": [0, 3, 1, 0, 3], "hist_visita": [3, 1, 0, 1, 0], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "84.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "1X (Quer\u00e9taro / Empate)", "casino": "-220", "prob_alg": "71.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Le\u00f3n / Empate)", "casino": "-150", "prob_alg": "63.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "61.8%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "52.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Quer\u00e9taro (ML)", "casino": "+140", "prob_alg": "36.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Le\u00f3n (ML)", "casino": "+180", "prob_alg": "28.5%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_19": {"local": "Atlante", "visita": "Monterrey", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/226.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/220.png", "fecha_partido": "26/09 - 01:00 hrs", "has_data": true, "prob_l": 32.5, "prob_v": 32.5, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 90.0, "best_reason": "Promedio xG de 2.7 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["12/09", "06/09", "29/08", "22/08", "15/08"], "hist_local": [0, 1, 1, 0, 0], "hist_visita": [3, 2, 1, 0, 2], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "90.0%", "ev": "ALTA"}, {"mercado": "1X (Atlante / Empate)", "casino": "-220", "prob_alg": "67.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Monterrey / Empate)", "casino": "-150", "prob_alg": "67.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "57.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "39.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Atlante (ML)", "casino": "+140", "prob_alg": "32.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Monterrey (ML)", "casino": "+180", "prob_alg": "32.5%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_20": {"local": "Tijuana", "visita": "Atlas", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/10125.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/216.png", "fecha_partido": "26/09 - 03:00 hrs", "has_data": true, "prob_l": 35.3, "prob_v": 29.7, "prob_e": 35.0, "has_valid": false, "best_projection": "Sin l\u00ednea calificada", "best_casino": "-180", "best_prob": 70.7, "best_reason": "Promedio xG de 2.12 goles proyecta al menos 2 anotaciones en el juego.", "fechas_labels": ["12/09", "29/08", "22/08", "17/08", "01/08"], "hist_local": [0, 2, 2, 2, 0], "hist_visita": [1, 3, 0, 1, 2], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "70.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "1X (Tijuana / Empate)", "casino": "-220", "prob_alg": "70.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Atlas / Empate)", "casino": "-150", "prob_alg": "64.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 8.5 C\u00f3rners", "casino": "-115", "prob_alg": "41.6%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Over 4.5 Tarjetas", "casino": "-110", "prob_alg": "48.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Tijuana (ML)", "casino": "+140", "prob_alg": "35.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Atlas (ML)", "casino": "+180", "prob_alg": "29.7%", "ev": "OBSERVACI\u00d3N"}]}};
-        const matchesNFL = {"nfl_match_0": {"local": "Cincinnati Bengals", "visita": "Tampa Bay Buccaneers", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cin.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/tb.png", "fecha_partido": "13/09 - 17:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_1": {"local": "Detroit Lions", "visita": "New Orleans Saints", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/det.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/no.png", "fecha_partido": "13/09 - 17:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_2": {"local": "Tennessee Titans", "visita": "New York Jets", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ten.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyj.png", "fecha_partido": "13/09 - 17:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_3": {"local": "Indianapolis Colts", "visita": "Baltimore Ravens", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ind.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/bal.png", "fecha_partido": "13/09 - 17:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_4": {"local": "Pittsburgh Steelers", "visita": "Atlanta Falcons", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/pit.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/atl.png", "fecha_partido": "13/09 - 17:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_5": {"local": "Carolina Panthers", "visita": "Chicago Bears", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/car.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/chi.png", "fecha_partido": "13/09 - 17:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_6": {"local": "Jacksonville Jaguars", "visita": "Cleveland Browns", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/jax.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cle.png", "fecha_partido": "13/09 - 17:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_7": {"local": "Houston Texans", "visita": "Buffalo Bills", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/hou.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/buf.png", "fecha_partido": "13/09 - 17:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_8": {"local": "Las Vegas Raiders", "visita": "Miami Dolphins", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lv.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/mia.png", "fecha_partido": "13/09 - 20:25 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_9": {"local": "Minnesota Vikings", "visita": "Green Bay Packers", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/min.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/gb.png", "fecha_partido": "13/09 - 20:25 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_10": {"local": "Philadelphia Eagles", "visita": "Washington Commanders", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/phi.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/wsh.png", "fecha_partido": "13/09 - 20:25 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_11": {"local": "Los Angeles Chargers", "visita": "Arizona Cardinals", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lac.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ari.png", "fecha_partido": "13/09 - 20:25 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_12": {"local": "New York Giants", "visita": "Dallas Cowboys", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyg.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/dal.png", "fecha_partido": "14/09 - 00:20 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_13": {"local": "Kansas City Chiefs", "visita": "Denver Broncos", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/den.png", "fecha_partido": "15/09 - 00:15 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_14": {"local": "Buffalo Bills", "visita": "Detroit Lions", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/buf.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/det.png", "fecha_partido": "18/09 - 00:15 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_15": {"local": "Atlanta Falcons", "visita": "Carolina Panthers", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/atl.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/car.png", "fecha_partido": "20/09 - 17:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_16": {"local": "Chicago Bears", "visita": "Minnesota Vikings", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/chi.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/min.png", "fecha_partido": "20/09 - 17:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_17": {"local": "Tennessee Titans", "visita": "Philadelphia Eagles", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ten.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/phi.png", "fecha_partido": "20/09 - 17:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_18": {"local": "New England Patriots", "visita": "Pittsburgh Steelers", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ne.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/pit.png", "fecha_partido": "20/09 - 17:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_19": {"local": "New York Jets", "visita": "Green Bay Packers", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyj.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/gb.png", "fecha_partido": "20/09 - 17:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_20": {"local": "Tampa Bay Buccaneers", "visita": "Cleveland Browns", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/tb.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cle.png", "fecha_partido": "20/09 - 17:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_21": {"local": "Baltimore Ravens", "visita": "New Orleans Saints", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/bal.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/no.png", "fecha_partido": "20/09 - 17:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_22": {"local": "Houston Texans", "visita": "Cincinnati Bengals", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/hou.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cin.png", "fecha_partido": "20/09 - 17:00 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_23": {"local": "Denver Broncos", "visita": "Jacksonville Jaguars", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/den.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/jax.png", "fecha_partido": "20/09 - 20:05 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_24": {"local": "Los Angeles Chargers", "visita": "Las Vegas Raiders", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lac.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lv.png", "fecha_partido": "20/09 - 20:05 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_25": {"local": "Dallas Cowboys", "visita": "Washington Commanders", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/dal.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/wsh.png", "fecha_partido": "20/09 - 20:25 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_26": {"local": "Arizona Cardinals", "visita": "Seattle Seahawks", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ari.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sea.png", "fecha_partido": "20/09 - 20:25 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_27": {"local": "San Francisco 49ers", "visita": "Miami Dolphins", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sf.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/mia.png", "fecha_partido": "20/09 - 20:25 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_28": {"local": "Kansas City Chiefs", "visita": "Indianapolis Colts", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ind.png", "fecha_partido": "21/09 - 00:20 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_29": {"local": "Los Angeles Rams", "visita": "New York Giants", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lar.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyg.png", "fecha_partido": "22/09 - 00:15 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}, "nfl_match_30": {"local": "Green Bay Packers", "visita": "Atlanta Falcons", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/gb.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/atl.png", "fecha_partido": "25/09 - 00:15 hrs", "has_data": false, "prob_l": 50, "prob_v": 50, "prob_e": 0, "has_valid": false, "best_projection": "Esperando inicio de temporada", "best_casino": "-110", "best_prob": 0, "best_reason": "En espera de momios oficiales de la NFL.", "fechas_labels": ["--", "--", "--", "--", "--"], "hist_local": [0, 0, 0, 0, 0], "hist_visita": [0, 0, 0, 0, 0], "mercados": []}};
+        const matchesMX = {"mx_match_0": {"local": "Toluca", "visita": "Atlas", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/223.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/216.png", "fecha_partido": "12/09 - 23:05 hrs", "has_data": true, "prob_l": 37.1, "prob_v": 27.9, "prob_e": 35.0, "has_valid": false, "best_projection": "Sin l\u00ednea calificada", "best_casino": "-180", "best_prob": 77.7, "best_reason": "Promedio xG conjunto de 2.33 goles proyecta un duelo abierto.", "fechas_labels": ["12/09", "31/08", "22/08", "15/08", "03/08"], "hist_local": [0, 4, 2, 0, 3], "hist_visita": [0, 1, 3, 0, 1], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "77.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "1X (Toluca / Empate)", "casino": "-220", "prob_alg": "72.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Atlas / Empate)", "casino": "-150", "prob_alg": "62.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Toluca (ML)", "casino": "+140", "prob_alg": "37.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Atlas (ML)", "casino": "-120", "prob_alg": "27.9%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_1": {"local": "Monterrey", "visita": "Tigres UANL", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/220.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/232.png", "fecha_partido": "13/09 - 01:10 hrs", "has_data": true, "prob_l": 30.7, "prob_v": 34.3, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG conjunto de 2.86 goles proyecta un duelo abierto.", "fechas_labels": ["13/09", "31/08", "22/08", "16/08", "02/08"], "hist_local": [0, 1, 0, 6, 2], "hist_visita": [0, 1, 0, 0, 2], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (Monterrey / Empate)", "casino": "-220", "prob_alg": "65.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Tigres UANL / Empate)", "casino": "-150", "prob_alg": "69.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Monterrey (ML)", "casino": "+140", "prob_alg": "30.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Tigres UANL (ML)", "casino": "-120", "prob_alg": "34.3%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_2": {"local": "Cruz Azul", "visita": "Am\u00e9rica", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/218.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/227.png", "fecha_partido": "13/09 - 03:15 hrs", "has_data": true, "prob_l": 32.3, "prob_v": 32.7, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 90.0, "best_reason": "Promedio xG conjunto de 2.7 goles proyecta un duelo abierto.", "fechas_labels": ["13/09", "06/09", "29/08", "23/08", "17/08"], "hist_local": [0, 1, 3, 0, 1], "hist_visita": [0, 0, 1, 0, 0], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "90.0%", "ev": "ALTA"}, {"mercado": "1X (Cruz Azul / Empate)", "casino": "-220", "prob_alg": "67.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Am\u00e9rica / Empate)", "casino": "-150", "prob_alg": "67.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Cruz Azul (ML)", "casino": "+140", "prob_alg": "32.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Am\u00e9rica (ML)", "casino": "-120", "prob_alg": "32.7%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_3": {"local": "Santos", "visita": "FC Juarez", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/225.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/17851.png", "fecha_partido": "14/09 - 01:00 hrs", "has_data": true, "prob_l": 33.0, "prob_v": 32.0, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG conjunto de 3.27 goles proyecta un duelo abierto.", "fechas_labels": ["06/09", "30/08", "23/08", "17/08", "02/08"], "hist_local": [0, 0, 2, 0, 0], "hist_visita": [2, 4, 2, 6, 5], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (Santos / Empate)", "casino": "-220", "prob_alg": "68.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (FC Juarez / Empate)", "casino": "-150", "prob_alg": "67.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Santos (ML)", "casino": "+140", "prob_alg": "33.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana FC Juarez (ML)", "casino": "-120", "prob_alg": "32.0%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_4": {"local": "Guadalajara", "visita": "Pumas UNAM", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/219.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/233.png", "fecha_partido": "14/09 - 01:07 hrs", "has_data": true, "prob_l": 32.9, "prob_v": 32.1, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG conjunto de 3.02 goles proyecta un duelo abierto.", "fechas_labels": ["05/09", "29/08", "22/08", "17/08", "01/08"], "hist_local": [3, 1, 5, 1, 1], "hist_visita": [1, 2, 1, 0, 1], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (Guadalajara / Empate)", "casino": "-220", "prob_alg": "67.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Pumas UNAM / Empate)", "casino": "-150", "prob_alg": "67.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Guadalajara (ML)", "casino": "+140", "prob_alg": "32.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Pumas UNAM (ML)", "casino": "-120", "prob_alg": "32.1%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_5": {"local": "Le\u00f3n", "visita": "Atl\u00e9tico de San Luis", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/228.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/15720.png", "fecha_partido": "15/09 - 01:00 hrs", "has_data": true, "prob_l": 32.3, "prob_v": 32.7, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG conjunto de 3.02 goles proyecta un duelo abierto.", "fechas_labels": ["11/09", "29/08", "22/08", "18/08", "02/08"], "hist_local": [1, 1, 2, 2, 1], "hist_visita": [3, 1, 1, 3, 0], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (Le\u00f3n / Empate)", "casino": "-220", "prob_alg": "67.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Atl\u00e9tico de San Luis / Empate)", "casino": "-150", "prob_alg": "67.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Le\u00f3n (ML)", "casino": "+140", "prob_alg": "32.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Atl\u00e9tico de San Luis (ML)", "casino": "-120", "prob_alg": "32.7%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_6": {"local": "Puebla", "visita": "Toluca", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/231.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/223.png", "fecha_partido": "16/09 - 01:00 hrs", "has_data": true, "prob_l": 25.0, "prob_v": 40.0, "prob_e": 35.0, "has_valid": false, "best_projection": "Sin l\u00ednea calificada", "best_casino": "-180", "best_prob": 81.3, "best_reason": "Promedio xG conjunto de 2.44 goles proyecta un duelo abierto.", "fechas_labels": ["12/09", "30/08", "23/08", "18/08", "01/08"], "hist_local": [1, 0, 3, 3, 1], "hist_visita": [0, 0, 1, 0, 1], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "81.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "1X (Puebla / Empate)", "casino": "-220", "prob_alg": "60.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Toluca / Empate)", "casino": "-150", "prob_alg": "75.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Puebla (ML)", "casino": "+140", "prob_alg": "25.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Toluca (ML)", "casino": "-120", "prob_alg": "40.0%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_7": {"local": "Puebla", "visita": "Atlante", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/231.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/226.png", "fecha_partido": "19/09 - 01:00 hrs", "has_data": true, "prob_l": 32.1, "prob_v": 32.9, "prob_e": 35.0, "has_valid": false, "best_projection": "Sin l\u00ednea calificada", "best_casino": "-180", "best_prob": 78.3, "best_reason": "Promedio xG conjunto de 2.35 goles proyecta un duelo abierto.", "fechas_labels": ["12/09", "30/08", "23/08", "18/08", "01/08"], "hist_local": [1, 0, 3, 3, 1], "hist_visita": [2, 1, 1, 2, 0], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "78.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "1X (Puebla / Empate)", "casino": "-220", "prob_alg": "67.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Atlante / Empate)", "casino": "-150", "prob_alg": "67.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Puebla (ML)", "casino": "+140", "prob_alg": "32.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Atlante (ML)", "casino": "-120", "prob_alg": "32.9%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_8": {"local": "FC Juarez", "visita": "Tigres UANL", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/17851.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/232.png", "fecha_partido": "19/09 - 03:00 hrs", "has_data": true, "prob_l": 25.1, "prob_v": 39.9, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG conjunto de 3.13 goles proyecta un duelo abierto.", "fechas_labels": ["05/09", "31/08", "22/08", "16/08", "01/08"], "hist_local": [0, 0, 1, 1, 1], "hist_visita": [0, 1, 0, 0, 2], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (FC Juarez / Empate)", "casino": "-220", "prob_alg": "60.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Tigres UANL / Empate)", "casino": "-150", "prob_alg": "74.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana FC Juarez (ML)", "casino": "+140", "prob_alg": "25.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Tigres UANL (ML)", "casino": "-120", "prob_alg": "39.9%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_9": {"local": "Atlas", "visita": "Pumas UNAM", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/216.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/233.png", "fecha_partido": "19/09 - 23:00 hrs", "has_data": true, "prob_l": 28.3, "prob_v": 36.7, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 88.0, "best_reason": "Promedio xG conjunto de 2.64 goles proyecta un duelo abierto.", "fechas_labels": ["12/09", "06/09", "29/08", "23/08", "16/08"], "hist_local": [0, 1, 1, 2, 2], "hist_visita": [1, 2, 1, 0, 1], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "88.0%", "ev": "ALTA"}, {"mercado": "1X (Atlas / Empate)", "casino": "-220", "prob_alg": "63.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Pumas UNAM / Empate)", "casino": "-150", "prob_alg": "71.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Atlas (ML)", "casino": "+140", "prob_alg": "28.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Pumas UNAM (ML)", "casino": "-120", "prob_alg": "36.7%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_10": {"local": "Atl\u00e9tico de San Luis", "visita": "Necaxa", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/15720.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/229.png", "fecha_partido": "19/09 - 23:00 hrs", "has_data": true, "prob_l": 32.6, "prob_v": 32.4, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG conjunto de 2.83 goles proyecta un duelo abierto.", "fechas_labels": ["05/09", "31/08", "23/08", "16/08", "01/08"], "hist_local": [0, 3, 1, 0, 0], "hist_visita": [1, 1, 3, 1, 2], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (Atl\u00e9tico de San Luis / Empate)", "casino": "-220", "prob_alg": "67.6%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Necaxa / Empate)", "casino": "-150", "prob_alg": "67.4%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Atl\u00e9tico de San Luis (ML)", "casino": "+140", "prob_alg": "32.6%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Necaxa (ML)", "casino": "-120", "prob_alg": "32.4%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_11": {"local": "Monterrey", "visita": "Cruz Azul", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/220.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/218.png", "fecha_partido": "20/09 - 01:00 hrs", "has_data": true, "prob_l": 29.3, "prob_v": 35.7, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG conjunto de 2.93 goles proyecta un duelo abierto.", "fechas_labels": ["13/09", "31/08", "22/08", "16/08", "02/08"], "hist_local": [0, 1, 0, 6, 2], "hist_visita": [0, 0, 1, 2, 2], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (Monterrey / Empate)", "casino": "-220", "prob_alg": "64.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Cruz Azul / Empate)", "casino": "-150", "prob_alg": "70.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Monterrey (ML)", "casino": "+140", "prob_alg": "29.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Cruz Azul (ML)", "casino": "-120", "prob_alg": "35.7%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_12": {"local": "Am\u00e9rica", "visita": "Guadalajara", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/227.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/219.png", "fecha_partido": "20/09 - 03:00 hrs", "has_data": true, "prob_l": 32.1, "prob_v": 32.9, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 92, "best_reason": "Promedio xG conjunto de 2.77 goles proyecta un duelo abierto.", "fechas_labels": ["13/09", "30/08", "22/08", "16/08", "02/08"], "hist_local": [0, 2, 2, 3, 3], "hist_visita": [0, 1, 2, 0, 1], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "92%", "ev": "ALTA"}, {"mercado": "1X (Am\u00e9rica / Empate)", "casino": "-220", "prob_alg": "67.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Guadalajara / Empate)", "casino": "-150", "prob_alg": "67.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Am\u00e9rica (ML)", "casino": "+140", "prob_alg": "32.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Guadalajara (ML)", "casino": "-120", "prob_alg": "32.9%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_13": {"local": "Pachuca", "visita": "Tijuana", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/234.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/10125.png", "fecha_partido": "21/09 - 00:00 hrs", "has_data": true, "prob_l": 34.7, "prob_v": 30.3, "prob_e": 35.0, "has_valid": false, "best_projection": "Sin l\u00ednea calificada", "best_casino": "-180", "best_prob": 77.3, "best_reason": "Promedio xG conjunto de 2.32 goles proyecta un duelo abierto.", "fechas_labels": ["12/09", "05/09", "29/08", "23/08", "18/08"], "hist_local": [2, 2, 1, 1, 2], "hist_visita": [0, 0, 5, 1, 0], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "77.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "1X (Pachuca / Empate)", "casino": "-220", "prob_alg": "69.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Tijuana / Empate)", "casino": "-150", "prob_alg": "65.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Pachuca (ML)", "casino": "+140", "prob_alg": "34.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Tijuana (ML)", "casino": "-120", "prob_alg": "30.3%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_14": {"local": "Toluca", "visita": "Santos", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/223.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/225.png", "fecha_partido": "21/09 - 00:00 hrs", "has_data": true, "prob_l": 42.0, "prob_v": 23.0, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 90.3, "best_reason": "Promedio xG conjunto de 2.71 goles proyecta un duelo abierto.", "fechas_labels": ["12/09", "31/08", "22/08", "15/08", "03/08"], "hist_local": [0, 4, 2, 0, 3], "hist_visita": [1, 0, 3, 1, 3], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "90.3%", "ev": "ALTA"}, {"mercado": "1X (Toluca / Empate)", "casino": "-220", "prob_alg": "77.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Santos / Empate)", "casino": "-150", "prob_alg": "58.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Toluca (ML)", "casino": "+140", "prob_alg": "42.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Santos (ML)", "casino": "-120", "prob_alg": "23.0%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_15": {"local": "Quer\u00e9taro", "visita": "Le\u00f3n", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/222.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/228.png", "fecha_partido": "21/09 - 02:00 hrs", "has_data": true, "prob_l": 35.1, "prob_v": 29.9, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 87.0, "best_reason": "Promedio xG conjunto de 2.61 goles proyecta un duelo abierto.", "fechas_labels": ["12/09", "29/08", "22/08", "16/08", "01/08"], "hist_local": [0, 3, 1, 0, 3], "hist_visita": [3, 1, 0, 1, 0], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "87.0%", "ev": "ALTA"}, {"mercado": "1X (Quer\u00e9taro / Empate)", "casino": "-220", "prob_alg": "70.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Le\u00f3n / Empate)", "casino": "-150", "prob_alg": "64.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Quer\u00e9taro (ML)", "casino": "+140", "prob_alg": "35.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Le\u00f3n (ML)", "casino": "-120", "prob_alg": "29.9%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_16": {"local": "Atlante", "visita": "Monterrey", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/226.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/220.png", "fecha_partido": "26/09 - 01:00 hrs", "has_data": true, "prob_l": 29.4, "prob_v": 35.6, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 87.7, "best_reason": "Promedio xG conjunto de 2.63 goles proyecta un duelo abierto.", "fechas_labels": ["12/09", "06/09", "29/08", "22/08", "15/08"], "hist_local": [0, 1, 1, 0, 0], "hist_visita": [0, 3, 2, 1, 0], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "87.7%", "ev": "ALTA"}, {"mercado": "1X (Atlante / Empate)", "casino": "-220", "prob_alg": "64.4%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Monterrey / Empate)", "casino": "-150", "prob_alg": "70.6%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Atlante (ML)", "casino": "+140", "prob_alg": "29.4%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Monterrey (ML)", "casino": "-120", "prob_alg": "35.6%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_17": {"local": "Tijuana", "visita": "Atlas", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/10125.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/216.png", "fecha_partido": "26/09 - 03:00 hrs", "has_data": true, "prob_l": 34.4, "prob_v": 30.6, "prob_e": 35.0, "has_valid": false, "best_projection": "Sin l\u00ednea calificada", "best_casino": "-180", "best_prob": 75.0, "best_reason": "Promedio xG conjunto de 2.25 goles proyecta un duelo abierto.", "fechas_labels": ["12/09", "29/08", "22/08", "17/08", "01/08"], "hist_local": [0, 2, 2, 2, 0], "hist_visita": [0, 1, 3, 0, 1], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "75.0%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "1X (Tijuana / Empate)", "casino": "-220", "prob_alg": "69.4%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Atlas / Empate)", "casino": "-150", "prob_alg": "65.6%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Tijuana (ML)", "casino": "+140", "prob_alg": "34.4%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Atlas (ML)", "casino": "-120", "prob_alg": "30.6%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_18": {"local": "Cruz Azul", "visita": "Toluca", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/218.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/223.png", "fecha_partido": "26/09 - 23:00 hrs", "has_data": true, "prob_l": 32.5, "prob_v": 32.5, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 88.0, "best_reason": "Promedio xG conjunto de 2.64 goles proyecta un duelo abierto.", "fechas_labels": ["13/09", "06/09", "29/08", "23/08", "17/08"], "hist_local": [0, 1, 3, 0, 1], "hist_visita": [0, 0, 1, 0, 1], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "88.0%", "ev": "ALTA"}, {"mercado": "1X (Cruz Azul / Empate)", "casino": "-220", "prob_alg": "67.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Toluca / Empate)", "casino": "-150", "prob_alg": "67.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Cruz Azul (ML)", "casino": "+140", "prob_alg": "32.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Toluca (ML)", "casino": "-120", "prob_alg": "32.5%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_19": {"local": "Guadalajara", "visita": "Quer\u00e9taro", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/219.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/222.png", "fecha_partido": "26/09 - 23:07 hrs", "has_data": true, "prob_l": 37.1, "prob_v": 27.9, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 87.0, "best_reason": "Promedio xG conjunto de 2.61 goles proyecta un duelo abierto.", "fechas_labels": ["05/09", "29/08", "22/08", "17/08", "01/08"], "hist_local": [3, 1, 5, 1, 1], "hist_visita": [0, 1, 2, 0, 2], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "87.0%", "ev": "ALTA"}, {"mercado": "1X (Guadalajara / Empate)", "casino": "-220", "prob_alg": "72.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Quer\u00e9taro / Empate)", "casino": "-150", "prob_alg": "62.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Guadalajara (ML)", "casino": "+140", "prob_alg": "37.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Quer\u00e9taro (ML)", "casino": "-120", "prob_alg": "27.9%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_20": {"local": "Santos", "visita": "Pachuca", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/225.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/234.png", "fecha_partido": "27/09 - 01:00 hrs", "has_data": true, "prob_l": 23.3, "prob_v": 41.7, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 89.3, "best_reason": "Promedio xG conjunto de 2.68 goles proyecta un duelo abierto.", "fechas_labels": ["06/09", "30/08", "23/08", "17/08", "02/08"], "hist_local": [0, 0, 2, 0, 0], "hist_visita": [0, 0, 1, 1, 3], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "89.3%", "ev": "ALTA"}, {"mercado": "1X (Santos / Empate)", "casino": "-220", "prob_alg": "58.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Pachuca / Empate)", "casino": "-150", "prob_alg": "76.7%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Santos (ML)", "casino": "+140", "prob_alg": "23.3%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Pachuca (ML)", "casino": "-120", "prob_alg": "41.7%", "ev": "OBSERVACI\u00d3N"}]}, "mx_match_21": {"local": "Tigres UANL", "visita": "Puebla", "logo_local": "https://a.espncdn.com/i/teamlogos/soccer/500/232.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/soccer/500/231.png", "fecha_partido": "27/09 - 01:00 hrs", "has_data": true, "prob_l": 37.9, "prob_v": 27.1, "prob_e": 35.0, "has_valid": true, "best_projection": "Over 1.5 Goles Totales", "best_casino": "-180", "best_prob": 86.3, "best_reason": "Promedio xG conjunto de 2.59 goles proyecta un duelo abierto.", "fechas_labels": ["13/09", "06/09", "30/08", "22/08", "16/08"], "hist_local": [0, 1, 0, 2, 1], "hist_visita": [0, 2, 2, 2, 1], "mercados": [{"mercado": "Over 1.5 Goles Totales", "casino": "-180", "prob_alg": "86.3%", "ev": "ALTA"}, {"mercado": "1X (Tigres UANL / Empate)", "casino": "-220", "prob_alg": "72.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "X2 (Puebla / Empate)", "casino": "-150", "prob_alg": "62.1%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Tigres UANL (ML)", "casino": "+140", "prob_alg": "37.9%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Puebla (ML)", "casino": "-120", "prob_alg": "27.1%", "ev": "OBSERVACI\u00d3N"}]}};
+        const matchesNFL = {"nfl_match_0": {"local": "Seattle Seahawks", "visita": "New England Patriots", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sea.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ne.png", "fecha_partido": "10/09 - 00:20 hrs", "has_data": true, "prob_l": 58.5, "prob_v": 41.5, "prob_e": 0, "has_valid": true, "best_projection": "Over 43.5 Puntos Totales", "best_casino": "-110", "best_prob": 86.4, "best_reason": "Proyecci\u00f3n combinada estimada en 45.5 puntos frente a l\u00ednea de 43.5.", "fechas_labels": ["W-1", "W-2", "W-3", "W-4", "W-5"], "hist_local": [24, 27, 20, 31, 23], "hist_visita": [17, 21, 24, 16, 20], "mercados": [{"mercado": "Over 43.5 Puntos", "casino": "-110", "prob_alg": "86.4%", "ev": "ALTA"}, {"mercado": "Spread (Seattle Seahawks -3.0)", "casino": "-110", "prob_alg": "85.2%", "ev": "ALTA"}, {"mercado": "Gana Seattle Seahawks (ML)", "casino": "-140", "prob_alg": "58.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana New England Patriots (ML)", "casino": "+120", "prob_alg": "41.5%", "ev": "OBSERVACI\u00d3N"}]}, "nfl_match_1": {"local": "Los Angeles Rams", "visita": "San Francisco 49ers", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lar.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sf.png", "fecha_partido": "11/09 - 00:35 hrs", "has_data": true, "prob_l": 58.5, "prob_v": 41.5, "prob_e": 0, "has_valid": true, "best_projection": "Over 43.5 Puntos Totales", "best_casino": "-110", "best_prob": 86.4, "best_reason": "Proyecci\u00f3n combinada estimada en 45.5 puntos frente a l\u00ednea de 43.5.", "fechas_labels": ["W-1", "W-2", "W-3", "W-4", "W-5"], "hist_local": [24, 27, 20, 31, 23], "hist_visita": [17, 21, 24, 16, 20], "mercados": [{"mercado": "Over 43.5 Puntos", "casino": "-110", "prob_alg": "86.4%", "ev": "ALTA"}, {"mercado": "Spread (Los Angeles Rams -3.0)", "casino": "-110", "prob_alg": "85.2%", "ev": "ALTA"}, {"mercado": "Gana Los Angeles Rams (ML)", "casino": "-140", "prob_alg": "58.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana San Francisco 49ers (ML)", "casino": "+120", "prob_alg": "41.5%", "ev": "OBSERVACI\u00d3N"}]}, "nfl_match_2": {"local": "Cincinnati Bengals", "visita": "Tampa Bay Buccaneers", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cin.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/tb.png", "fecha_partido": "13/09 - 17:00 hrs", "has_data": true, "prob_l": 58.5, "prob_v": 41.5, "prob_e": 0, "has_valid": true, "best_projection": "Over 50.5 Puntos Totales", "best_casino": "-110", "best_prob": 86.4, "best_reason": "Proyecci\u00f3n combinada estimada en 45.5 puntos frente a l\u00ednea de 50.5.", "fechas_labels": ["W-1", "W-2", "W-3", "W-4", "W-5"], "hist_local": [24, 27, 20, 31, 23], "hist_visita": [17, 21, 24, 16, 20], "mercados": [{"mercado": "Over 50.5 Puntos", "casino": "-110", "prob_alg": "86.4%", "ev": "ALTA"}, {"mercado": "Spread (CIN -3.5)", "casino": "-110", "prob_alg": "85.2%", "ev": "ALTA"}, {"mercado": "Gana Cincinnati Bengals (ML)", "casino": "-140", "prob_alg": "58.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Tampa Bay Buccaneers (ML)", "casino": "+120", "prob_alg": "41.5%", "ev": "OBSERVACI\u00d3N"}]}, "nfl_match_3": {"local": "Detroit Lions", "visita": "New Orleans Saints", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/det.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/no.png", "fecha_partido": "13/09 - 17:00 hrs", "has_data": true, "prob_l": 58.5, "prob_v": 41.5, "prob_e": 0, "has_valid": true, "best_projection": "Over 49.5 Puntos Totales", "best_casino": "-110", "best_prob": 86.4, "best_reason": "Proyecci\u00f3n combinada estimada en 45.5 puntos frente a l\u00ednea de 49.5.", "fechas_labels": ["W-1", "W-2", "W-3", "W-4", "W-5"], "hist_local": [24, 27, 20, 31, 23], "hist_visita": [17, 21, 24, 16, 20], "mercados": [{"mercado": "Over 49.5 Puntos", "casino": "-110", "prob_alg": "86.4%", "ev": "ALTA"}, {"mercado": "Spread (DET -7)", "casino": "-110", "prob_alg": "85.2%", "ev": "ALTA"}, {"mercado": "Gana Detroit Lions (ML)", "casino": "-140", "prob_alg": "58.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana New Orleans Saints (ML)", "casino": "+120", "prob_alg": "41.5%", "ev": "OBSERVACI\u00d3N"}]}, "nfl_match_4": {"local": "Tennessee Titans", "visita": "New York Jets", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ten.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyj.png", "fecha_partido": "13/09 - 17:00 hrs", "has_data": true, "prob_l": 58.5, "prob_v": 41.5, "prob_e": 0, "has_valid": true, "best_projection": "Over 38.5 Puntos Totales", "best_casino": "-110", "best_prob": 86.4, "best_reason": "Proyecci\u00f3n combinada estimada en 45.5 puntos frente a l\u00ednea de 38.5.", "fechas_labels": ["W-1", "W-2", "W-3", "W-4", "W-5"], "hist_local": [24, 27, 20, 31, 23], "hist_visita": [17, 21, 24, 16, 20], "mercados": [{"mercado": "Over 38.5 Puntos", "casino": "-110", "prob_alg": "86.4%", "ev": "ALTA"}, {"mercado": "Spread (TEN -1.5)", "casino": "-110", "prob_alg": "85.2%", "ev": "ALTA"}, {"mercado": "Gana Tennessee Titans (ML)", "casino": "-140", "prob_alg": "58.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana New York Jets (ML)", "casino": "+120", "prob_alg": "41.5%", "ev": "OBSERVACI\u00d3N"}]}, "nfl_match_5": {"local": "Indianapolis Colts", "visita": "Baltimore Ravens", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ind.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/bal.png", "fecha_partido": "13/09 - 17:00 hrs", "has_data": true, "prob_l": 58.5, "prob_v": 41.5, "prob_e": 0, "has_valid": true, "best_projection": "Over 47.5 Puntos Totales", "best_casino": "-110", "best_prob": 86.4, "best_reason": "Proyecci\u00f3n combinada estimada en 45.5 puntos frente a l\u00ednea de 47.5.", "fechas_labels": ["W-1", "W-2", "W-3", "W-4", "W-5"], "hist_local": [24, 27, 20, 31, 23], "hist_visita": [17, 21, 24, 16, 20], "mercados": [{"mercado": "Over 47.5 Puntos", "casino": "-110", "prob_alg": "86.4%", "ev": "ALTA"}, {"mercado": "Spread (BAL -3.5)", "casino": "-110", "prob_alg": "85.2%", "ev": "ALTA"}, {"mercado": "Gana Indianapolis Colts (ML)", "casino": "-140", "prob_alg": "58.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Baltimore Ravens (ML)", "casino": "+120", "prob_alg": "41.5%", "ev": "OBSERVACI\u00d3N"}]}, "nfl_match_6": {"local": "Pittsburgh Steelers", "visita": "Atlanta Falcons", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/pit.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/atl.png", "fecha_partido": "13/09 - 17:00 hrs", "has_data": true, "prob_l": 58.5, "prob_v": 41.5, "prob_e": 0, "has_valid": true, "best_projection": "Over 41.5 Puntos Totales", "best_casino": "-110", "best_prob": 86.4, "best_reason": "Proyecci\u00f3n combinada estimada en 45.5 puntos frente a l\u00ednea de 41.5.", "fechas_labels": ["W-1", "W-2", "W-3", "W-4", "W-5"], "hist_local": [24, 27, 20, 31, 23], "hist_visita": [17, 21, 24, 16, 20], "mercados": [{"mercado": "Over 41.5 Puntos", "casino": "-110", "prob_alg": "86.4%", "ev": "ALTA"}, {"mercado": "Spread (PIT -6)", "casino": "-110", "prob_alg": "85.2%", "ev": "ALTA"}, {"mercado": "Gana Pittsburgh Steelers (ML)", "casino": "-140", "prob_alg": "58.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Atlanta Falcons (ML)", "casino": "+120", "prob_alg": "41.5%", "ev": "OBSERVACI\u00d3N"}]}, "nfl_match_7": {"local": "Carolina Panthers", "visita": "Chicago Bears", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/car.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/chi.png", "fecha_partido": "13/09 - 17:00 hrs", "has_data": true, "prob_l": 58.5, "prob_v": 41.5, "prob_e": 0, "has_valid": true, "best_projection": "Over 47.5 Puntos Totales", "best_casino": "-110", "best_prob": 86.4, "best_reason": "Proyecci\u00f3n combinada estimada en 45.5 puntos frente a l\u00ednea de 47.5.", "fechas_labels": ["W-1", "W-2", "W-3", "W-4", "W-5"], "hist_local": [24, 27, 20, 31, 23], "hist_visita": [17, 21, 24, 16, 20], "mercados": [{"mercado": "Over 47.5 Puntos", "casino": "-110", "prob_alg": "86.4%", "ev": "ALTA"}, {"mercado": "Spread (CHI -3)", "casino": "-110", "prob_alg": "85.2%", "ev": "ALTA"}, {"mercado": "Gana Carolina Panthers (ML)", "casino": "-140", "prob_alg": "58.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Chicago Bears (ML)", "casino": "+120", "prob_alg": "41.5%", "ev": "OBSERVACI\u00d3N"}]}, "nfl_match_8": {"local": "Jacksonville Jaguars", "visita": "Cleveland Browns", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/jax.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cle.png", "fecha_partido": "13/09 - 17:00 hrs", "has_data": true, "prob_l": 58.5, "prob_v": 41.5, "prob_e": 0, "has_valid": true, "best_projection": "Over 39.5 Puntos Totales", "best_casino": "-110", "best_prob": 86.4, "best_reason": "Proyecci\u00f3n combinada estimada en 45.5 puntos frente a l\u00ednea de 39.5.", "fechas_labels": ["W-1", "W-2", "W-3", "W-4", "W-5"], "hist_local": [24, 27, 20, 31, 23], "hist_visita": [17, 21, 24, 16, 20], "mercados": [{"mercado": "Over 39.5 Puntos", "casino": "-110", "prob_alg": "86.4%", "ev": "ALTA"}, {"mercado": "Spread (JAX -8.5)", "casino": "-110", "prob_alg": "85.2%", "ev": "ALTA"}, {"mercado": "Gana Jacksonville Jaguars (ML)", "casino": "-140", "prob_alg": "58.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Cleveland Browns (ML)", "casino": "+120", "prob_alg": "41.5%", "ev": "OBSERVACI\u00d3N"}]}, "nfl_match_9": {"local": "Houston Texans", "visita": "Buffalo Bills", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/hou.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/buf.png", "fecha_partido": "13/09 - 17:00 hrs", "has_data": true, "prob_l": 58.5, "prob_v": 41.5, "prob_e": 0, "has_valid": true, "best_projection": "Over 44.5 Puntos Totales", "best_casino": "-110", "best_prob": 86.4, "best_reason": "Proyecci\u00f3n combinada estimada en 45.5 puntos frente a l\u00ednea de 44.5.", "fechas_labels": ["W-1", "W-2", "W-3", "W-4", "W-5"], "hist_local": [24, 27, 20, 31, 23], "hist_visita": [17, 21, 24, 16, 20], "mercados": [{"mercado": "Over 44.5 Puntos", "casino": "-110", "prob_alg": "86.4%", "ev": "ALTA"}, {"mercado": "Spread (BUF -1.5)", "casino": "-110", "prob_alg": "85.2%", "ev": "ALTA"}, {"mercado": "Gana Houston Texans (ML)", "casino": "-140", "prob_alg": "58.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Buffalo Bills (ML)", "casino": "+120", "prob_alg": "41.5%", "ev": "OBSERVACI\u00d3N"}]}, "nfl_match_10": {"local": "Las Vegas Raiders", "visita": "Miami Dolphins", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lv.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/mia.png", "fecha_partido": "13/09 - 20:25 hrs", "has_data": true, "prob_l": 58.5, "prob_v": 41.5, "prob_e": 0, "has_valid": true, "best_projection": "Over 40.5 Puntos Totales", "best_casino": "-110", "best_prob": 86.4, "best_reason": "Proyecci\u00f3n combinada estimada en 45.5 puntos frente a l\u00ednea de 40.5.", "fechas_labels": ["W-1", "W-2", "W-3", "W-4", "W-5"], "hist_local": [24, 27, 20, 31, 23], "hist_visita": [17, 21, 24, 16, 20], "mercados": [{"mercado": "Over 40.5 Puntos", "casino": "-110", "prob_alg": "86.4%", "ev": "ALTA"}, {"mercado": "Spread (LV -3)", "casino": "-110", "prob_alg": "85.2%", "ev": "ALTA"}, {"mercado": "Gana Las Vegas Raiders (ML)", "casino": "-140", "prob_alg": "58.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Miami Dolphins (ML)", "casino": "+120", "prob_alg": "41.5%", "ev": "OBSERVACI\u00d3N"}]}, "nfl_match_11": {"local": "Minnesota Vikings", "visita": "Green Bay Packers", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/min.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/gb.png", "fecha_partido": "13/09 - 20:25 hrs", "has_data": true, "prob_l": 58.5, "prob_v": 41.5, "prob_e": 0, "has_valid": true, "best_projection": "Over 46.5 Puntos Totales", "best_casino": "-110", "best_prob": 86.4, "best_reason": "Proyecci\u00f3n combinada estimada en 45.5 puntos frente a l\u00ednea de 46.5.", "fechas_labels": ["W-1", "W-2", "W-3", "W-4", "W-5"], "hist_local": [24, 27, 20, 31, 23], "hist_visita": [17, 21, 24, 16, 20], "mercados": [{"mercado": "Over 46.5 Puntos", "casino": "-110", "prob_alg": "86.4%", "ev": "ALTA"}, {"mercado": "Spread (MIN -1.5)", "casino": "-110", "prob_alg": "85.2%", "ev": "ALTA"}, {"mercado": "Gana Minnesota Vikings (ML)", "casino": "-140", "prob_alg": "58.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Green Bay Packers (ML)", "casino": "+120", "prob_alg": "41.5%", "ev": "OBSERVACI\u00d3N"}]}, "nfl_match_12": {"local": "Philadelphia Eagles", "visita": "Washington Commanders", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/phi.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/wsh.png", "fecha_partido": "13/09 - 20:25 hrs", "has_data": true, "prob_l": 58.5, "prob_v": 41.5, "prob_e": 0, "has_valid": true, "best_projection": "Over 44.5 Puntos Totales", "best_casino": "-110", "best_prob": 86.4, "best_reason": "Proyecci\u00f3n combinada estimada en 45.5 puntos frente a l\u00ednea de 44.5.", "fechas_labels": ["W-1", "W-2", "W-3", "W-4", "W-5"], "hist_local": [24, 27, 20, 31, 23], "hist_visita": [17, 21, 24, 16, 20], "mercados": [{"mercado": "Over 44.5 Puntos", "casino": "-110", "prob_alg": "86.4%", "ev": "ALTA"}, {"mercado": "Spread (PHI -6)", "casino": "-110", "prob_alg": "85.2%", "ev": "ALTA"}, {"mercado": "Gana Philadelphia Eagles (ML)", "casino": "-140", "prob_alg": "58.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Washington Commanders (ML)", "casino": "+120", "prob_alg": "41.5%", "ev": "OBSERVACI\u00d3N"}]}, "nfl_match_13": {"local": "Los Angeles Chargers", "visita": "Arizona Cardinals", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lac.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ari.png", "fecha_partido": "13/09 - 20:25 hrs", "has_data": true, "prob_l": 58.5, "prob_v": 41.5, "prob_e": 0, "has_valid": true, "best_projection": "Over 47.5 Puntos Totales", "best_casino": "-110", "best_prob": 86.4, "best_reason": "Proyecci\u00f3n combinada estimada en 45.5 puntos frente a l\u00ednea de 47.5.", "fechas_labels": ["W-1", "W-2", "W-3", "W-4", "W-5"], "hist_local": [24, 27, 20, 31, 23], "hist_visita": [17, 21, 24, 16, 20], "mercados": [{"mercado": "Over 47.5 Puntos", "casino": "-110", "prob_alg": "86.4%", "ev": "ALTA"}, {"mercado": "Spread (LAC -9.5)", "casino": "-110", "prob_alg": "85.2%", "ev": "ALTA"}, {"mercado": "Gana Los Angeles Chargers (ML)", "casino": "-140", "prob_alg": "58.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Arizona Cardinals (ML)", "casino": "+120", "prob_alg": "41.5%", "ev": "OBSERVACI\u00d3N"}]}, "nfl_match_14": {"local": "New York Giants", "visita": "Dallas Cowboys", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyg.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/dal.png", "fecha_partido": "14/09 - 00:20 hrs", "has_data": true, "prob_l": 58.5, "prob_v": 41.5, "prob_e": 0, "has_valid": true, "best_projection": "Over 48.5 Puntos Totales", "best_casino": "-110", "best_prob": 86.4, "best_reason": "Proyecci\u00f3n combinada estimada en 45.5 puntos frente a l\u00ednea de 48.5.", "fechas_labels": ["W-1", "W-2", "W-3", "W-4", "W-5"], "hist_local": [24, 27, 20, 31, 23], "hist_visita": [17, 21, 24, 16, 20], "mercados": [{"mercado": "Over 48.5 Puntos", "casino": "-110", "prob_alg": "86.4%", "ev": "ALTA"}, {"mercado": "Spread (DAL -3)", "casino": "-110", "prob_alg": "85.2%", "ev": "ALTA"}, {"mercado": "Gana New York Giants (ML)", "casino": "-140", "prob_alg": "58.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Dallas Cowboys (ML)", "casino": "+120", "prob_alg": "41.5%", "ev": "OBSERVACI\u00d3N"}]}, "nfl_match_15": {"local": "Kansas City Chiefs", "visita": "Denver Broncos", "logo_local": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png", "logo_visita": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/den.png", "fecha_partido": "15/09 - 00:15 hrs", "has_data": true, "prob_l": 58.5, "prob_v": 41.5, "prob_e": 0, "has_valid": true, "best_projection": "Over 43.5 Puntos Totales", "best_casino": "-110", "best_prob": 86.4, "best_reason": "Proyecci\u00f3n combinada estimada en 45.5 puntos frente a l\u00ednea de 43.5.", "fechas_labels": ["W-1", "W-2", "W-3", "W-4", "W-5"], "hist_local": [24, 27, 20, 31, 23], "hist_visita": [17, 21, 24, 16, 20], "mercados": [{"mercado": "Over 43.5 Puntos", "casino": "-110", "prob_alg": "86.4%", "ev": "ALTA"}, {"mercado": "Spread (KC -2.5)", "casino": "-110", "prob_alg": "85.2%", "ev": "ALTA"}, {"mercado": "Gana Kansas City Chiefs (ML)", "casino": "-140", "prob_alg": "58.5%", "ev": "OBSERVACI\u00d3N"}, {"mercado": "Gana Denver Broncos (ML)", "casino": "+120", "prob_alg": "41.5%", "ev": "OBSERVACI\u00d3N"}]}};
         const matchesNBA = {};
-        const picksMX = [{"partido": "Monterrey vs Tigres UANL", "pick": "Over 1.5 Goles Totales", "prob": 92, "casino": "-180"}, {"partido": "Cruz Azul vs Am\u00e9rica", "pick": "Over 1.5 Goles Totales", "prob": 92, "casino": "-180"}, {"partido": "Santos vs FC Juarez", "pick": "Over 1.5 Goles Totales", "prob": 92, "casino": "-180"}];
-        const picksNFL = [];
+        const picksMX = [{"partido": "Monterrey vs Tigres UANL", "pick": "Over 1.5 Goles Totales", "prob": 92, "casino": "-180"}, {"partido": "Santos vs FC Juarez", "pick": "Over 1.5 Goles Totales", "prob": 92, "casino": "-180"}, {"partido": "Guadalajara vs Pumas UNAM", "pick": "Over 1.5 Goles Totales", "prob": 92, "casino": "-180"}];
+        const picksNFL = [{"partido": "Seattle Seahawks vs New England Patriots", "pick": "Over 43.5 Puntos Totales", "prob": 86.4, "casino": "-110"}, {"partido": "Los Angeles Rams vs San Francisco 49ers", "pick": "Over 43.5 Puntos Totales", "prob": 86.4, "casino": "-110"}, {"partido": "Cincinnati Bengals vs Tampa Bay Buccaneers", "pick": "Over 50.5 Puntos Totales", "prob": 86.4, "casino": "-110"}];
         const picksNBA = [];
         
         let currentSport = 'futbol';
@@ -328,358 +336,375 @@
                 document.getElementById('matchesContainer').innerHTML = `
     <div class="pro-card">
         <div class="pro-card-header" onclick="openModal('mx_match_0', 'mx')">
-            <span class="pro-league">LIGA MX • 12/09 - 01:00 hrs</span>
-            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+            <span class="pro-league">LIGA MX • 12/09 - 23:05 hrs</span>
+            <span class="pro-badge badge-slate">SOLO DATA</span>
         </div>
         <div class="pro-matchup" onclick="openModal('mx_match_0', 'mx')">
-            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/229.png"><span>Necaxa</span></div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/223.png"><span>Toluca</span></div>
             <div class="pro-vs">VS</div>
-            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/231.png"><span>Puebla</span></div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/216.png"><span>Atlas</span></div>
         </div>
-        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
-        <div style="display:flex; gap:10px;">
+        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⚪ SIN PICK RECOMENDADO</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Ninguna línea supera el 85% de probabilidad</div></div>
+        <div style="display:flex; gap:8px;">
             <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_0', 'mx')">VER ANÁLISIS &rarr;</button>
-            <button class="save-pick-btn" onclick="saveCustomPick('Necaxa vs Puebla', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
+            
         </div>
     </div>
     
     <div class="pro-card">
         <div class="pro-card-header" onclick="openModal('mx_match_1', 'mx')">
-            <span class="pro-league">LIGA MX • 12/09 - 03:00 hrs</span>
-            <span class="pro-badge badge-slate">SOLO DATA</span>
-        </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_1', 'mx')">
-            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/226.png"><span>Atlante</span></div>
-            <div class="pro-vs">VS</div>
-            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/234.png"><span>Pachuca</span></div>
-        </div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⚪ SIN PICK RECOMENDADO</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Ninguna línea supera el 85% de probabilidad</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_1', 'mx')">VER ANÁLISIS &rarr;</button>
-            
-        </div>
-    </div>
-    
-    <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('mx_match_2', 'mx')">
-            <span class="pro-league">LIGA MX • 12/09 - 03:10 hrs</span>
-            <span class="pro-badge badge-slate">SOLO DATA</span>
-        </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_2', 'mx')">
-            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/10125.png"><span>Tijuana</span></div>
-            <div class="pro-vs">VS</div>
-            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/222.png"><span>Querétaro</span></div>
-        </div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⚪ SIN PICK RECOMENDADO</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Ninguna línea supera el 85% de probabilidad</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_2', 'mx')">VER ANÁLISIS &rarr;</button>
-            
-        </div>
-    </div>
-    
-    <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('mx_match_3', 'mx')">
-            <span class="pro-league">LIGA MX • 12/09 - 23:00 hrs</span>
-            <span class="pro-badge badge-slate">SOLO DATA</span>
-        </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_3', 'mx')">
-            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/223.png"><span>Toluca</span></div>
-            <div class="pro-vs">VS</div>
-            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/216.png"><span>Atlas</span></div>
-        </div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⚪ SIN PICK RECOMENDADO</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Ninguna línea supera el 85% de probabilidad</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_3', 'mx')">VER ANÁLISIS &rarr;</button>
-            
-        </div>
-    </div>
-    
-    <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('mx_match_4', 'mx')">
             <span class="pro-league">LIGA MX • 13/09 - 01:10 hrs</span>
             <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
         </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_4', 'mx')">
+        <div class="pro-matchup" onclick="openModal('mx_match_1', 'mx')">
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/220.png"><span>Monterrey</span></div>
             <div class="pro-vs">VS</div>
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/232.png"><span>Tigres UANL</span></div>
         </div>
         <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_4', 'mx')">VER ANÁLISIS &rarr;</button>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_1', 'mx')">VER ANÁLISIS &rarr;</button>
             <button class="save-pick-btn" onclick="saveCustomPick('Monterrey vs Tigres UANL', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
         </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('mx_match_5', 'mx')">
+        <div class="pro-card-header" onclick="openModal('mx_match_2', 'mx')">
             <span class="pro-league">LIGA MX • 13/09 - 03:15 hrs</span>
             <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
         </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_5', 'mx')">
+        <div class="pro-matchup" onclick="openModal('mx_match_2', 'mx')">
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/218.png"><span>Cruz Azul</span></div>
             <div class="pro-vs">VS</div>
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/227.png"><span>América</span></div>
         </div>
         <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_5', 'mx')">VER ANÁLISIS &rarr;</button>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_2', 'mx')">VER ANÁLISIS &rarr;</button>
             <button class="save-pick-btn" onclick="saveCustomPick('Cruz Azul vs América', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
         </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('mx_match_6', 'mx')">
+        <div class="pro-card-header" onclick="openModal('mx_match_3', 'mx')">
             <span class="pro-league">LIGA MX • 14/09 - 01:00 hrs</span>
             <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
         </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_6', 'mx')">
+        <div class="pro-matchup" onclick="openModal('mx_match_3', 'mx')">
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/225.png"><span>Santos</span></div>
             <div class="pro-vs">VS</div>
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/17851.png"><span>FC Juarez</span></div>
         </div>
         <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_6', 'mx')">VER ANÁLISIS &rarr;</button>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_3', 'mx')">VER ANÁLISIS &rarr;</button>
             <button class="save-pick-btn" onclick="saveCustomPick('Santos vs FC Juarez', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
         </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('mx_match_7', 'mx')">
+        <div class="pro-card-header" onclick="openModal('mx_match_4', 'mx')">
             <span class="pro-league">LIGA MX • 14/09 - 01:07 hrs</span>
             <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
         </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_7', 'mx')">
+        <div class="pro-matchup" onclick="openModal('mx_match_4', 'mx')">
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/219.png"><span>Guadalajara</span></div>
             <div class="pro-vs">VS</div>
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/233.png"><span>Pumas UNAM</span></div>
         </div>
         <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_7', 'mx')">VER ANÁLISIS &rarr;</button>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_4', 'mx')">VER ANÁLISIS &rarr;</button>
             <button class="save-pick-btn" onclick="saveCustomPick('Guadalajara vs Pumas UNAM', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
         </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('mx_match_8', 'mx')">
+        <div class="pro-card-header" onclick="openModal('mx_match_5', 'mx')">
             <span class="pro-league">LIGA MX • 15/09 - 01:00 hrs</span>
             <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
         </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_8', 'mx')">
+        <div class="pro-matchup" onclick="openModal('mx_match_5', 'mx')">
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/228.png"><span>León</span></div>
             <div class="pro-vs">VS</div>
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/15720.png"><span>Atlético de San Luis</span></div>
         </div>
         <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_8', 'mx')">VER ANÁLISIS &rarr;</button>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_5', 'mx')">VER ANÁLISIS &rarr;</button>
             <button class="save-pick-btn" onclick="saveCustomPick('León vs Atlético de San Luis', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
         </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('mx_match_9', 'mx')">
+        <div class="pro-card-header" onclick="openModal('mx_match_6', 'mx')">
             <span class="pro-league">LIGA MX • 16/09 - 01:00 hrs</span>
-            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+            <span class="pro-badge badge-slate">SOLO DATA</span>
         </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_9', 'mx')">
+        <div class="pro-matchup" onclick="openModal('mx_match_6', 'mx')">
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/231.png"><span>Puebla</span></div>
             <div class="pro-vs">VS</div>
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/223.png"><span>Toluca</span></div>
         </div>
-        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_9', 'mx')">VER ANÁLISIS &rarr;</button>
-            <button class="save-pick-btn" onclick="saveCustomPick('Puebla vs Toluca', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
-        </div>
-    </div>
-    
-    <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('mx_match_10', 'mx')">
-            <span class="pro-league">LIGA MX • 19/09 - 01:00 hrs</span>
-            <span class="pro-badge badge-slate">SOLO DATA</span>
-        </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_10', 'mx')">
-            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/231.png"><span>Puebla</span></div>
-            <div class="pro-vs">VS</div>
-            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/226.png"><span>Atlante</span></div>
-        </div>
         <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⚪ SIN PICK RECOMENDADO</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Ninguna línea supera el 85% de probabilidad</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_10', 'mx')">VER ANÁLISIS &rarr;</button>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_6', 'mx')">VER ANÁLISIS &rarr;</button>
             
         </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('mx_match_11', 'mx')">
+        <div class="pro-card-header" onclick="openModal('mx_match_7', 'mx')">
+            <span class="pro-league">LIGA MX • 19/09 - 01:00 hrs</span>
+            <span class="pro-badge badge-slate">SOLO DATA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('mx_match_7', 'mx')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/231.png"><span>Puebla</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/226.png"><span>Atlante</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⚪ SIN PICK RECOMENDADO</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Ninguna línea supera el 85% de probabilidad</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_7', 'mx')">VER ANÁLISIS &rarr;</button>
+            
+        </div>
+    </div>
+    
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('mx_match_8', 'mx')">
             <span class="pro-league">LIGA MX • 19/09 - 03:00 hrs</span>
             <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
         </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_11', 'mx')">
+        <div class="pro-matchup" onclick="openModal('mx_match_8', 'mx')">
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/17851.png"><span>FC Juarez</span></div>
             <div class="pro-vs">VS</div>
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/232.png"><span>Tigres UANL</span></div>
         </div>
         <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_11', 'mx')">VER ANÁLISIS &rarr;</button>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_8', 'mx')">VER ANÁLISIS &rarr;</button>
             <button class="save-pick-btn" onclick="saveCustomPick('FC Juarez vs Tigres UANL', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
         </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('mx_match_12', 'mx')">
+        <div class="pro-card-header" onclick="openModal('mx_match_9', 'mx')">
             <span class="pro-league">LIGA MX • 19/09 - 23:00 hrs</span>
-            <span class="pro-badge badge-slate">SOLO DATA</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
         </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_12', 'mx')">
+        <div class="pro-matchup" onclick="openModal('mx_match_9', 'mx')">
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/216.png"><span>Atlas</span></div>
             <div class="pro-vs">VS</div>
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/233.png"><span>Pumas UNAM</span></div>
         </div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⚪ SIN PICK RECOMENDADO</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Ninguna línea supera el 85% de probabilidad</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_12', 'mx')">VER ANÁLISIS &rarr;</button>
-            
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_9', 'mx')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Atlas vs Pumas UNAM', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
         </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('mx_match_13', 'mx')">
+        <div class="pro-card-header" onclick="openModal('mx_match_10', 'mx')">
             <span class="pro-league">LIGA MX • 19/09 - 23:00 hrs</span>
             <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
         </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_13', 'mx')">
+        <div class="pro-matchup" onclick="openModal('mx_match_10', 'mx')">
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/15720.png"><span>Atlético de San Luis</span></div>
             <div class="pro-vs">VS</div>
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/229.png"><span>Necaxa</span></div>
         </div>
         <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_13', 'mx')">VER ANÁLISIS &rarr;</button>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_10', 'mx')">VER ANÁLISIS &rarr;</button>
             <button class="save-pick-btn" onclick="saveCustomPick('Atlético de San Luis vs Necaxa', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
         </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('mx_match_14', 'mx')">
+        <div class="pro-card-header" onclick="openModal('mx_match_11', 'mx')">
             <span class="pro-league">LIGA MX • 20/09 - 01:00 hrs</span>
             <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
         </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_14', 'mx')">
+        <div class="pro-matchup" onclick="openModal('mx_match_11', 'mx')">
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/220.png"><span>Monterrey</span></div>
             <div class="pro-vs">VS</div>
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/218.png"><span>Cruz Azul</span></div>
         </div>
         <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_14', 'mx')">VER ANÁLISIS &rarr;</button>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_11', 'mx')">VER ANÁLISIS &rarr;</button>
             <button class="save-pick-btn" onclick="saveCustomPick('Monterrey vs Cruz Azul', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
         </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('mx_match_15', 'mx')">
+        <div class="pro-card-header" onclick="openModal('mx_match_12', 'mx')">
             <span class="pro-league">LIGA MX • 20/09 - 03:00 hrs</span>
             <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
         </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_15', 'mx')">
+        <div class="pro-matchup" onclick="openModal('mx_match_12', 'mx')">
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/227.png"><span>América</span></div>
             <div class="pro-vs">VS</div>
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/219.png"><span>Guadalajara</span></div>
         </div>
         <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_15', 'mx')">VER ANÁLISIS &rarr;</button>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_12', 'mx')">VER ANÁLISIS &rarr;</button>
             <button class="save-pick-btn" onclick="saveCustomPick('América vs Guadalajara', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
         </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('mx_match_16', 'mx')">
+        <div class="pro-card-header" onclick="openModal('mx_match_13', 'mx')">
             <span class="pro-league">LIGA MX • 21/09 - 00:00 hrs</span>
             <span class="pro-badge badge-slate">SOLO DATA</span>
         </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_16', 'mx')">
+        <div class="pro-matchup" onclick="openModal('mx_match_13', 'mx')">
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/234.png"><span>Pachuca</span></div>
             <div class="pro-vs">VS</div>
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/10125.png"><span>Tijuana</span></div>
         </div>
         <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⚪ SIN PICK RECOMENDADO</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Ninguna línea supera el 85% de probabilidad</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_16', 'mx')">VER ANÁLISIS &rarr;</button>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_13', 'mx')">VER ANÁLISIS &rarr;</button>
             
         </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('mx_match_17', 'mx')">
+        <div class="pro-card-header" onclick="openModal('mx_match_14', 'mx')">
             <span class="pro-league">LIGA MX • 21/09 - 00:00 hrs</span>
             <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
         </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_17', 'mx')">
+        <div class="pro-matchup" onclick="openModal('mx_match_14', 'mx')">
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/223.png"><span>Toluca</span></div>
             <div class="pro-vs">VS</div>
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/225.png"><span>Santos</span></div>
         </div>
         <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_17', 'mx')">VER ANÁLISIS &rarr;</button>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_14', 'mx')">VER ANÁLISIS &rarr;</button>
             <button class="save-pick-btn" onclick="saveCustomPick('Toluca vs Santos', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
         </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('mx_match_18', 'mx')">
+        <div class="pro-card-header" onclick="openModal('mx_match_15', 'mx')">
             <span class="pro-league">LIGA MX • 21/09 - 02:00 hrs</span>
-            <span class="pro-badge badge-slate">SOLO DATA</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
         </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_18', 'mx')">
+        <div class="pro-matchup" onclick="openModal('mx_match_15', 'mx')">
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/222.png"><span>Querétaro</span></div>
             <div class="pro-vs">VS</div>
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/228.png"><span>León</span></div>
         </div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⚪ SIN PICK RECOMENDADO</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Ninguna línea supera el 85% de probabilidad</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_18', 'mx')">VER ANÁLISIS &rarr;</button>
-            
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_15', 'mx')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Querétaro vs León', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
         </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('mx_match_19', 'mx')">
+        <div class="pro-card-header" onclick="openModal('mx_match_16', 'mx')">
             <span class="pro-league">LIGA MX • 26/09 - 01:00 hrs</span>
             <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
         </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_19', 'mx')">
+        <div class="pro-matchup" onclick="openModal('mx_match_16', 'mx')">
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/226.png"><span>Atlante</span></div>
             <div class="pro-vs">VS</div>
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/220.png"><span>Monterrey</span></div>
         </div>
         <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_19', 'mx')">VER ANÁLISIS &rarr;</button>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_16', 'mx')">VER ANÁLISIS &rarr;</button>
             <button class="save-pick-btn" onclick="saveCustomPick('Atlante vs Monterrey', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
         </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('mx_match_20', 'mx')">
+        <div class="pro-card-header" onclick="openModal('mx_match_17', 'mx')">
             <span class="pro-league">LIGA MX • 26/09 - 03:00 hrs</span>
             <span class="pro-badge badge-slate">SOLO DATA</span>
         </div>
-        <div class="pro-matchup" onclick="openModal('mx_match_20', 'mx')">
+        <div class="pro-matchup" onclick="openModal('mx_match_17', 'mx')">
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/10125.png"><span>Tijuana</span></div>
             <div class="pro-vs">VS</div>
             <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/216.png"><span>Atlas</span></div>
         </div>
         <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⚪ SIN PICK RECOMENDADO</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Ninguna línea supera el 85% de probabilidad</div></div>
-        <div style="display:flex; gap:10px;">
-            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_20', 'mx')">VER ANÁLISIS &rarr;</button>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_17', 'mx')">VER ANÁLISIS &rarr;</button>
             
+        </div>
+    </div>
+    
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('mx_match_18', 'mx')">
+            <span class="pro-league">LIGA MX • 26/09 - 23:00 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('mx_match_18', 'mx')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/218.png"><span>Cruz Azul</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/223.png"><span>Toluca</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_18', 'mx')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Cruz Azul vs Toluca', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
+        </div>
+    </div>
+    
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('mx_match_19', 'mx')">
+            <span class="pro-league">LIGA MX • 26/09 - 23:07 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('mx_match_19', 'mx')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/219.png"><span>Guadalajara</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/222.png"><span>Querétaro</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_19', 'mx')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Guadalajara vs Querétaro', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
+        </div>
+    </div>
+    
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('mx_match_20', 'mx')">
+            <span class="pro-league">LIGA MX • 27/09 - 01:00 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('mx_match_20', 'mx')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/225.png"><span>Santos</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/234.png"><span>Pachuca</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_20', 'mx')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Santos vs Pachuca', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
+        </div>
+    </div>
+    
+    <div class="pro-card">
+        <div class="pro-card-header" onclick="openModal('mx_match_21', 'mx')">
+            <span class="pro-league">LIGA MX • 27/09 - 01:00 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('mx_match_21', 'mx')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/232.png"><span>Tigres UANL</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/231.png"><span>Puebla</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 1.5 Goles Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('mx_match_21', 'mx')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Tigres UANL vs Puebla', 'Over 1.5 Goles Totales', '-180')">⭐ GUARDAR</button>
         </div>
     </div>
     `;
@@ -688,235 +713,291 @@
                 document.getElementById('currentSportLabel').innerHTML = '🏈 AMERICANO / NFL &blackdowntriangle;';
                 document.getElementById('matchesContainer').innerHTML = `
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_0', 'nfl')"><span class="pro-league">NFL • 13/09 - 17:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_0', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cin.png"><span>Cincinnati Bengals</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/tb.png"><span>Tampa Bay Buccaneers</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_0', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+        <div class="pro-card-header" onclick="openModal('nfl_match_0', 'nfl')">
+            <span class="pro-league">NFL • 10/09 - 00:20 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_0', 'nfl')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sea.png"><span>Seattle Seahawks</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ne.png"><span>New England Patriots</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 43.5 Puntos Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_0', 'nfl')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Seattle Seahawks vs New England Patriots', 'Over 43.5 Puntos Totales', '-110')">⭐ GUARDAR</button>
+        </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_1', 'nfl')"><span class="pro-league">NFL • 13/09 - 17:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_1', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/det.png"><span>Detroit Lions</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/no.png"><span>New Orleans Saints</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_1', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+        <div class="pro-card-header" onclick="openModal('nfl_match_1', 'nfl')">
+            <span class="pro-league">NFL • 11/09 - 00:35 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_1', 'nfl')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lar.png"><span>Los Angeles Rams</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sf.png"><span>San Francisco 49ers</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 43.5 Puntos Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_1', 'nfl')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Los Angeles Rams vs San Francisco 49ers', 'Over 43.5 Puntos Totales', '-110')">⭐ GUARDAR</button>
+        </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_2', 'nfl')"><span class="pro-league">NFL • 13/09 - 17:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_2', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ten.png"><span>Tennessee Titans</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyj.png"><span>New York Jets</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_2', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+        <div class="pro-card-header" onclick="openModal('nfl_match_2', 'nfl')">
+            <span class="pro-league">NFL • 13/09 - 17:00 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_2', 'nfl')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cin.png"><span>Cincinnati Bengals</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/tb.png"><span>Tampa Bay Buccaneers</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 50.5 Puntos Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_2', 'nfl')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Cincinnati Bengals vs Tampa Bay Buccaneers', 'Over 50.5 Puntos Totales', '-110')">⭐ GUARDAR</button>
+        </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_3', 'nfl')"><span class="pro-league">NFL • 13/09 - 17:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_3', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ind.png"><span>Indianapolis Colts</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/bal.png"><span>Baltimore Ravens</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_3', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+        <div class="pro-card-header" onclick="openModal('nfl_match_3', 'nfl')">
+            <span class="pro-league">NFL • 13/09 - 17:00 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_3', 'nfl')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/det.png"><span>Detroit Lions</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/no.png"><span>New Orleans Saints</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 49.5 Puntos Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_3', 'nfl')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Detroit Lions vs New Orleans Saints', 'Over 49.5 Puntos Totales', '-110')">⭐ GUARDAR</button>
+        </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_4', 'nfl')"><span class="pro-league">NFL • 13/09 - 17:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_4', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/pit.png"><span>Pittsburgh Steelers</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/atl.png"><span>Atlanta Falcons</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_4', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+        <div class="pro-card-header" onclick="openModal('nfl_match_4', 'nfl')">
+            <span class="pro-league">NFL • 13/09 - 17:00 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_4', 'nfl')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ten.png"><span>Tennessee Titans</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyj.png"><span>New York Jets</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 38.5 Puntos Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_4', 'nfl')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Tennessee Titans vs New York Jets', 'Over 38.5 Puntos Totales', '-110')">⭐ GUARDAR</button>
+        </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_5', 'nfl')"><span class="pro-league">NFL • 13/09 - 17:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_5', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/car.png"><span>Carolina Panthers</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/chi.png"><span>Chicago Bears</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_5', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+        <div class="pro-card-header" onclick="openModal('nfl_match_5', 'nfl')">
+            <span class="pro-league">NFL • 13/09 - 17:00 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_5', 'nfl')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ind.png"><span>Indianapolis Colts</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/bal.png"><span>Baltimore Ravens</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 47.5 Puntos Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_5', 'nfl')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Indianapolis Colts vs Baltimore Ravens', 'Over 47.5 Puntos Totales', '-110')">⭐ GUARDAR</button>
+        </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_6', 'nfl')"><span class="pro-league">NFL • 13/09 - 17:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_6', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/jax.png"><span>Jacksonville Jaguars</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cle.png"><span>Cleveland Browns</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_6', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+        <div class="pro-card-header" onclick="openModal('nfl_match_6', 'nfl')">
+            <span class="pro-league">NFL • 13/09 - 17:00 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_6', 'nfl')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/pit.png"><span>Pittsburgh Steelers</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/atl.png"><span>Atlanta Falcons</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 41.5 Puntos Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_6', 'nfl')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Pittsburgh Steelers vs Atlanta Falcons', 'Over 41.5 Puntos Totales', '-110')">⭐ GUARDAR</button>
+        </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_7', 'nfl')"><span class="pro-league">NFL • 13/09 - 17:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_7', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/hou.png"><span>Houston Texans</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/buf.png"><span>Buffalo Bills</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_7', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+        <div class="pro-card-header" onclick="openModal('nfl_match_7', 'nfl')">
+            <span class="pro-league">NFL • 13/09 - 17:00 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_7', 'nfl')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/car.png"><span>Carolina Panthers</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/chi.png"><span>Chicago Bears</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 47.5 Puntos Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_7', 'nfl')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Carolina Panthers vs Chicago Bears', 'Over 47.5 Puntos Totales', '-110')">⭐ GUARDAR</button>
+        </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_8', 'nfl')"><span class="pro-league">NFL • 13/09 - 20:25 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_8', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lv.png"><span>Las Vegas Raiders</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/mia.png"><span>Miami Dolphins</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_8', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+        <div class="pro-card-header" onclick="openModal('nfl_match_8', 'nfl')">
+            <span class="pro-league">NFL • 13/09 - 17:00 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_8', 'nfl')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/jax.png"><span>Jacksonville Jaguars</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cle.png"><span>Cleveland Browns</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 39.5 Puntos Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_8', 'nfl')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Jacksonville Jaguars vs Cleveland Browns', 'Over 39.5 Puntos Totales', '-110')">⭐ GUARDAR</button>
+        </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_9', 'nfl')"><span class="pro-league">NFL • 13/09 - 20:25 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_9', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/min.png"><span>Minnesota Vikings</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/gb.png"><span>Green Bay Packers</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_9', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+        <div class="pro-card-header" onclick="openModal('nfl_match_9', 'nfl')">
+            <span class="pro-league">NFL • 13/09 - 17:00 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_9', 'nfl')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/hou.png"><span>Houston Texans</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/buf.png"><span>Buffalo Bills</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 44.5 Puntos Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_9', 'nfl')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Houston Texans vs Buffalo Bills', 'Over 44.5 Puntos Totales', '-110')">⭐ GUARDAR</button>
+        </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_10', 'nfl')"><span class="pro-league">NFL • 13/09 - 20:25 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_10', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/phi.png"><span>Philadelphia Eagles</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/wsh.png"><span>Washington Commanders</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_10', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+        <div class="pro-card-header" onclick="openModal('nfl_match_10', 'nfl')">
+            <span class="pro-league">NFL • 13/09 - 20:25 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_10', 'nfl')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lv.png"><span>Las Vegas Raiders</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/mia.png"><span>Miami Dolphins</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 40.5 Puntos Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_10', 'nfl')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Las Vegas Raiders vs Miami Dolphins', 'Over 40.5 Puntos Totales', '-110')">⭐ GUARDAR</button>
+        </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_11', 'nfl')"><span class="pro-league">NFL • 13/09 - 20:25 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_11', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lac.png"><span>Los Angeles Chargers</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ari.png"><span>Arizona Cardinals</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_11', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+        <div class="pro-card-header" onclick="openModal('nfl_match_11', 'nfl')">
+            <span class="pro-league">NFL • 13/09 - 20:25 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_11', 'nfl')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/min.png"><span>Minnesota Vikings</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/gb.png"><span>Green Bay Packers</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 46.5 Puntos Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_11', 'nfl')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Minnesota Vikings vs Green Bay Packers', 'Over 46.5 Puntos Totales', '-110')">⭐ GUARDAR</button>
+        </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_12', 'nfl')"><span class="pro-league">NFL • 14/09 - 00:20 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_12', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyg.png"><span>New York Giants</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/dal.png"><span>Dallas Cowboys</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_12', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+        <div class="pro-card-header" onclick="openModal('nfl_match_12', 'nfl')">
+            <span class="pro-league">NFL • 13/09 - 20:25 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_12', 'nfl')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/phi.png"><span>Philadelphia Eagles</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/wsh.png"><span>Washington Commanders</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 44.5 Puntos Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_12', 'nfl')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Philadelphia Eagles vs Washington Commanders', 'Over 44.5 Puntos Totales', '-110')">⭐ GUARDAR</button>
+        </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_13', 'nfl')"><span class="pro-league">NFL • 15/09 - 00:15 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_13', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png"><span>Kansas City Chiefs</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/den.png"><span>Denver Broncos</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_13', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+        <div class="pro-card-header" onclick="openModal('nfl_match_13', 'nfl')">
+            <span class="pro-league">NFL • 13/09 - 20:25 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_13', 'nfl')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lac.png"><span>Los Angeles Chargers</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ari.png"><span>Arizona Cardinals</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 47.5 Puntos Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_13', 'nfl')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Los Angeles Chargers vs Arizona Cardinals', 'Over 47.5 Puntos Totales', '-110')">⭐ GUARDAR</button>
+        </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_14', 'nfl')"><span class="pro-league">NFL • 18/09 - 00:15 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_14', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/buf.png"><span>Buffalo Bills</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/det.png"><span>Detroit Lions</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_14', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+        <div class="pro-card-header" onclick="openModal('nfl_match_14', 'nfl')">
+            <span class="pro-league">NFL • 14/09 - 00:20 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_14', 'nfl')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyg.png"><span>New York Giants</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/dal.png"><span>Dallas Cowboys</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 48.5 Puntos Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_14', 'nfl')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('New York Giants vs Dallas Cowboys', 'Over 48.5 Puntos Totales', '-110')">⭐ GUARDAR</button>
+        </div>
     </div>
     
     <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_15', 'nfl')"><span class="pro-league">NFL • 20/09 - 17:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_15', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/atl.png"><span>Atlanta Falcons</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/car.png"><span>Carolina Panthers</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_15', 'nfl')">VER ANÁLISIS &rarr;</button></div>
-    </div>
-    
-    <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_16', 'nfl')"><span class="pro-league">NFL • 20/09 - 17:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_16', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/chi.png"><span>Chicago Bears</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/min.png"><span>Minnesota Vikings</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_16', 'nfl')">VER ANÁLISIS &rarr;</button></div>
-    </div>
-    
-    <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_17', 'nfl')"><span class="pro-league">NFL • 20/09 - 17:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_17', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ten.png"><span>Tennessee Titans</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/phi.png"><span>Philadelphia Eagles</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_17', 'nfl')">VER ANÁLISIS &rarr;</button></div>
-    </div>
-    
-    <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_18', 'nfl')"><span class="pro-league">NFL • 20/09 - 17:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_18', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ne.png"><span>New England Patriots</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/pit.png"><span>Pittsburgh Steelers</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_18', 'nfl')">VER ANÁLISIS &rarr;</button></div>
-    </div>
-    
-    <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_19', 'nfl')"><span class="pro-league">NFL • 20/09 - 17:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_19', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyj.png"><span>New York Jets</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/gb.png"><span>Green Bay Packers</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_19', 'nfl')">VER ANÁLISIS &rarr;</button></div>
-    </div>
-    
-    <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_20', 'nfl')"><span class="pro-league">NFL • 20/09 - 17:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_20', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/tb.png"><span>Tampa Bay Buccaneers</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cle.png"><span>Cleveland Browns</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_20', 'nfl')">VER ANÁLISIS &rarr;</button></div>
-    </div>
-    
-    <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_21', 'nfl')"><span class="pro-league">NFL • 20/09 - 17:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_21', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/bal.png"><span>Baltimore Ravens</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/no.png"><span>New Orleans Saints</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_21', 'nfl')">VER ANÁLISIS &rarr;</button></div>
-    </div>
-    
-    <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_22', 'nfl')"><span class="pro-league">NFL • 20/09 - 17:00 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_22', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/hou.png"><span>Houston Texans</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cin.png"><span>Cincinnati Bengals</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_22', 'nfl')">VER ANÁLISIS &rarr;</button></div>
-    </div>
-    
-    <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_23', 'nfl')"><span class="pro-league">NFL • 20/09 - 20:05 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_23', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/den.png"><span>Denver Broncos</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/jax.png"><span>Jacksonville Jaguars</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_23', 'nfl')">VER ANÁLISIS &rarr;</button></div>
-    </div>
-    
-    <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_24', 'nfl')"><span class="pro-league">NFL • 20/09 - 20:05 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_24', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lac.png"><span>Los Angeles Chargers</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lv.png"><span>Las Vegas Raiders</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_24', 'nfl')">VER ANÁLISIS &rarr;</button></div>
-    </div>
-    
-    <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_25', 'nfl')"><span class="pro-league">NFL • 20/09 - 20:25 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_25', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/dal.png"><span>Dallas Cowboys</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/wsh.png"><span>Washington Commanders</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_25', 'nfl')">VER ANÁLISIS &rarr;</button></div>
-    </div>
-    
-    <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_26', 'nfl')"><span class="pro-league">NFL • 20/09 - 20:25 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_26', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ari.png"><span>Arizona Cardinals</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sea.png"><span>Seattle Seahawks</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_26', 'nfl')">VER ANÁLISIS &rarr;</button></div>
-    </div>
-    
-    <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_27', 'nfl')"><span class="pro-league">NFL • 20/09 - 20:25 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_27', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sf.png"><span>San Francisco 49ers</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/mia.png"><span>Miami Dolphins</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_27', 'nfl')">VER ANÁLISIS &rarr;</button></div>
-    </div>
-    
-    <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_28', 'nfl')"><span class="pro-league">NFL • 21/09 - 00:20 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_28', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png"><span>Kansas City Chiefs</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ind.png"><span>Indianapolis Colts</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_28', 'nfl')">VER ANÁLISIS &rarr;</button></div>
-    </div>
-    
-    <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_29', 'nfl')"><span class="pro-league">NFL • 22/09 - 00:15 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_29', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lar.png"><span>Los Angeles Rams</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyg.png"><span>New York Giants</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_29', 'nfl')">VER ANÁLISIS &rarr;</button></div>
-    </div>
-    
-    <div class="pro-card">
-        <div class="pro-card-header" onclick="openModal('nfl_match_30', 'nfl')"><span class="pro-league">NFL • 25/09 - 00:15 hrs</span><span class="pro-badge badge-slate">EN RECESO</span></div>
-        <div class="pro-matchup" onclick="openModal('nfl_match_30', 'nfl')"><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/gb.png"><span>Green Bay Packers</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/atl.png"><span>Atlanta Falcons</span></div></div>
-        <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_30', 'nfl')">VER ANÁLISIS &rarr;</button></div>
+        <div class="pro-card-header" onclick="openModal('nfl_match_15', 'nfl')">
+            <span class="pro-league">NFL • 15/09 - 00:15 hrs</span>
+            <span class="pro-badge badge-emerald">ALTA CONFIANZA</span>
+        </div>
+        <div class="pro-matchup" onclick="openModal('nfl_match_15', 'nfl')">
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png"><span>Kansas City Chiefs</span></div>
+            <div class="pro-vs">VS</div>
+            <div class="pro-team"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/den.png"><span>Denver Broncos</span></div>
+        </div>
+        <div class="pro-pick-box"><span class="pro-pick-label">PROYECCIÓN CONFIABLE (≥ 85%)</span><div class="pro-pick-val">Over 43.5 Puntos Totales</div></div>
+        <div style="display:flex; gap:8px;">
+            <button class="pro-btn" style="flex:1;" onclick="openModal('nfl_match_15', 'nfl')">VER ANÁLISIS &rarr;</button>
+            <button class="save-pick-btn" onclick="saveCustomPick('Kansas City Chiefs vs Denver Broncos', 'Over 43.5 Puntos Totales', '-110')">⭐ GUARDAR</button>
+        </div>
     </div>
     `;
                 renderOfficialPicks(picksNFL);
             } else if (sport === 'basket') {
                 document.getElementById('currentSportLabel').innerHTML = '🏀 BÁSKETBOL / NBA &blackdowntriangle;';
-                document.getElementById('matchesContainer').innerHTML = `<div class="pro-card" style="grid-column: 1/-1; text-align:center; padding:30px;"><span class="pro-league">NBA • TEMPORADA 2026</span><div style="margin: 15px 0; font-weight:800; font-size:1.1rem; color:#fff;">⏳ EN ESPERA DE INFORMACIÓN COMPLETA</div><p style="color:var(--text-muted); font-size:0.85rem; max-width:500px; margin:0 auto;">La NBA se encuentra en receso. Las cuotas y métricas avanzadas se cargarán al iniciar la temporada.</p></div>`;
+                document.getElementById('matchesContainer').innerHTML = `<div class="pro-card" style="grid-column: 1/-1; text-align:center; padding:25px;"><span class="pro-league">NBA • TEMPORADA</span><div style="margin: 12px 0; font-weight:800; font-size:1rem; color:#fff;">⏳ EN ESPERA DE INFORMACIÓN COMPLETA</div><p style="color:var(--text-muted); font-size:0.8rem; max-width:500px; margin:0 auto;">La NBA se encuentra en receso. Las cuotas y métricas avanzadas se cargarán al iniciar la temporada.</p></div>`;
                 renderOfficialPicks(picksNBA);
             }
             renderSavedPicks();
+            window.scrollTo(0, 0);
         }
 
         function renderOfficialPicks(picksList) {
             const container = document.getElementById('officialPicksContainer');
             if (!picksList || picksList.length === 0) {
-                container.innerHTML = `<div class="parlay-card" style="grid-column: 1/-1; text-align:center; padding:12px;"><span style="color:var(--text-muted); font-size:0.78rem;">Esta jornada ningún partido alcanzó el umbral del 85% de probabilidad. Por disciplina de bankroll, no hay Parlay Oficial esta semana.</span></div>`;
+                container.innerHTML = `<div class="parlay-card" style="grid-column: 1/-1; text-align:center; padding:12px;"><span style="color:var(--text-muted); font-size:0.78rem;">Esta jornada ningún partido alcanzó el umbral del 85% de probabilidad. Por disciplina de bankroll, no hay selección oficial.</span></div>`;
                 return;
             }
 
@@ -946,7 +1027,7 @@
             userSavedPicks.push({ id: Date.now(), partido, pick, momio, estado: 'PENDIENTE' });
             localStorage.setItem('stingy_saved_picks', JSON.stringify(userSavedPicks));
             renderSavedPicks();
-            showToastNotification(`Se ha guardado exitosamente tu apuesta: <b>${pick}</b>`);
+            showToastNotification(`Se ha guardado en tu portafolio: <b>${pick}</b>`);
         }
 
         function updatePickStatus(pickId, newStatus) {
@@ -970,10 +1051,8 @@
             const bankVal = parseFloat(document.getElementById('userBank').value);
             const userBank = isNaN(bankVal) ? 0 : bankVal;
 
-            document.getElementById('savedCount').innerHTML = `${userSavedPicks.length} Guardados`;
-
             if (userSavedPicks.length === 0) {
-                container.innerHTML = `<div style="grid-column: 1/-1; color:var(--text-muted); font-size:0.78rem; text-align:center; padding:10px;">Aún no has guardado ningún pick. Haz clic en "⭐ GUARDAR" para agregar elecciones a tu portafolio.</div>`;
+                container.innerHTML = `<div style="grid-column: 1/-1; color:var(--text-muted); font-size:0.78rem; text-align:center; padding:10px;">Aún no has guardado selecciones. Haz clic en "⭐ GUARDAR" en cualquier pick oficial o sugerencia de partido.</div>`;
                 document.getElementById('savedBalance').innerHTML = `Balance: $0.00 MXN`;
                 return;
             }

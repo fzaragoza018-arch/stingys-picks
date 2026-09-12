@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from collections import defaultdict
 import json
 
-print("🧠 Generando plataforma con NFL en vivo y cuotas de casino activas...")
+print("🧠 Iniciando compilación Stingy's Picks: NFL En Vivo + Tablero de Rendimiento Win/Loss...")
 
 # Estructuras de datos
 stats_mx = defaultdict(lambda: {'partidos': 0, 'corners': 0, 'tarjetas': 0, 'faltas': 0, 'goles_favor': 0, 'goles_contra': 0})
@@ -97,7 +97,7 @@ def format_event_date(date_str):
         dt = datetime.strptime(date_str[:16], "%Y-%m-%dT%H:%M")
         return dt.strftime("%d/%m - %H:%M hrs")
     except:
-        return "Por definir"
+        return "Próximo partido"
 
 fecha_futura = (datetime.now() + timedelta(days=14)).strftime("%Y%m%d")
 
@@ -210,7 +210,7 @@ for idx, evento in enumerate(res_mx_fut):
             <div class="pro-team"><img src="{logo_v}"><span>{visita}</span></div>
         </div>
         {box_html}
-        <div style="display:flex; gap:10px;">
+        <div style="display:flex; gap:8px;">
             <button class="pro-btn" style="flex:1;" onclick="openModal('{card_id}', 'mx')">VER ANÁLISIS &rarr;</button>
             {btn_save}
         </div>
@@ -221,9 +221,14 @@ candidatos_oficiales_mx.sort(key=lambda x: x['prob'], reverse=True)
 picks_oficiales_mx = candidatos_oficiales_mx[:3]
 
 # ==========================================
-# 4. PROCESAMIENTO FUTUROS NFL (EN VIVO CON CUOTAS)
+# 4. PROCESAMIENTO NFL EN VIVO
 # ==========================================
-res_nfl_fut = requests.get(f"https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates={fecha_fin}-{fecha_futura}").json().get('events', [])
+url_nfl_scoreboard = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard"
+raw_nfl = requests.get(url_nfl_scoreboard).json()
+res_nfl_fut = raw_nfl.get('events', [])
+
+if not res_nfl_fut:
+    res_nfl_fut = requests.get(f"{url_nfl_scoreboard}?dates={fecha_fin}-{fecha_futura}").json().get('events', [])
 
 nfl_cards_html = ""
 datos_js_nfl = {}
@@ -231,35 +236,41 @@ candidatos_oficiales_nfl = []
 
 for idx, evento in enumerate(res_nfl_fut):
     card_id = f"nfl_match_{idx}"
-    comp = evento['competitions'][0]
-    teams = comp['competitors']
-    local, visita = teams[0]['team']['displayName'], teams[1]['team']['displayName']
-    logo_l, logo_v = teams[0]['team'].get('logo', ''), teams[1]['team'].get('logo', '')
+    comp = evento.get('competitions', [{}])[0]
+    teams = comp.get('competitors', [])
+    if len(teams) < 2:
+        continue
+    
+    local = teams[0]['team']['displayName']
+    visita = teams[1]['team']['displayName']
+    logo_l = teams[0]['team'].get('logo', '')
+    logo_v = teams[1]['team'].get('logo', '')
     fecha_partido_txt = format_event_date(evento.get('date', ''))
     
-    # Lectura de odds de casino directo de ESPN
-    casino_odds = comp.get('odds', [{}])[0]
-    ou_line = casino_odds.get('overUnder', 44.5)
-    spread_details = casino_odds.get('details', f"{local} -3.0")
-    ou_val = ou_line if isinstance(ou_line, (int, float)) else 44.5
+    # Cuotas y líneas de casino
+    odds_arr = comp.get('odds', [])
+    casino_odds = odds_arr[0] if odds_arr else {}
+    ou_line = casino_odds.get('overUnder', 43.5)
+    spread_details = casino_odds.get('details', f"{local} -2.5")
+    ou_val = ou_line if isinstance(ou_line, (int, float)) else 43.5
 
     e1, e2 = stats_nfl[local], stats_nfl[visita]
     p1, p2 = max(1, e1['partidos']), max(1, e2['partidos'])
     
-    pts_l = round((e1['puntos_favor']/p1 + e2['puntos_contra']/p2)/2, 1) if e1['partidos'] > 0 else 23.5
+    pts_l = round((e1['puntos_favor']/p1 + e2['puntos_contra']/p2)/2, 1) if e1['partidos'] > 0 else 24.0
     pts_v = round((e2['puntos_favor']/p2 + e1['puntos_contra']/p1)/2, 1) if e2['partidos'] > 0 else 20.5
     pts_tot = round(pts_l + pts_v, 1)
 
-    prob_l = round(min(85, max(15, (pts_l / (pts_tot if pts_tot > 0 else 1)) * 80)), 1)
+    prob_l = round(min(82, max(20, (pts_l / (pts_tot if pts_tot > 0 else 1)) * 82)), 1)
     prob_v = round(100 - prob_l, 1)
-    prob_over = round(min(92, max(40, (pts_tot / ou_val) * 60)), 1)
-    prob_spread_l = round(min(88, max(35, prob_l + 5)), 1)
+    prob_over = round(min(92, max(42, (pts_tot / ou_val) * 62)), 1)
+    prob_spread_l = round(min(88, max(38, prob_l + 4)), 1)
     prob_spread_v = round(100 - prob_spread_l, 1)
 
     candidatos_nfl = [
-        {"mercado": f"Over {ou_val} Puntos Totales", "casino": "-110", "prob": prob_over, "razon": f"Promedio conjunto proyecta {pts_tot} pts frente a línea de casino de {ou_val}."},
-        {"mercado": f"Spread: {spread_details}", "casino": "-110", "prob": prob_spread_l, "razon": f"Proyección ofensiva estimada en {pts_l} vs {pts_v} puntos."},
-        {"mercado": f"Hándicap {visita} +6.5", "casino": "-115", "prob": prob_spread_v, "razon": f"{visita} cubre el margen positivo en duelos cerrados."}
+        {"mercado": f"Over {ou_val} Puntos Totales", "casino": "-110", "prob": prob_over, "razon": f"Promedio conjunto estimado de {pts_tot} pts supera la línea del casino ({ou_val})."},
+        {"mercado": f"Spread ({spread_details})", "casino": "-110", "prob": prob_spread_l, "razon": f"Diferencial proyectado favorable de {pts_l} contra {pts_v} puntos."},
+        {"mercado": f"Hándicap {visita} +6.5", "casino": "-115", "prob": prob_spread_v, "razon": f"{visita} retiene valor cubriendo margen en series divisionales."}
     ]
     candidatos_nfl.sort(key=lambda x: x['prob'], reverse=True)
     best_nfl = candidatos_nfl[0]
@@ -324,7 +335,7 @@ for idx, evento in enumerate(res_nfl_fut):
             <div class="pro-team"><img src="{logo_v}"><span>{visita}</span></div>
         </div>
         {box_html}
-        <div style="display:flex; gap:10px;">
+        <div style="display:flex; gap:8px;">
             <button class="pro-btn" style="flex:1;" onclick="openModal('{card_id}', 'nfl')">VER ANÁLISIS &rarr;</button>
             {btn_save}
         </div>
@@ -362,15 +373,15 @@ for idx, evento in enumerate(res_nba_fut):
         <div class="pro-card-header" onclick="openModal('{card_id}', 'nba')"><span class="pro-league">NBA • {fecha_partido_txt}</span><span class="pro-badge badge-slate">EN RECESO</span></div>
         <div class="pro-matchup" onclick="openModal('{card_id}', 'nba')"><div class="pro-team"><img src="{logo_l}"><span>{local}</span></div><div class="pro-vs">VS</div><div class="pro-team"><img src="{logo_v}"><span>{visita}</span></div></div>
         <div class="pro-pick-box"><span class="pro-pick-label" style="color:var(--text-muted);">⏳ EN ESPERA DE INFORMACIÓN</span><div class="pro-pick-val" style="color:var(--text-muted); font-size:0.8rem;">Esperando cuotas e inicio de temporada NBA</div></div>
-        <div style="display:flex; gap:10px;"><button class="pro-btn" style="flex:1;" onclick="openModal('{card_id}', 'nba')">VER ANÁLISIS &rarr;</button></div>
+        <div style="display:flex; gap:8px;"><button class="pro-btn" style="flex:1;" onclick="openModal('{card_id}', 'nba')">VER ANÁLISIS &rarr;</button></div>
     </div>
     """
 
 if not nba_cards_html:
-    nba_cards_html = """<div class="pro-card" style="grid-column: 1/-1; text-align:center; padding:30px;"><span class="pro-league">NBA • TEMPORADA 2026</span><div style="margin: 15px 0; font-weight:800; font-size:1.1rem; color:#fff;">⏳ EN ESPERA DE INFORMACIÓN COMPLETA</div><p style="color:var(--text-muted); font-size:0.85rem; max-width:500px; margin:0 auto;">La NBA se encuentra en receso. Las cuotas y métricas avanzadas se cargarán al iniciar la temporada.</p></div>"""
+    nba_cards_html = """<div class="pro-card" style="grid-column: 1/-1; text-align:center; padding:25px;"><span class="pro-league">NBA • TEMPORADA 2026</span><div style="margin: 12px 0; font-weight:800; font-size:1rem; color:#fff;">⏳ EN ESPERA DE INFORMACIÓN COMPLETA</div><p style="color:var(--text-muted); font-size:0.8rem; max-width:500px; margin:0 auto;">La NBA se encuentra en receso. Las cuotas y métricas avanzadas se cargarán al iniciar la temporada.</p></div>"""
 
 # ==========================================
-# 6. HTML FINAL
+# 6. HTML FINAL COMPLETO CON HISTORIAL WIN/LOSS
 # ==========================================
 html_document = f"""<!DOCTYPE html>
 <html lang="es">
@@ -425,9 +436,14 @@ html_document = f"""<!DOCTYPE html>
         @media(min-width: 650px) {{ .bankroll-input {{ width: auto; }} }}
         .bankroll-input input {{ background: #0a0d14; border: 1px solid var(--border-dark); color: var(--accent-cyan); padding: 8px 10px; border-radius: 8px; font-weight: 800; width: 100%; max-width: 130px; font-size: 0.9rem; text-align: center; }}
 
+        /* SECCIÓN DE HISTORIAL / MIS PICKS CON MÉTRICAS TOTALES */
         .saved-section {{ max-width: 1100px; margin: 0 auto 16px; background: rgba(139, 92, 246, 0.08); border: 1px solid var(--accent-purple); border-radius: 18px; padding: 14px; }}
-        .saved-header {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-direction: column; gap: 6px; text-align: center; }}
+        .saved-header {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-direction: column; gap: 8px; text-align: center; }}
         @media(min-width: 650px) {{ .saved-header {{ flex-direction: row; text-align: left; }} }}
+        
+        .record-tracker {{ display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 12px; }}
+        .record-pill {{ background: #0a0d14; border: 1px solid var(--border-dark); padding: 6px 12px; border-radius: 10px; font-size: 0.72rem; font-weight: 800; }}
+        
         .saved-grid {{ display: flex; flex-direction: column; gap: 10px; }}
         @media(min-width: 650px) {{ .saved-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }} }}
         .saved-item {{ background: #0a0d14; border: 1px solid var(--border-dark); border-radius: 12px; padding: 12px; }}
@@ -515,11 +531,11 @@ html_document = f"""<!DOCTYPE html>
             <div class="sport-card" onclick="selectSport('futbol')">
                 <span class="sport-name">FÚTBOL</span>
             </div>
-            <div class="sport-card" onclick="selectSport('basket')">
-                <span class="sport-name">BÁSKETBOL</span>
-            </div>
             <div class="sport-card" onclick="selectSport('americano')">
-                <span class="sport-name">AMERICANO</span>
+                <span class="sport-name">AMERICANO (NFL)</span>
+            </div>
+            <div class="sport-card" onclick="selectSport('basket')">
+                <span class="sport-name">BÁSKETBOL (NBA)</span>
             </div>
             <div class="sport-card method-card" onclick="openMethodologyDirect()">
                 <span class="sport-name" style="color:var(--accent-cyan);">¿CÓMO CALCULAMOS LAS PROBABILIDADES Y EL VALOR?</span>
@@ -533,7 +549,7 @@ html_document = f"""<!DOCTYPE html>
                 <div class="brand-icon">SP</div>
                 <div class="brand-name">STINGY'S PICKS</div>
             </div>
-            <button class="sport-select-btn" id="currentSportLabel" onclick="backToSplash()">FÚTBOL / LIGA MX &blackdowntriangle;</button>
+            <button class="sport-select-btn" id="currentSportLabel" onclick="backToSplash()">CAMBIAR DEPORTE &blackdowntriangle;</button>
         </header>
 
         <div class="bankroll-panel">
@@ -549,12 +565,20 @@ html_document = f"""<!DOCTYPE html>
 
         <div class="saved-section" id="savedPicksContainer">
             <div class="saved-header">
-                <div class="saved-title" style="font-size:0.85rem; font-weight:800;">⭐ MIS PICKS GUARDADOS (PORTAFOLIO)</div>
+                <div class="saved-title" style="font-size:0.85rem; font-weight:800;">⭐ MIS PICKS GUARDADOS (HISTORIAL Y PORTAFOLIO)</div>
                 <div class="saved-stats" style="font-size:0.75rem; font-weight:700;">
-                    <span style="color:var(--accent-purple);" id="savedCount">0 Guardados</span> | 
                     <span id="savedBalance">Balance: $0.00 MXN</span>
                 </div>
             </div>
+            
+            <!-- MARCADOR DE RECORD EN VIVO: GANADAS / PERDIDAS / WIN RATE -->
+            <div class="record-tracker" id="recordTrackerContainer">
+                <div class="record-pill" style="border-color:var(--accent-emerald); color:var(--accent-emerald);" id="statWins">✅ 0 Ganadas</div>
+                <div class="record-pill" style="border-color:#ef4444; color:#ef4444;" id="statLosses">❌ 0 Perdidas</div>
+                <div class="record-pill" style="border-color:var(--text-muted); color:var(--text-muted);" id="statPending">⏳ 0 Pendientes</div>
+                <div class="record-pill" style="border-color:var(--accent-cyan); color:var(--accent-cyan);" id="statRate">Efectividad: 0.0%</div>
+            </div>
+
             <div class="saved-grid" id="savedPicksList"></div>
         </div>
 
@@ -702,12 +726,13 @@ html_document = f"""<!DOCTYPE html>
                 renderOfficialPicks(picksNBA);
             }}
             renderSavedPicks();
+            window.scrollTo(0, 0);
         }}
 
         function renderOfficialPicks(picksList) {{
             const container = document.getElementById('officialPicksContainer');
             if (!picksList || picksList.length === 0) {{
-                container.innerHTML = `<div class="parlay-card" style="grid-column: 1/-1; text-align:center; padding:12px;"><span style="color:var(--text-muted); font-size:0.78rem;">Esta jornada ningún partido alcanzó el umbral del 85% de probabilidad. Por disciplina de bankroll, no hay Parlay Oficial esta semana.</span></div>`;
+                container.innerHTML = `<div class="parlay-card" style="grid-column: 1/-1; text-align:center; padding:12px;"><span style="color:var(--text-muted); font-size:0.78rem;">Esta jornada ningún partido alcanzó el umbral del 85% de probabilidad. Por disciplina de bankroll, no hay selección oficial.</span></div>`;
                 return;
             }}
 
@@ -761,7 +786,23 @@ html_document = f"""<!DOCTYPE html>
             const bankVal = parseFloat(document.getElementById('userBank').value);
             const userBank = isNaN(bankVal) ? 0 : bankVal;
 
-            document.getElementById('savedCount').innerHTML = `${{userSavedPicks.length}} Guardados`;
+            let wins = 0;
+            let losses = 0;
+            let pending = 0;
+
+            userSavedPicks.forEach(p => {{
+                if (p.estado === 'GANADA') wins++;
+                else if (p.estado === 'PERDIDA') losses++;
+                else pending++;
+            }});
+
+            const totalFinalizados = wins + losses;
+            const winRate = totalFinalizados > 0 ? ((wins / totalFinalizados) * 100).toFixed(1) : "0.0";
+
+            document.getElementById('statWins').innerHTML = `✅ ${{wins}} Ganadas`;
+            document.getElementById('statLosses').innerHTML = `❌ ${{losses}} Perdidas`;
+            document.getElementById('statPending').innerHTML = `⏳ ${{pending}} Pendientes`;
+            document.getElementById('statRate').innerHTML = `Efectividad: ${{winRate}}%`;
 
             if (userSavedPicks.length === 0) {{
                 container.innerHTML = `<div style="grid-column: 1/-1; color:var(--text-muted); font-size:0.78rem; text-align:center; padding:10px;">Aún no has guardado ningún pick. Haz clic en "⭐ GUARDAR" para agregar elecciones a tu portafolio.</div>`;
@@ -904,4 +945,4 @@ html_document = f"""<!DOCTYPE html>
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(html_document)
 
-print("\n🚀 ¡NFL EN VIVO CON CUOTAS OFICIALES Y DISEÑO CORREGIDO GENERADO!")
+print("\n🚀 ¡TODO SOLUCIONADO! NFL ACTIVA Y TRACKER DE HISTORIAL WIN/LOSS INTEGRADO.")
